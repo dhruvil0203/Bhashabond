@@ -1,0 +1,2500 @@
+CITY_GUIDE_DATA = {
+  Mumbai: {
+    foods: [
+            {
+        name: "Vada Pav",
+        localName: "वडा पाव",
+        pronunciation: "Vada Pav",
+        description: "A spiced potato fritter (vada) sandwiched in a bread roll (pav), served with chutneys. Often called Mumbai's favourite street food.",
+        imageUrl: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Pav Bhaji",
+        localName: "पाव भाजी",
+        pronunciation: "Pav Bha-ji",
+        description: "A thick spiced vegetable mash served with buttered bread rolls, garnished with onions, lemon, and coriander.",
+        imageUrl: "https://images.unsplash.com/photo-1606755962773-d324e0a13086?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Bhel Puri",
+        localName: "भेळ पुरी",
+        pronunciation: "Bhel Pu-ri",
+        description: "A crunchy chaat made with puffed rice, sev, vegetables, tamarind, and green chutneys — a classic Mumbai beach snack.",
+        imageUrl: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Misal Pav",
+        localName: "मिसळ पाव",
+        pronunciation: "Mi-sal Pav",
+        description: "Sprouted moth beans curry cooked with spicy masala, topped with farsan and served with bread rolls.",
+        imageUrl: "https://images.unsplash.com/photo-1645177628172-a94c1f96diag?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Bombay Sandwich",
+        localName: "बॉम्बे सँडविच",
+        pronunciation: "Bombay Sand-wich",
+        description: "A triple-decker toasted sandwich layered with chutney, cheese, and vegetables, a staple of Mumbai street corners.",
+        imageUrl: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Keema Pav",
+        localName: "कीमा पाव",
+        pronunciation: "Kee-ma Pav",
+        description: "Minced meat cooked with spices and served with soft buttered pav, a beloved non-vegetarian street dish in Mumbai.",
+        imageUrl: "https://images.unsplash.com/photo-1574653853027-5382a3d23a15?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Modak",
+        localName: "मोदक",
+        pronunciation: "Mo-dak",
+        description: "A steamed sweet dumpling made from rice flour filled with jaggery and coconut, traditionally associated with Ganesh Chaturthi.",
+        imageUrl: "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Pani Puri",
+        localName: "पाणी पुरी",
+        pronunciation: "Pa-ni Pu-ri",
+        description: "Hollow crispy spheres filled with spiced potato and dipped in tangy tamarind water, a ubiquitous Mumbai chaat favourite.",
+        imageUrl: "https://images.unsplash.com/photo-1626132647523-66c3f75942a7?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Thalipeeth",
+        localName: "थालीपीठ",
+        pronunciation: "Tha-li-peeth",
+        description: "A savoury multigrain flatbread made with besan, rice flour, and spices, a wholesome Maharashtrian breakfast staple.",
+        imageUrl: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Puran Poli",
+        localName: "पुरण पोळी",
+        pronunciation: "Pu-ran Po-li",
+        description: "A sweet flatbread stuffed with chana dal and jaggery filling, popular during festivals in Maharashtra.",
+        imageUrl: "https://images.unsplash.com/photo-1604908177453-7462950a6a3b?auto=format&fit=crop&w=500&q=80"
+            }
+        ],
+    places: [
+            {
+        name: "Gateway of India",
+        localName: "गेटवे ऑफ इंडिया",
+        pronunciation: "Gate-way of In-dia",
+        description: "An iconic arch monument built in 1924 on the Apollo Bunder waterfront, overlooking the Arabian Sea.",
+        imageUrl: "https://images.unsplash.com/photo-1529253355930-ddbe423a2ac7?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Marine Drive",
+        localName: "मरीन ड्राइव्ह",
+        pronunciation: "Ma-rine Drive",
+        description: "A 3.6 km curved boulevard along the coast, known as the 'Queen's Necklace' when lit up at night.",
+        imageUrl: "https://images.unsplash.com/photo-1567157577867-05ccb1388e66?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Elephanta Caves",
+        localName: "घारापुरीची लेणी",
+        pronunciation: "El-e-phanta Caves",
+        description: "A UNESCO World Heritage Site featuring rock-cut cave temples dedicated to Lord Shiva, located on an island near Mumbai.",
+        imageUrl: "https://images.unsplash.com/photo-1595658658481-d53d3f999875?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Chhatrapati Shivaji Maharaj Terminus",
+        localName: "छत्रपती शिवाजी महाराज टर्मिनस",
+        pronunciation: "Chha-tra-pa-ti Shi-va-ji Terminus",
+        description: "A UNESCO World Heritage railway station built in 1887, an outstanding example of Victorian Gothic architecture.",
+        imageUrl: "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Juhu Beach",
+        localName: "जुहू बीच",
+        pronunciation: "Ju-hu Beach",
+        description: "Mumbai's most popular beach known for its street food stalls, sunset views, and lively atmosphere.",
+        imageUrl: "https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Haji Ali Dargah",
+        localName: "हाजी अली दर्गाह",
+        pronunciation: "Ha-ji A-li Dar-gah",
+        description: "A revered mosque and tomb of Muslim saint Haji Ali Shah Bukhari, situated on an islet in the Arabian Sea.",
+        imageUrl: "https://images.unsplash.com/photo-1623492229120-9c5e1b1b50c5?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Siddhivinayak Temple",
+        localName: "सिद्धिविनायक मंदिर",
+        pronunciation: "Sid-dhi-vi-nay-ak Temple",
+        description: "One of Mumbai's most visited Hindu temples dedicated to Lord Ganesha, attracting thousands of devotees daily.",
+        imageUrl: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Colaba Causeway",
+        localName: "कुलाबा कॉजवे",
+        pronunciation: "Co-la-ba Cause-way",
+        description: "A vibrant market street famous for antiques, street shopping, cafes, and colonial-era architecture.",
+        imageUrl: "https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Sanjay Gandhi National Park",
+        localName: "संजय गांधी राष्ट्रीय उद्यान",
+        pronunciation: "San-jay Gan-dhi Na-tion-al Park",
+        description: "A sprawling forested national park within Mumbai featuring leopards, Kanheri Caves, and a mini train safari.",
+        imageUrl: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Bandra-Worli Sea Link",
+        localName: "वांद्रे-वरळी सागरी सेतू",
+        pronunciation: "Ban-dra Wor-li Sea Link",
+        description: "A modern cable-stayed bridge spanning 5.6 km across Mahim Bay, dramatically reducing travel time across Mumbai.",
+        imageUrl: "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=500&q=80"
+            }
+        ]
+    },
+
+  Delhi: {
+    foods: [
+            {
+        name: "Chole Bhature",
+        localName: "छोले भटूरे",
+        pronunciation: "Cho-le Bha-tu-re",
+        description: "Spicy chickpea curry served with large, fluffy fried leavened bread — a quintessential Delhi breakfast.",
+        imageUrl: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Butter Chicken",
+        localName: "बटर चिकन",
+        pronunciation: "But-ter Chi-cken",
+        description: "Tender chicken cooked in a rich, creamy tomato-based sauce, a dish said to have been invented in Delhi's Moti Mahal restaurant.",
+        imageUrl: "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Paratha",
+        localName: "पराठा",
+        pronunciation: "Pa-ra-tha",
+        description: "Flaky whole wheat flatbread stuffed with potatoes, paneer, or vegetables, best enjoyed at Old Delhi's Paranthe Wali Gali.",
+        imageUrl: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Nihari",
+        localName: "निहारी",
+        pronunciation: "Ni-ha-ri",
+        description: "A slow-cooked meat stew with aromatic spices, originally a Mughal royal breakfast now iconic in Old Delhi.",
+        imageUrl: "https://images.unsplash.com/photo-1574653853027-5382a3d23a15?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Dahi Bhalle",
+        localName: "दही भल्ले",
+        pronunciation: "Da-hi Bhal-le",
+        description: "Soft lentil dumplings soaked in yoghurt and topped with chutneys and chaat masala, a popular Delhi street food.",
+        imageUrl: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Kebab",
+        localName: "कबाब",
+        pronunciation: "Ke-bab",
+        description: "Seekh and galouti kebabs from Old Delhi's Jama Masjid area are legendary — minced meat spiced and grilled to perfection.",
+        imageUrl: "https://images.unsplash.com/photo-1529042410759-befb1204b468?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Aloo Tikki",
+        localName: "आलू टिक्की",
+        pronunciation: "A-loo Tik-ki",
+        description: "Crispy fried spiced potato patties served with chutneys, a staple evening snack from Delhi's street food stalls.",
+        imageUrl: "https://images.unsplash.com/photo-1626132647523-66c3f75942a7?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Biryani",
+        localName: "बिरयानी",
+        pronunciation: "Bi-rya-ni",
+        description: "Fragrant long-grain rice cooked with marinated meat and whole spices; Delhi's variant has Mughal royal origins.",
+        imageUrl: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Kulfi",
+        localName: "कुल्फी",
+        pronunciation: "Kul-fi",
+        description: "A dense, slow-frozen Indian ice cream made with thickened milk, rose water, and pistachios, served on a stick.",
+        imageUrl: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Jalebi",
+        localName: "जलेबी",
+        pronunciation: "Ja-le-bi",
+        description: "Crispy pretzel-shaped deep-fried batter soaked in sugar syrup, often eaten hot for breakfast or as a dessert.",
+        imageUrl: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80"
+            }
+        ],
+    places: [
+            {
+        name: "India Gate",
+        localName: "इण्डिया गेट",
+        pronunciation: "In-dia Gate",
+        description: "A war memorial arch dedicated to soldiers of World War I, surrounded by lush lawns and an eternal flame.",
+        imageUrl: "https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Red Fort",
+        localName: "लाल किला",
+        pronunciation: "Lal Ki-la",
+        description: "A UNESCO World Heritage Site and massive red sandstone Mughal fort from 1648, from where India's PM addresses the nation on Independence Day.",
+        imageUrl: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Qutub Minar",
+        localName: "क़ुतुब मीनार",
+        pronunciation: "Qu-tub Mi-nar",
+        description: "A UNESCO-listed 73-metre tall minaret built in 1193, the tallest brick minaret in the world.",
+        imageUrl: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Humayun's Tomb",
+        localName: "हुमायूँ का मकबरा",
+        pronunciation: "Hu-ma-yun's Tomb",
+        description: "A stunning Mughal garden tomb built in 1570, a UNESCO World Heritage Site that inspired the Taj Mahal.",
+        imageUrl: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Lotus Temple",
+        localName: "कमल मंदिर",
+        pronunciation: "Lo-tus Tem-ple",
+        description: "An award-winning Bahá'í House of Worship shaped like a blooming lotus flower, open to people of all religions.",
+        imageUrl: "https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Chandni Chowk",
+        localName: "चांदनी चौक",
+        pronunciation: "Chan-dni Chowk",
+        description: "One of Asia's oldest and busiest markets in Old Delhi, a labyrinth of lanes selling spices, textiles, jewellery, and street food.",
+        imageUrl: "https://images.unsplash.com/photo-1597074866923-dc0589150358?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Akshardham Temple",
+        localName: "अक्षरधाम मंदिर",
+        pronunciation: "Ak-shar-dham Tem-ple",
+        description: "A magnificent Hindu temple complex with intricately carved stone architecture, exhibitions, and a musical fountain.",
+        imageUrl: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Jama Masjid",
+        localName: "जामा मस्जिद",
+        pronunciation: "Ja-ma Mas-jid",
+        description: "India's largest mosque, built by Mughal Emperor Shah Jahan in 1656, accommodating up to 25,000 worshippers.",
+        imageUrl: "https://images.unsplash.com/photo-1606921231106-f1083329a65c?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Connaught Place",
+        localName: "कनॉट प्लेस",
+        pronunciation: "Con-naught Place",
+        description: "Delhi's grand circular Georgian-style commercial hub lined with shops, restaurants, and colonial colonnaded buildings.",
+        imageUrl: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Lodi Garden",
+        localName: "लोदी गार्डन",
+        pronunciation: "Lo-di Gar-den",
+        description: "A serene 90-acre park dotted with 15th-century Lodi dynasty tombs, popular for morning walks and picnics.",
+        imageUrl: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=500&q=80"
+            }
+        ]
+    },
+
+  Bengaluru: {
+    foods: [
+            {
+        name: "Masala Dosa",
+        localName: "ಮಸಾಲೆ ದೋಸೆ",
+        pronunciation: "Ma-sa-le Do-se",
+        description: "A thin crispy rice and lentil crepe stuffed with spiced mashed potato, served with sambar and chutneys.",
+        imageUrl: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Idli Vada",
+        localName: "ಇಡ್ಲಿ ವಡೆ",
+        pronunciation: "Id-li Va-de",
+        description: "Steamed rice cakes and crispy lentil doughnuts served with coconut chutney and sambar, a classic South Indian breakfast.",
+        imageUrl: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Ragi Mudde",
+        localName: "ರಾಗಿ ಮುದ್ದೆ",
+        pronunciation: "Ra-gi Mud-de",
+        description: "Dense finger millet balls typically eaten with saaru (rasam) or curry, a nutritious traditional Kannadiga staple.",
+        imageUrl: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Bisi Bele Bath",
+        localName: "ಬಿಸಿ ಬೇಳೆ ಬಾತ್",
+        pronunciation: "Bi-si Be-le Bath",
+        description: "A hot Karnataka porridge of rice, lentils, and tamarind cooked with a special spice powder and topped with ghee.",
+        imageUrl: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Akki Rotti",
+        localName: "ಅಕ್ಕಿ ರೊಟ್ಟಿ",
+        pronunciation: "Ak-ki Rot-ti",
+        description: "A flatbread made from rice flour mixed with herbs, onions, and coconut — a beloved Kannadiga breakfast.",
+        imageUrl: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Neer Dosa",
+        localName: "ನೀರ್ ದೋಸೆ",
+        pronunciation: "Neer Do-se",
+        description: "Delicate paper-thin crepes made from a watery rice batter, soft and mild, served with coconut chutney or chicken curry.",
+        imageUrl: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Kesari Bath",
+        localName: "ಕೇಸರಿ ಬಾತ್",
+        pronunciation: "Ke-sa-ri Bath",
+        description: "A sweet semolina pudding made with ghee, saffron, cashews, and raisins, a popular Bengaluru breakfast dessert.",
+        imageUrl: "https://images.unsplash.com/photo-1604908177453-7462950a6a3b?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Udupi Sambar",
+        localName: "ಉಡುಪಿ ಸಾಂಬಾರ್",
+        pronunciation: "U-du-pi Sam-bar",
+        description: "A tangy and mildly spiced lentil and vegetable stew unique to Udupi-style restaurants abundant in Bengaluru.",
+        imageUrl: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Mangalore Buns",
+        localName: "ಮಂಗಳೂರು ಬನ್ಸ್",
+        pronunciation: "Man-ga-lore Buns",
+        description: "Slightly sweet deep-fried puris made from mashed banana and refined flour, a coastal Karnataka breakfast specialty.",
+        imageUrl: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Mysore Pak",
+        localName: "ಮೈಸೂರು ಪಾಕ್",
+        pronunciation: "My-so-re Pak",
+        description: "A rich fudge-like sweet made from generous amounts of ghee, sugar, and gram flour, originating from the Mysore royal kitchen.",
+        imageUrl: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=500&q=80"
+            }
+        ],
+    places: [
+            {
+        name: "Lalbagh Botanical Garden",
+        localName: "ಲಾಲ್ಬಾಗ್ ಉದ್ಯಾನ",
+        pronunciation: "Lal-bagh Bo-tani-cal Garden",
+        description: "A 240-acre botanical garden founded in the 18th century, home to rare plants, a 3000-million-year-old rock, and a famous glasshouse.",
+        imageUrl: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Bangalore Palace",
+        localName: "ಬೆಂಗಳೂರು ಅರಮನೆ",
+        pronunciation: "Ban-ga-lore Pal-ace",
+        description: "A magnificent Tudor-style palace built in 1887 modelled after Windsor Castle, adorned with ornate wood carvings.",
+        imageUrl: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Cubbon Park",
+        localName: "ಕಬ್ಬನ್ ಉದ್ಯಾನ",
+        pronunciation: "Cub-bon Park",
+        description: "A sprawling 300-acre green lung in the heart of Bengaluru, housing government buildings and heritage statues.",
+        imageUrl: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Tipu Sultan's Summer Palace",
+        localName: "ಟಿಪ್ಪು ಸುಲ್ತಾನ್ ಅರಮನೆ",
+        pronunciation: "Ti-pu Sul-tan's Summer Pal-ace",
+        description: "An exquisite 18th-century Indo-Islamic wooden palace with intricate columns and frescoes, built for the Mysore sultan.",
+        imageUrl: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "ISKCON Temple Bengaluru",
+        localName: "ಇಸ್ಕಾನ್ ದೇವಾಲಯ",
+        pronunciation: "IS-KON Tem-ple",
+        description: "One of the world's largest ISKCON temples, an architecturally grand Hare Krishna temple on Hare Krishna Hill.",
+        imageUrl: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Vidhana Soudha",
+        localName: "ವಿಧಾನ ಸೌಧ",
+        pronunciation: "Vi-dha-na Sou-dha",
+        description: "Bengaluru's imposing seat of state legislature, a landmark Dravidian-style granite building from 1956.",
+        imageUrl: "https://images.unsplash.com/photo-1597074866923-dc0589150358?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Bannerghatta National Park",
+        localName: "ಬನ್ನೇರುಘಟ್ಟ ರಾಷ್ಟ್ರೀಯ ಉದ್ಯಾನ",
+        pronunciation: "Ban-ner-ghat-ta Na-tion-al Park",
+        description: "A forest reserve on Bengaluru's outskirts offering safari rides to see tigers, lions, bears, and elephants.",
+        imageUrl: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "UB City Mall",
+        localName: "ಯುಬಿ ಸಿಟಿ",
+        pronunciation: "U B City",
+        description: "A luxury mall and commercial hub in central Bengaluru known for upscale retail, fine dining, and art exhibitions.",
+        imageUrl: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Bull Temple",
+        localName: "ಡೊಡ್ಡ ಗಣಪತಿ ಬಸವನ ಗುಡಿ",
+        pronunciation: "Nandi Bull Tem-ple",
+        description: "A 16th-century Dravidian temple housing a massive monolithic Nandi bull statue, one of Bengaluru's oldest temples.",
+        imageUrl: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Nandi Hills",
+        localName: "ನಂದಿ ಬೆಟ್ಟ",
+        pronunciation: "Nan-di Hills",
+        description: "An ancient hill fortress 60 km from Bengaluru, offering breathtaking sunrise views, trekking trails, and a Tipu Sultan summer retreat.",
+        imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=500&q=80"
+            }
+        ]
+    },
+
+  Chennai: {
+    foods: [
+            {
+        name: "Idli Sambar",
+        localName: "இட்லி சாம்பார்",
+        pronunciation: "Id-li Sam-bar",
+        description: "Soft steamed rice cakes served with a flavourful lentil and vegetable broth — the quintessential Chennai breakfast.",
+        imageUrl: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Chettinad Chicken Curry",
+        localName: "செட்டிநாடு கோழி குழம்பு",
+        pronunciation: "Chet-ti-nad Ko-zhi Ku-zham-bu",
+        description: "A fiery, aromatic chicken curry using kalpasi and marathi mokku spices unique to the Chettinad region of Tamil Nadu.",
+        imageUrl: "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Pongal",
+        localName: "பொங்கல்",
+        pronunciation: "Pon-gal",
+        description: "A comforting savoury porridge of rice and moong dal tempered with cumin, pepper, and ghee, a beloved breakfast in Tamil Nadu.",
+        imageUrl: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Dosa",
+        localName: "தோசை",
+        pronunciation: "Tho-sai",
+        description: "A thin, golden, crispy fermented rice and lentil crepe served with sambar and multiple chutneys, a Tamil Nadu staple.",
+        imageUrl: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Filter Coffee",
+        localName: "ஃபில்டர் காபி",
+        pronunciation: "Fil-ter Ka-pi",
+        description: "Strong decoction coffee blended with frothy hot milk and served in a traditional brass tumbler and davara.",
+        imageUrl: "https://images.unsplash.com/photo-1559496417-e7f25cb247f3?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Kothu Parotta",
+        localName: "கொத்து பரோட்டா",
+        pronunciation: "Ko-thu Pa-rot-ta",
+        description: "Shredded layered flatbread tossed on a griddle with eggs, meat or vegetables, and spices — a popular street food.",
+        imageUrl: "https://images.unsplash.com/photo-1574653853027-5382a3d23a15?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Murukku",
+        localName: "முறுக்கு",
+        pronunciation: "Mu-ruk-ku",
+        description: "Crunchy deep-fried spiral snacks made from rice and urad dal flour, a signature Tamil savory available everywhere.",
+        imageUrl: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Sambar Rice",
+        localName: "சாம்பார் சாதம்",
+        pronunciation: "Sam-bar Sa-dham",
+        description: "Comforting rice mixed generously with tangy sambar and a dollop of ghee, a homestyle Tamil Nadu meal.",
+        imageUrl: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Payasam",
+        localName: "பாயசம்",
+        pronunciation: "Pa-ya-sam",
+        description: "A creamy sweet pudding made from rice or vermicelli simmered in milk with sugar and cardamom, served on festive occasions.",
+        imageUrl: "https://images.unsplash.com/photo-1604908177453-7462950a6a3b?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Sundal",
+        localName: "சுண்டல்",
+        pronunciation: "Sun-dal",
+        description: "Boiled legumes tempered with mustard, curry leaves, red chilli, and coconut — a healthy and popular temple prasad snack.",
+        imageUrl: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80"
+            }
+        ],
+    places: [
+            {
+        name: "Marina Beach",
+        localName: "மெரினா கடற்கரை",
+        pronunciation: "Ma-ri-na Beach",
+        description: "The world's second longest urban beach at 13 km, lined with statues, food stalls, and evening promenaders.",
+        imageUrl: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Kapaleeshwarar Temple",
+        localName: "கபாலீஸ்வரர் கோவில்",
+        pronunciation: "Ka-pa-leesh-va-rar Tem-ple",
+        description: "A magnificent Dravidian-style Hindu temple in Mylapore dedicated to Lord Shiva, with a towering sculpted gopuram.",
+        imageUrl: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Fort St. George",
+        localName: "புனித ஜார்ஜ் கோட்டை",
+        pronunciation: "Fort St. George",
+        description: "India's first English fortress, built in 1644, now housing the Tamil Nadu State Legislature and a museum of colonial artefacts.",
+        imageUrl: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Government Museum Chennai",
+        localName: "அரசு அருங்காட்சியகம்",
+        pronunciation: "Gov-ern-ment Mu-se-um",
+        description: "One of India's oldest museums, housing rich collections of South Indian bronzes, Amaravati sculptures, and natural history exhibits.",
+        imageUrl: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Valluvar Kottam",
+        localName: "வள்ளுவர் கோட்டம்",
+        pronunciation: "Val-lu-var Kot-tam",
+        description: "A grand stone chariot monument dedicated to Tamil poet-philosopher Thiruvalluvar, inscribed with all 1330 Kural couplets.",
+        imageUrl: "https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Arignar Anna Zoological Park",
+        localName: "அண்ணா உயிரியல் பூங்கா",
+        pronunciation: "Van-da-lur Zoo",
+        description: "India's largest zoological park spread over 1,265 acres in Vandalur, home to over 170 animal species.",
+        imageUrl: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Santhome Cathedral",
+        localName: "சான்தோம் கோயில்",
+        pronunciation: "San-thome Ca-the-dral",
+        description: "A 16th-century Portuguese Catholic basilica built over the tomb of St. Thomas the Apostle, one of the world's few apostolic shrines.",
+        imageUrl: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "MGR Film City",
+        localName: "எம்ஜிஆர் திரைப்பட நகர்",
+        pronunciation: "MGR Film City",
+        description: "A film production complex and studio park that offers insight into Tamil cinema production, with sets and interactive exhibits.",
+        imageUrl: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Elliot's Beach",
+        localName: "எல்லியட்ஸ் கடற்கரை",
+        pronunciation: "El-li-ots Beach",
+        description: "A quieter and cleaner beach in Besant Nagar, dotted with food stalls, the Ashtalakshmi Temple, and Karl Schmidt Memorial.",
+        imageUrl: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Mahabalipuram",
+        localName: "மாமல்லபுரம்",
+        pronunciation: "Ma-ha-ba-li-pu-ram",
+        description: "A UNESCO World Heritage town near Chennai famous for 7th-8th century rock-cut Pallava temples, rathas, and the Shore Temple.",
+        imageUrl: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=500&q=80"
+            }
+        ]
+    },
+
+  Kolkata: {
+    foods: [
+            {
+        name: "Rosogolla",
+        localName: "রসগোল্লা",
+        pronunciation: "Ro-so-gol-la",
+        description: "Soft, spongy cottage cheese balls soaked in light sugar syrup — Kolkata's most beloved GI-tagged sweet.",
+        imageUrl: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Kathi Roll",
+        localName: "কাঠি রোল",
+        pronunciation: "Ka-thi Roll",
+        description: "Paratha wrapped around spiced kebab or egg filling with onion and chutney — invented in Kolkata's Nizam's restaurant.",
+        imageUrl: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Macher Jhol",
+        localName: "মাছের ঝোল",
+        pronunciation: "Ma-cher Jhol",
+        description: "A light, mustard-spiced fish curry with potato and tomatoes — the cornerstone of a typical Bengali lunch.",
+        imageUrl: "https://images.unsplash.com/photo-1574653853027-5382a3d23a15?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Puchka",
+        localName: "পুচকা",
+        pronunciation: "Puch-ka",
+        description: "Kolkata's version of pani puri, with spicier tamarind water and a filling of mashed potato with green chilies and chaat masala.",
+        imageUrl: "https://images.unsplash.com/photo-1626132647523-66c3f75942a7?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Mishti Doi",
+        localName: "মিষ্টি দই",
+        pronunciation: "Mish-ti Doi",
+        description: "Sweetened fermented yoghurt set in earthenware pots, giving it a distinctive caramel flavour unique to Bengal.",
+        imageUrl: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Kosha Mangsho",
+        localName: "কষা মাংসো",
+        pronunciation: "Ko-sha Mang-sho",
+        description: "Slow-cooked, deeply caramelised mutton curry with thick, rich masala — a slow-cooked Bengali Sunday favourite.",
+        imageUrl: "https://images.unsplash.com/photo-1574653853027-5382a3d23a15?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Aloo Posto",
+        localName: "আলু পোস্তো",
+        pronunciation: "A-lu Pos-to",
+        description: "Potato cubes cooked in a paste of poppy seeds and mustard oil — a simple, flavourful Bengali vegetarian dish.",
+        imageUrl: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Luchi",
+        localName: "লুচি",
+        pronunciation: "Lu-chi",
+        description: "Small, puffed deep-fried bread made from refined flour, typically served with dal or alur dom (spiced potatoes).",
+        imageUrl: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Cholar Dal",
+        localName: "ছোলার ডাল",
+        pronunciation: "Cho-lar Dal",
+        description: "Bengali-style chana dal cooked with coconut, raisins, and ghee — aromatic and mildly sweet, perfect with luchi.",
+        imageUrl: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Sandesh",
+        localName: "সন্দেশ",
+        pronunciation: "San-desh",
+        description: "A delicate Bengali confection made from freshly curdled milk (chhena) kneaded with sugar, often moulded into decorative shapes.",
+        imageUrl: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=500&q=80"
+            }
+        ],
+    places: [
+            {
+        name: "Victoria Memorial",
+        localName: "ভিক্টোরিয়া মেমোরিয়াল",
+        pronunciation: "Vic-to-ria Me-mo-rial",
+        description: "A magnificent white Makrana marble monument built in 1921 in memory of Queen Victoria, housing a museum of colonial art.",
+        imageUrl: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Howrah Bridge",
+        localName: "হাওড়া সেতু",
+        pronunciation: "How-rah Bridge",
+        description: "An iconic cantilever bridge over the Hooghly River, one of the world's busiest bridges carrying over 100,000 vehicles daily.",
+        imageUrl: "https://images.unsplash.com/photo-1565106430482-8f6e74349ca1?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Dakshineswar Kali Temple",
+        localName: "দক্ষিণেশ্বর কালী মন্দির",
+        pronunciation: "Dak-shin-esh-war Ka-li Tem-ple",
+        description: "A revered 19th-century Hindu temple on the Hooghly River dedicated to Goddess Kali, once the place of worship of Ramakrishna Paramahamsa.",
+        imageUrl: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Belur Math",
+        localName: "বেলুড় মঠ",
+        pronunciation: "Be-lur Math",
+        description: "The headquarters of Ramakrishna Math and Mission on the Hooghly River, blending Hindu, Islamic, and Christian architectural elements.",
+        imageUrl: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Indian Museum",
+        localName: "ইন্ডিয়ান মিউজিয়াম",
+        pronunciation: "In-dian Mu-se-um",
+        description: "The oldest and largest museum in India, founded in 1814, with rare antiques, armour, fossils, Mughal paintings, and mummies.",
+        imageUrl: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Marble Palace",
+        localName: "মার্বেল প্যালেস",
+        pronunciation: "Mar-ble Pal-ace",
+        description: "A 19th-century neoclassical mansion with European marble statues, Venetian chandeliers, and a private zoo inside its grounds.",
+        imageUrl: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Kolkata Botanical Garden",
+        localName: "আচার্য জগদীশ চন্দ্র বসু উদ্ভিদ উদ্যান",
+        pronunciation: "Bo-tan-ical Gar-den",
+        description: "Home to the Great Banyan Tree, a single tree with over 3,500 aerial roots spread across 14,500 square metres.",
+        imageUrl: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "New Market",
+        localName: "নিউ মার্কেট",
+        pronunciation: "New Market",
+        description: "A historic colonial-era market from 1874 with over 2,000 shops selling spices, clothing, street food, and everything in between.",
+        imageUrl: "https://images.unsplash.com/photo-1597074866923-dc0589150358?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Park Street",
+        localName: "পার্ক স্ট্রিট",
+        pronunciation: "Park Street",
+        description: "Kolkata's most vibrant dining and entertainment avenue, known for its restaurants, jazz clubs, and Christmas celebrations.",
+        imageUrl: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Sundarbans",
+        localName: "সুন্দরবন",
+        pronunciation: "Sun-dar-bans",
+        description: "A UNESCO World Heritage mangrove delta near Kolkata, home to the Bengal tiger, estuarine crocodiles, and Irrawaddy dolphins.",
+        imageUrl: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=500&q=80"
+            }
+        ]
+    },
+
+  Hyderabad: {
+    foods: [
+            {
+        name: "Hyderabadi Biryani",
+        localName: "హైదరాబాది బిర్యానీ",
+        pronunciation: "Hy-de-ra-ba-di Bir-ya-ni",
+        description: "Aromatic long-grain basmati rice layered and slow-cooked (dum) with marinated meat and whole spices in the Nizami tradition.",
+        imageUrl: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Haleem",
+        localName: "హాలీమ్",
+        pronunciation: "Ha-leem",
+        description: "A slow-cooked, slow-stirred stew of wheat, barley, lentils, and minced meat, a Hyderabadi Ramzan delicacy with GI tag.",
+        imageUrl: "https://images.unsplash.com/photo-1574653853027-5382a3d23a15?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Mirchi Ka Salan",
+        localName: "మిర్చి కా సాలన్",
+        pronunciation: "Mir-chi Ka Sa-lan",
+        description: "Long green chillies cooked in a rich peanut, sesame, and tamarind curry — the classic accompaniment to Hyderabadi biryani.",
+        imageUrl: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Qubani Ka Meetha",
+        localName: "ఖుబాని కా మీఠా",
+        pronunciation: "Qu-ba-ni Ka Mee-tha",
+        description: "A traditional Hyderabadi dessert of stewed dried apricots served with fresh cream or custard, a Nizami wedding staple.",
+        imageUrl: "https://images.unsplash.com/photo-1604908177453-7462950a6a3b?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Lukhmi",
+        localName: "లుఖ్మీ",
+        pronunciation: "Lukh-mi",
+        description: "A flaky square-shaped fried pastry stuffed with spiced minced meat — Hyderabad's distinctive savoury snack.",
+        imageUrl: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Double Ka Meetha",
+        localName: "డబుల్ కా మీఠా",
+        pronunciation: "Dou-ble Ka Mee-tha",
+        description: "A rich bread pudding dessert with fried bread, milk, saffron, and dry fruits, a Hyderabadi take on shahi tukda.",
+        imageUrl: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Osmania Biscuits",
+        localName: "ఉస్మానియా బిస్కెట్లు",
+        pronunciation: "Os-ma-nia Bis-cuits",
+        description: "Buttery, slightly sweet milk biscuits named after the last Nizam of Hyderabad, best enjoyed with Irani chai.",
+        imageUrl: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Irani Chai",
+        localName: "ఇరానీ చాయ్",
+        pronunciation: "I-ra-ni Chai",
+        description: "Milky tea slow-brewed separately with condensed milk and served in traditional Irani cafés, a Hyderabadi cultural institution.",
+        imageUrl: "https://images.unsplash.com/photo-1559496417-e7f25cb247f3?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Pesarattu",
+        localName: "పెసరట్టు",
+        pronunciation: "Pe-sa-rat-tu",
+        description: "Green moong dal crepes topped with ginger and onion, unique to Andhra–Telangana cuisine and served with ginger chutney.",
+        imageUrl: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Sheer Korma",
+        localName: "షీర్ ఖుర్మా",
+        pronunciation: "Sheer Kor-ma",
+        description: "A rich vermicelli pudding in thickened milk with dates, dry fruits, and saffron — the quintessential Eid festival dessert.",
+        imageUrl: "https://images.unsplash.com/photo-1604908177453-7462950a6a3b?auto=format&fit=crop&w=500&q=80"
+            }
+        ],
+    places: [
+            {
+        name: "Charminar",
+        localName: "చార్మినార్",
+        pronunciation: "Char-mi-nar",
+        description: "A 16th-century mosque and monument with four ornate minarets, the iconic symbol of Hyderabad built by Muhammad Quli Qutb Shah.",
+        imageUrl: "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Golconda Fort",
+        localName: "గోల్కొండ కోట",
+        pronunciation: "Gol-con-da Fort",
+        description: "A majestic medieval fort and former capital of the Qutb Shahi kingdom, famous for its acoustics, palaces, and the Koh-i-Noor diamond's origin.",
+        imageUrl: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Hussain Sagar Lake",
+        localName: "హుస్సేన్ సాగర్ సరస్సు",
+        pronunciation: "Hus-sain Sa-gar Lake",
+        description: "A heart-shaped artificial lake built in 1563, featuring a 16-metre monolithic Buddha statue on its rocky island.",
+        imageUrl: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Salar Jung Museum",
+        localName: "సాలార్ జంగ్ మ్యూజియం",
+        pronunciation: "Sa-lar Jung Mu-se-um",
+        description: "One of India's largest museums, housing the priceless art collection of Salar Jung III — from jade daggers to Mughal manuscripts.",
+        imageUrl: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Ramoji Film City",
+        localName: "రామోజీ ఫిల్మ్ సిటీ",
+        pronunciation: "Ra-mo-ji Film City",
+        description: "The world's largest integrated film studio complex, a sprawling theme park offering film sets, rides, and live entertainment.",
+        imageUrl: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Mecca Masjid",
+        localName: "మక్కా మసీదు",
+        pronunciation: "Mec-ca Mas-jid",
+        description: "One of India's oldest and largest mosques, built using soil brought from Mecca, accommodating up to 10,000 worshippers.",
+        imageUrl: "https://images.unsplash.com/photo-1606921231106-f1083329a65c?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Qutb Shahi Tombs",
+        localName: "కుతుబ్ షాహీ సమాధులు",
+        pronunciation: "Qutb Sha-hi Tombs",
+        description: "A necropolis of seven grand domed granite tombs of the Qutb Shahi sultans, a UNESCO-tentative heritage site.",
+        imageUrl: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Laad Bazaar",
+        localName: "లాడ్ బజారు",
+        pronunciation: "Laad Ba-zar",
+        description: "A colourful 400-year-old market near Charminar famous for bangles, pearls, lac jewellery, and traditional Hyderabadi attire.",
+        imageUrl: "https://images.unsplash.com/photo-1597074866923-dc0589150358?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Birla Mandir",
+        localName: "బిర్లా మందిర్",
+        pronunciation: "Bir-la Man-dir",
+        description: "A striking white marble Vaishnava temple built on a 280-foot rocky hill, offering panoramic views of Hyderabad city.",
+        imageUrl: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Nehru Zoological Park",
+        localName: "నెహ్రూ జంతుప్రదర్శనశాల",
+        pronunciation: "Neh-ru Zoo-log-ical Park",
+        description: "One of India's largest zoos with over 1,500 species including white tigers, lions, rhinos, and a prehistoric animal park.",
+        imageUrl: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=500&q=80"
+            }
+        ]
+    },
+
+  Ahmedabad: {
+    foods: [
+            {
+        name: "Dhokla",
+        localName: "ઢોકળા",
+        pronunciation: "Dho-kla",
+        description: "Soft, spongy steamed cakes made from fermented chickpea batter, tempered with mustard seeds and served with green chutney.",
+        imageUrl: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Thepla",
+        localName: "થેપલા",
+        pronunciation: "Thep-la",
+        description: "Thin flatbreads made from wheat flour and methi (fenugreek) leaves, spiced and pan-fried — a Gujarati travel staple.",
+        imageUrl: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Khandvi",
+        localName: "ખાંડવી",
+        pronunciation: "Khand-vi",
+        description: "Delicate, thin rolls of cooked chickpea and buttermilk batter, tempered with sesame and coconut — a beloved Gujarati snack.",
+        imageUrl: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Fafda",
+        localName: "ફાફડા",
+        pronunciation: "Faf-da",
+        description: "Crunchy deep-fried gram flour strips typically eaten on Dussehra with jalebi and papaya chutney in Gujarat.",
+        imageUrl: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Undhiyu",
+        localName: "ઊંધિયુ",
+        pronunciation: "Und-hi-yu",
+        description: "A rich, slow-cooked medley of winter vegetables and muthia (herb dumplings), a seasonal Gujarati delicacy.",
+        imageUrl: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Gujarati Thali",
+        localName: "ગુજરાતી થાળી",
+        pronunciation: "Gu-ja-ra-ti Tha-li",
+        description: "A complete meal with dal, kadhi, multiple sabzis, rotli, rice, papad, pickles, and a sweet — served unlimited at many Ahmedabad restaurants.",
+        imageUrl: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Mohanthal",
+        localName: "મોહનથાળ",
+        pronunciation: "Mo-han-thal",
+        description: "A dense, aromatic gram flour fudge loaded with ghee and cardamom, a classic Gujarati festival sweet.",
+        imageUrl: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Sev Tameta Nu Shaak",
+        localName: "સેવ ટામેટા નુ શાક",
+        pronunciation: "Sev Ta-me-ta Nu Shaak",
+        description: "A tangy tomato curry topped with crunchy sev, a simple and quick Gujarati dish served with roti.",
+        imageUrl: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Surti Locho",
+        localName: "સુરતી લોચો",
+        pronunciation: "Sur-ti Lo-cho",
+        description: "A steamed, soft and spongy snack made from chana dal batter, topped with ghee, sev, and onion — originated in Surat.",
+        imageUrl: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Adadiya Pak",
+        localName: "અડદિયા પાક",
+        pronunciation: "A-da-di-ya Pak",
+        description: "A winter sweet made from black urad dal, ghee, and sugar with warming spices like ginger and cardamom.",
+        imageUrl: "https://images.unsplash.com/photo-1604908177453-7462950a6a3b?auto=format&fit=crop&w=500&q=80"
+            }
+        ],
+    places: [
+            {
+        name: "Sabarmati Ashram",
+        localName: "સાબરમતી આશ્રમ",
+        pronunciation: "Sa-bar-ma-ti Ash-ram",
+        description: "Mahatma Gandhi's iconic residence on the banks of the Sabarmati River, the base for his Dandi March and India's freedom struggle.",
+        imageUrl: "https://images.unsplash.com/photo-1597074866923-dc0589150358?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Adalaj Stepwell",
+        localName: "અડાલજ ની વાવ",
+        pronunciation: "A-da-laj Step-well",
+        description: "A magnificent 15th-century Gujarati-Islamic stepwell with intricate carvings on five storeys of galleries, pillars, and platforms.",
+        imageUrl: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Sidi Saiyyed Mosque",
+        localName: "સિદ્દી સૈયદ ની જાળી",
+        pronunciation: "Si-di Sai-yed Mosque",
+        description: "A stunning 16th-century mosque famous for its exquisite stone jali screens depicting an intertwined tree of life.",
+        imageUrl: "https://images.unsplash.com/photo-1606921231106-f1083329a65c?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Kankaria Lake",
+        localName: "કાંકરિયા તળાવ",
+        pronunciation: "Kan-ka-ria Lake",
+        description: "A 15th-century lakefront with a zoo, toy train, hot air balloons, and entertainment zones — Ahmedabad's most visited attraction.",
+        imageUrl: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Calico Museum of Textiles",
+        localName: "કૅલિકો ટેક્સ્ટાઇલ મ્યુઝિયમ",
+        pronunciation: "Cal-i-co Mu-se-um",
+        description: "One of the world's finest textile museums showcasing rare Mughal fabrics, temple hangings, and royal Indian textiles.",
+        imageUrl: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Law Garden Night Market",
+        localName: "લૉ ગાર્ડન માર્કેટ",
+        pronunciation: "Law Gar-den Night Mar-ket",
+        description: "A lively evening market known for traditional Gujarati embroidered clothing, handicrafts, and street food stalls.",
+        imageUrl: "https://images.unsplash.com/photo-1597074866923-dc0589150358?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "ISKCON Ahmedabad",
+        localName: "ઇસ્કોન મંદિર",
+        pronunciation: "IS-KON Tem-ple",
+        description: "A grand Hare Krishna temple with marble architecture, interactive Krishna exhibitions, and a popular prasadam restaurant.",
+        imageUrl: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Jama Masjid Ahmedabad",
+        localName: "જામા મસ્જિદ",
+        pronunciation: "Ja-ma Mas-jid",
+        description: "A stunning 15th-century mosque with 260 columns and 15 domes, built by Sultan Ahmad Shah — a UNESCO World Heritage structure.",
+        imageUrl: "https://images.unsplash.com/photo-1606921231106-f1083329a65c?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Gujarat Science City",
+        localName: "ગુજરાત સાયન્સ સિટી",
+        pronunciation: "Gu-ja-rat Sci-ence Ci-ty",
+        description: "Asia's largest science centre featuring IMAX 3D, robotics shows, aquatics gallery, nature park, and amphitheatre.",
+        imageUrl: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Bhadra Fort",
+        localName: "ભદ્ર કિલ્લો",
+        pronunciation: "Bha-dra Fort",
+        description: "A 15th-century fort built by Ahmedabad's founder, housing the Bhadra Kali Temple and commanding the historic old city.",
+        imageUrl: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=500&q=80"
+            }
+        ]
+    },
+
+  Pune: {
+    foods: [
+            {
+        name: "Misal Pav",
+        localName: "मिसळ पाव",
+        pronunciation: "Mi-sal Pav",
+        description: "Spicy sprouted curry topped with farsan, onion, and lemon, served with bread rolls — Pune's favourite breakfast.",
+        imageUrl: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Sabudana Khichdi",
+        localName: "साबुदाणा खिचडी",
+        pronunciation: "Sa-bu-da-na Khi-chdi",
+        description: "Tapioca pearls tossed with peanuts, cumin, and potatoes — a popular fasting food and breakfast in Maharashtra.",
+        imageUrl: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Varhadi Mutton",
+        localName: "वऱ्हाडी मटण",
+        pronunciation: "Var-ha-di Mut-ton",
+        description: "A fiery, coconut-based mutton curry from Vidarbha region, known for its bold dried red chilli flavour.",
+        imageUrl: "https://images.unsplash.com/photo-1574653853027-5382a3d23a15?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Mastani",
+        localName: "मस्तानी",
+        pronunciation: "Mas-ta-ni",
+        description: "Pune's iconic thick milkshake topped generously with a whole scoop of ice cream, dry fruits, and tutti-frutti.",
+        imageUrl: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Thalipeeth",
+        localName: "थालीपीठ",
+        pronunciation: "Tha-li-peeth",
+        description: "A savoury multigrain pancake made from a blend of different flours, spiced with cumin, chilli, and onion.",
+        imageUrl: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Poha",
+        localName: "पोहे",
+        pronunciation: "Po-he",
+        description: "Flattened rice tossed with mustard seeds, curry leaves, turmeric, onion, and peanuts — a light Maharashtrian breakfast.",
+        imageUrl: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Kothimbir Vadi",
+        localName: "कोथिंबीर वडी",
+        pronunciation: "Ko-thim-bir Va-di",
+        description: "Crispy fritters made from coriander leaves, chickpea flour, and sesame — a loved Maharashtrian tea-time snack.",
+        imageUrl: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Shrikhand",
+        localName: "श्रीखंड",
+        pronunciation: "Shri-khand",
+        description: "Thick strained yoghurt sweetened with sugar and flavoured with saffron and cardamom, a classic Maharashtrian dessert.",
+        imageUrl: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Puneri Dal",
+        localName: "पुणेरी डाळ",
+        pronunciation: "Pu-ne-ri Dal",
+        description: "Toor dal cooked with kokum, peanuts, and jaggery — a distinctively tangy-sweet dal unique to Pune households.",
+        imageUrl: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Modak",
+        localName: "मोदक",
+        pronunciation: "Mo-dak",
+        description: "Steamed coconut and jaggery-filled dumplings in a rice flour shell — the sacred sweet of Pune's beloved Ganpati festival.",
+        imageUrl: "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?auto=format&fit=crop&w=500&q=80"
+            }
+        ],
+    places: [
+            {
+        name: "Shaniwar Wada",
+        localName: "शनिवार वाडा",
+        pronunciation: "Sha-ni-war Wa-da",
+        description: "A majestic 18th-century fortification and palace of the Peshwa rulers, famous for its grand entrance gate and haunted legends.",
+        imageUrl: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Aga Khan Palace",
+        localName: "आगा खान पॅलेस",
+        pronunciation: "A-ga Khan Pal-ace",
+        description: "A historic 19th-century palace where Mahatma Gandhi and Kasturba were imprisoned during the Quit India Movement.",
+        imageUrl: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Osho Ashram",
+        localName: "ओशो आश्रम",
+        pronunciation: "O-sho Ash-ram",
+        description: "The famous Osho International Meditation Resort in Koregaon Park, a lush campus offering meditation, yoga, and therapy.",
+        imageUrl: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Sinhagad Fort",
+        localName: "सिंहगड किल्ला",
+        pronunciation: "Sin-ha-gad Fort",
+        description: "An ancient hilltop fort 35 km from Pune, site of the legendary 1670 battle of Tanaji Malusare, offering panoramic views.",
+        imageUrl: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Dagdusheth Ganpati Temple",
+        localName: "दगडूशेठ हलवाई गणपती",
+        pronunciation: "Dag-du-sheth Gan-pa-ti Tem-ple",
+        description: "One of Pune's most revered Ganesh temples with a golden crown on the idol, visited daily by thousands of devotees.",
+        imageUrl: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Pataleshwar Cave Temple",
+        localName: "पाताळेश्वर लेणी",
+        pronunciation: "Pa-ta-lesh-war Cave",
+        description: "An 8th-century Rashtrakuta rock-cut Shiva cave temple in the heart of Pune, surrounded by a small park.",
+        imageUrl: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Rajiv Gandhi Zoological Park",
+        localName: "राजीव गांधी प्राणिसंग्रहालय",
+        pronunciation: "Ka-traj Zoo",
+        description: "Katraj Zoo with a snake park, reptile house, and native wildlife species — a popular family attraction in Pune.",
+        imageUrl: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Pune Okayama Friendship Garden",
+        localName: "पुणे फुलबाग",
+        pronunciation: "Pu-ne Ja-pan-ese Gar-den",
+        description: "A serene Japanese-style garden created to commemorate Pune's friendship with Okayama, Japan, featuring koi ponds and pagodas.",
+        imageUrl: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Lonavala",
+        localName: "लोणावळा",
+        pronunciation: "Lo-na-va-la",
+        description: "A popular hill station near Pune known for misty valleys, waterfalls, Bhushi Dam, and the famous chikki sweet.",
+        imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Vishrambaug Wada",
+        localName: "विश्रामबाग वाडा",
+        pronunciation: "Vish-ram-baug Wa-da",
+        description: "A magnificent early 19th-century Peshwa mansion with intricate wooden carvings, now housing a post office and retail shops.",
+        imageUrl: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=500&q=80"
+            }
+        ]
+    },
+
+  Jaipur: {
+    foods: [
+            {
+        name: "Dal Baati Churma",
+        localName: "दाल बाटी चूरमा",
+        pronunciation: "Dal Ba-ti Chur-ma",
+        description: "Hard wheat balls (baati) baked over coals, served with spiced lentil dal and sweet crushed churma — Rajasthan's signature dish.",
+        imageUrl: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Ghevar",
+        localName: "घेवर",
+        pronunciation: "Ghe-var",
+        description: "A Rajasthani disc-shaped sweet made from refined flour and syrup with a honeycomb texture, topped with rabri — a festive Teej specialty.",
+        imageUrl: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Pyaz Kachori",
+        localName: "प्याज कचोरी",
+        pronunciation: "Pyaz Ka-cho-ri",
+        description: "Flaky deep-fried pastry stuffed with spiced onion filling, Jaipur's beloved street breakfast served with tamarind chutney.",
+        imageUrl: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Laal Maas",
+        localName: "लाल माँस",
+        pronunciation: "Laal Maas",
+        description: "A fiery Rajasthani mutton curry made with Mathania red chillies and no tomatoes, a bold and intense dish from royal kitchens.",
+        imageUrl: "https://images.unsplash.com/photo-1574653853027-5382a3d23a15?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Mirchi Bada",
+        localName: "मिर्ची बड़ा",
+        pronunciation: "Mir-chi Ba-da",
+        description: "Large green chillies stuffed with spiced potato, dipped in chickpea batter, and deep-fried — a Jodhpur snack popular in Jaipur too.",
+        imageUrl: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Mawa Kachori",
+        localName: "मावा कचोरी",
+        pronunciation: "Ma-wa Ka-cho-ri",
+        description: "A sweet deep-fried pastry filled with reduced milk (mawa) and dry fruits, soaked in sugar syrup — a Jaipur dessert specialty.",
+        imageUrl: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Ker Sangri",
+        localName: "केर सांगरी",
+        pronunciation: "Ker San-gri",
+        description: "A Rajasthani vegetable dish made from desert berries (ker) and beans (sangri), cooked with dried spices and oil.",
+        imageUrl: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Rabri",
+        localName: "रबड़ी",
+        pronunciation: "Ra-bri",
+        description: "Thick, condensed sweetened milk with layers of malai, flavoured with saffron and cardamom — a Jaipur dessert street staple.",
+        imageUrl: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Gatte Ki Sabzi",
+        localName: "गट्टे की सब्ज़ी",
+        pronunciation: "Gat-te Ki Sab-zi",
+        description: "Chickpea flour dumplings cooked in a tangy yoghurt-based curry with Rajasthani spices — a classic vegetarian meal.",
+        imageUrl: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Rajasthani Thali",
+        localName: "राजस्थानी थाली",
+        pronunciation: "Ra-jas-tha-ni Tha-li",
+        description: "A grand vegetarian spread of dal, gatte, ker sangri, baati, churma, papad, pickles, and sweets served on a brass platter.",
+        imageUrl: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=500&q=80"
+            }
+        ],
+    places: [
+            {
+        name: "Amber Fort",
+        localName: "आमेर का किला",
+        pronunciation: "Am-ber Fort",
+        description: "A majestic 16th-century hilltop fort-palace combining Hindu and Mughal architecture, overlooking Maota Lake near Jaipur.",
+        imageUrl: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Hawa Mahal",
+        localName: "हवा महल",
+        pronunciation: "Ha-wa Ma-hal",
+        description: "The iconic five-storey 'Palace of Winds' with 953 small windows, built in 1799 for royal ladies to observe street festivities.",
+        imageUrl: "https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "City Palace",
+        localName: "सिटी पैलेस",
+        pronunciation: "Ci-ty Pal-ace",
+        description: "A grand complex of courtyards, gardens, and buildings blending Rajput and Mughal architecture, partly still a royal residence.",
+        imageUrl: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Jantar Mantar",
+        localName: "जंतर मंतर",
+        pronunciation: "Jan-tar Man-tar",
+        description: "A UNESCO World Heritage observatory built in 1724 with 19 astronomical instruments, including the world's largest stone sundial.",
+        imageUrl: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Nahargarh Fort",
+        localName: "नाहरगढ़ किला",
+        pronunciation: "Na-har-garh Fort",
+        description: "A 18th-century hilltop fort with stunning views of Jaipur city, famous for its labyrinthine royal suites and sunset panoramas.",
+        imageUrl: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Jal Mahal",
+        localName: "जल महल",
+        pronunciation: "Jal Ma-hal",
+        description: "A beautifully restored 18th-century palace sitting in the middle of Man Sagar Lake, appearing to float on water.",
+        imageUrl: "https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Birla Mandir Jaipur",
+        localName: "बिड़ला मंदिर",
+        pronunciation: "Bir-la Man-dir",
+        description: "A pristine white marble Lakshmi Narayan temple built in 1988 at the foot of Moti Doongri hill, beautifully lit at night.",
+        imageUrl: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Johri Bazaar",
+        localName: "जोहरी बाज़ार",
+        pronunciation: "Joh-ri Ba-zar",
+        description: "Jaipur's famous jewellery market where skilled artisans sell traditional Kundan, Meenakari, and gemstone jewellery.",
+        imageUrl: "https://images.unsplash.com/photo-1597074866923-dc0589150358?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Rambagh Palace",
+        localName: "रामबाग पैलेस",
+        pronunciation: "Ram-bagh Pal-ace",
+        description: "A 19th-century former royal hunting lodge turned luxury heritage hotel, surrounded by lush Mughal gardens.",
+        imageUrl: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Albert Hall Museum",
+        localName: "अलबर्ट हॉल संग्रहालय",
+        pronunciation: "Al-bert Hall Mu-se-um",
+        description: "Rajasthan's oldest museum in a spectacular Indo-Saracenic building housing Egyptian mummies, carpets, crystal works, and coins.",
+        imageUrl: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=500&q=80"
+            }
+        ]
+    },
+
+  Lucknow: {
+    foods: [
+            {
+        name: "Galouti Kebab",
+        localName: "गलौटी कबाब",
+        pronunciation: "Ga-lau-ti Ke-bab",
+        description: "Melt-in-the-mouth minced mutton patties with 160 spices, originally created for a toothless Nawab — Lucknow's culinary crown jewel.",
+        imageUrl: "https://images.unsplash.com/photo-1529042410759-befb1204b468?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Tunday Kebab",
+        localName: "टुंडे कबाब",
+        pronunciation: "Tun-de Ke-bab",
+        description: "Famous fried buffalo meat kebabs from the legendary Tunday Kababi restaurant, a Lucknow institution since 1905.",
+        imageUrl: "https://images.unsplash.com/photo-1529042410759-befb1204b468?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Lucknowi Biryani",
+        localName: "लखनवी बिरयानी",
+        pronunciation: "Lak-na-wi Bir-ya-ni",
+        description: "A fragrant dum biryani with fried onion and subtle spicing — lighter and more aromatic than Hyderabadi biryani.",
+        imageUrl: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Sheermal",
+        localName: "शीरमाल",
+        pronunciation: "Sheer-mal",
+        description: "A saffron-flavoured sweet flatbread baked in a tandoor, traditionally eaten with kebabs or nihari.",
+        imageUrl: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Kulfi Faluda",
+        localName: "कुल्फी फालूदा",
+        pronunciation: "Kul-fi Fa-lu-da",
+        description: "Dense saffron-pistachio ice cream served over rose-flavoured faluda vermicelli and basil seeds — a Nawabi dessert institution.",
+        imageUrl: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Basket Chaat",
+        localName: "बास्केट चाट",
+        pronunciation: "Bas-ket Chaat",
+        description: "A crispy fried flour basket filled with tikkis, chhole, curd, and chutneys — a unique Lucknow chaat creation.",
+        imageUrl: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Makkhan Malai",
+        localName: "मक्खन मलाई",
+        pronunciation: "Mak-khan Ma-lai",
+        description: "An ethereal winter sweet of whipped morning dew, milk foam, and saffron, served only in the cold months in Lucknow.",
+        imageUrl: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Nihari",
+        localName: "नहारी",
+        pronunciation: "Ni-ha-ri",
+        description: "Slow-cooked beef or mutton shank stew cooked overnight with wheat flour and aromatic spices — a traditional Lucknow morning dish.",
+        imageUrl: "https://images.unsplash.com/photo-1574653853027-5382a3d23a15?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Roomali Roti",
+        localName: "रूमाली रोटी",
+        pronunciation: "Roo-ma-li Ro-ti",
+        description: "A paper-thin, large, soft flatbread folded like a handkerchief, perfect with kebabs and curries in Lucknow's eateries.",
+        imageUrl: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Zarda",
+        localName: "ज़र्दा",
+        pronunciation: "Zar-da",
+        description: "Sweetened yellow saffron rice cooked with sugar, dry fruits, and rose water — a Nawabi festive dessert rice.",
+        imageUrl: "https://images.unsplash.com/photo-1604908177453-7462950a6a3b?auto=format&fit=crop&w=500&q=80"
+            }
+        ],
+    places: [
+            {
+        name: "Bara Imambara",
+        localName: "बड़ा इमामबाड़ा",
+        pronunciation: "Ba-ra I-mam-ba-ra",
+        description: "A massive 18th-century Shia Muslim shrine with a famous Bhool Bhulaiya (labyrinth), one of the largest vaulted halls in the world.",
+        imageUrl: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Chota Imambara",
+        localName: "छोटा इमामबाड़ा",
+        pronunciation: "Cho-ta I-mam-ba-ra",
+        description: "A 19th-century imambara with a beautiful mosque adorned with chandeliers and Belgian mirrors, known as the Palace of Lights.",
+        imageUrl: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Rumi Darwaza",
+        localName: "रूमी दरवाज़ा",
+        pronunciation: "Ru-mi Dar-wa-za",
+        description: "An imposing 18th-century gateway 60 feet tall, built in Awadhi architectural style — the emblematic gate of Lucknow.",
+        imageUrl: "https://images.unsplash.com/photo-1597074866923-dc0589150358?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Hazratganj",
+        localName: "हज़रतगंज",
+        pronunciation: "Haz-rat-ganj",
+        description: "Lucknow's historic shopping boulevard with colonial-era buildings, bookshops, cafes, and a vibrant promenading culture.",
+        imageUrl: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Lucknow Zoo",
+        localName: "नवाब वाजिद अली शाह जूलॉजिकल गार्डन",
+        pronunciation: "Luc-know Zoo",
+        description: "One of India's oldest zoos established in 1921, home to rare albino species, elephants, and a popular toy train.",
+        imageUrl: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Residency",
+        localName: "रेज़ीडेंसी",
+        pronunciation: "Res-i-den-cy",
+        description: "A complex of ruined buildings that witnessed the famous Siege of Lucknow during the 1857 uprising, now a protected monument.",
+        imageUrl: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Janeshwar Mishra Park",
+        localName: "जनेश्वर मिश्र पार्क",
+        pronunciation: "Ja-nesh-war Mis-ra Park",
+        description: "One of Asia's largest parks at 376 acres, featuring a lake, cycling tracks, and an eco-friendly design in Lucknow.",
+        imageUrl: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Ambedkar Memorial Park",
+        localName: "डॉ. भीमराव अम्बेडकर स्मारक",
+        pronunciation: "Am-bed-kar Me-mo-rial Park",
+        description: "A vast memorial park with an elephant-motif design honouring Dr. B.R. Ambedkar, featuring red sandstone monuments and tall pillars.",
+        imageUrl: "https://images.unsplash.com/photo-1597074866923-dc0589150358?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Dilkusha Kothi",
+        localName: "दिलकुशा कोठी",
+        pronunciation: "Dil-ku-sha Ko-thi",
+        description: "A ruined 18th-century baroque-style hunting lodge surrounded by gardens, heavily damaged during the 1857 uprising.",
+        imageUrl: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "State Museum Lucknow",
+        localName: "राज्य संग्रहालय",
+        pronunciation: "State Mu-se-um",
+        description: "A fine museum housing Kushana-era sculptures, Mughal miniatures, bronzes, coins, and natural history exhibits.",
+        imageUrl: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=500&q=80"
+            }
+        ]
+    },
+
+  Kochi: {
+    foods: [
+            {
+        name: "Kerala Fish Curry",
+        localName: "മീൻ കറി",
+        pronunciation: "Meen Kar-ri",
+        description: "Tangy fish curry cooked in raw coconut oil with kodampuli (Malabar tamarind) and coconut milk — a staple of every Kerala home.",
+        imageUrl: "https://images.unsplash.com/photo-1574653853027-5382a3d23a15?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Appam with Stew",
+        localName: "അപ്പം ഇഷ്ടൂ",
+        pronunciation: "Ap-pam Is-tu",
+        description: "Lacy fermented rice hoppers with a crispy edge and soft centre, paired with mild coconut milk vegetable or chicken stew.",
+        imageUrl: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Puttu and Kadala Curry",
+        localName: "പുട്ടും കടലയും",
+        pronunciation: "Put-tu Ka-da-la",
+        description: "Steamed cylindrical rice flour cakes served with spicy black chickpea curry — a quintessential Kerala breakfast combination.",
+        imageUrl: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Karimeen Pollichathu",
+        localName: "കരിമീൻ പൊള്ളിച്ചത്",
+        pronunciation: "Ka-ri-meen Pol-li-cha-thu",
+        description: "Pearl spot fish marinated in spices and wrapped in a banana leaf to be pan-roasted — a delicacy of the Kuttanad backwaters.",
+        imageUrl: "https://images.unsplash.com/photo-1574653853027-5382a3d23a15?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Kerala Sadya",
+        localName: "കേരള സദ്യ",
+        pronunciation: "Sa-dya",
+        description: "A grand vegetarian feast of 24+ dishes served on a banana leaf for festivals like Onam, including avial, kootu, payasam, and more.",
+        imageUrl: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Prawn Moilee",
+        localName: "ചെമ്മീൻ മോളി",
+        pronunciation: "Chem-meen Mo-li",
+        description: "A delicate, golden coconut milk-based prawn curry with green chillies and turmeric, a signature Kochi seafood dish.",
+        imageUrl: "https://images.unsplash.com/photo-1574653853027-5382a3d23a15?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Banana Chips",
+        localName: "പഴം പൊടി",
+        pronunciation: "Nendran Chip-pa",
+        description: "Crispy, salted wafer-thin chips made from Kerala's native Nendran banana fried in coconut oil, a universal Kerala snack.",
+        imageUrl: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Ela Ada",
+        localName: "ഇല അട",
+        pronunciation: "E-la A-da",
+        description: "Steamed rice parcels filled with coconut-jaggery mixture, wrapped in a banana leaf — a traditional Kerala snack.",
+        imageUrl: "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Malabar Biryani",
+        localName: "മലബാർ ബിരിയാണി",
+        pronunciation: "Ma-la-bar Bir-ya-ni",
+        description: "A fragrant rice dish using Jeerakasala rice with meat, fried onions, and spices — distinct from other Indian biryanis.",
+        imageUrl: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Palada Payasam",
+        localName: "പാലട പായസം",
+        pronunciation: "Pa-la-da Pa-ya-sam",
+        description: "A rich, creamy rice ada pudding in reduced milk with sugar — a GI-tagged Kerala dessert and Onam Sadya essential.",
+        imageUrl: "https://images.unsplash.com/photo-1604908177453-7462950a6a3b?auto=format&fit=crop&w=500&q=80"
+            }
+        ],
+    places: [
+            {
+        name: "Fort Kochi Beach",
+        localName: "ഫോർട്ട് കൊച്ചി ബീച്ച്",
+        pronunciation: "Fort Ko-chi Beach",
+        description: "A historic seaside promenade lined with colonial buildings, Chinese fishing nets, and a vibrant café and art scene.",
+        imageUrl: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Chinese Fishing Nets",
+        localName: "ചൈനീസ് വലകൾ",
+        pronunciation: "Chi-nese Fish-ing Nets",
+        description: "Giant cantilevered fishing nets fixed to the shore, introduced by traders from China — a iconic Kochi waterfront landmark.",
+        imageUrl: "https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Mattancherry Palace",
+        localName: "മട്ടാഞ്ചേരി കൊട്ടാരം",
+        pronunciation: "Mat-tan-che-ri Pal-ace",
+        description: "A 16th-century Portuguese-built palace known for stunning Kerala murals depicting Ramayana scenes, later renovated by the Dutch.",
+        imageUrl: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Jewish Synagogue Paradesi",
+        localName: "ജൂത സിനഗോഗ്",
+        pronunciation: "Pa-ra-desi Syn-agogue",
+        description: "The oldest active synagogue in the Commonwealth, built in 1568 in Jew Town, adorned with blue Chinese hand-painted tiles.",
+        imageUrl: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Backwater Cruise",
+        localName: "ബോട്ടുയാത്ര",
+        pronunciation: "Back-wa-ter Cruise",
+        description: "Houseboat cruises through Kerala's tranquil canal network passing paddy fields, coir villages, and coconut groves.",
+        imageUrl: "https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Hill Palace Museum",
+        localName: "ഹിൽ പാലസ് മ്യൂസിയം",
+        pronunciation: "Hill Pal-ace Mu-se-um",
+        description: "The largest archaeological museum in Kerala, housed in a 49-building complex and former royal residence of the Cochin royal family.",
+        imageUrl: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "St. Francis Church",
+        localName: "സെന്റ് ഫ്രാൻസിസ് ദേവാലയം",
+        pronunciation: "St. Fran-cis Church",
+        description: "India's oldest European church built in 1503, where Vasco da Gama was originally buried before his remains were moved to Portugal.",
+        imageUrl: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Cherai Beach",
+        localName: "ചേരായ് ബീച്ച്",
+        pronunciation: "Che-rai Beach",
+        description: "A serene 15 km beach on Vypeen Island where the Arabian Sea meets the backwaters, known for dolphins and golden sands.",
+        imageUrl: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Wonderla Amusement Park",
+        localName: "വണ്ടർ ല",
+        pronunciation: "Won-der-la",
+        description: "South India's most popular amusement park with thrilling rides, wave pools, and water slides on Kochi's outskirts.",
+        imageUrl: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Jew Town",
+        localName: "ജൂതത്തെരുവ്",
+        pronunciation: "Jew Town",
+        description: "A heritage street in Mattancherry with antique shops, spice merchants, and the famous Paradesi Synagogue — a cultural treasure trove.",
+        imageUrl: "https://images.unsplash.com/photo-1597074866923-dc0589150358?auto=format&fit=crop&w=500&q=80"
+            }
+        ]
+    },
+
+  Chandigarh: {
+    foods: [
+            {
+        name: "Chole Bhature",
+        localName: "ਛੋਲੇ ਭਟੂਰੇ",
+        pronunciation: "Cho-le Bha-tu-re",
+        description: "Spicy chickpea curry with large puffy fried bread — a beloved Punjabi breakfast staple widely enjoyed in Chandigarh.",
+        imageUrl: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Amritsari Kulcha",
+        localName: "ਅੰਮ੍ਰਿਤਸਰੀ ਕੁਲਚਾ",
+        pronunciation: "Am-rit-sa-ri Kul-cha",
+        description: "A layered, stuffed leavened bread baked in a tandoor and served with chole and butter — a classic Punjabi treat.",
+        imageUrl: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Makki di Roti with Sarson da Saag",
+        localName: "ਮੱਕੀ ਦੀ ਰੋਟੀ ਅਤੇ ਸਰ੍ਹੋਂ ਦਾ ਸਾਗ",
+        pronunciation: "Mak-ki di Ro-ti Sar-son da Saag",
+        description: "Cornmeal flatbread paired with slow-cooked mustard greens and dollops of white butter — the soul of a Punjabi winter meal.",
+        imageUrl: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Butter Chicken",
+        localName: "ਬਟਰ ਚਿਕਨ",
+        pronunciation: "But-ter Chi-cken",
+        description: "Tandoori chicken in a creamy, mildly spiced tomato-butter sauce, a globally beloved dish with Punjabi origins.",
+        imageUrl: "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Lassi",
+        localName: "ਲੱਸੀ",
+        pronunciation: "Las-si",
+        description: "Thick, creamy churned yoghurt drink topped with cream and optionally flavoured with rose, mango, or served salted.",
+        imageUrl: "https://images.unsplash.com/photo-1559496417-e7f25cb247f3?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Aloo Paratha",
+        localName: "ਆਲੂ ਪਰਾਠਾ",
+        pronunciation: "A-lu Pa-ra-tha",
+        description: "Whole wheat flatbread stuffed with spiced mashed potatoes, cooked on a tawa with generous butter — a Punjabi breakfast classic.",
+        imageUrl: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Pinni",
+        localName: "ਪਿੰਨੀ",
+        pronunciation: "Pin-ni",
+        description: "Dense round balls made from wheat flour, ghee, and sugar, fortified with nuts and dry fruits — a traditional Punjabi winter sweet.",
+        imageUrl: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Tandoori Chicken",
+        localName: "ਤੰਦੂਰੀ ਚਿਕਨ",
+        pronunciation: "Tan-doo-ri Chic-ken",
+        description: "Whole chicken marinated in yoghurt and spices, roasted in a clay tandoor oven to give a smoky charred finish.",
+        imageUrl: "https://images.unsplash.com/photo-1529042410759-befb1204b468?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Pindi Chana",
+        localName: "ਪਿੰਡੀ ਛੋਲੇ",
+        pronunciation: "Pin-di Cha-na",
+        description: "Dried chickpeas cooked in a dark, rich, dry masala without gravy — a robust and flavourful Punjabi chickpea preparation.",
+        imageUrl: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Gajar Ka Halwa",
+        localName: "ਗਾਜਰ ਦਾ ਹਲਵਾ",
+        pronunciation: "Ga-jar Ka Hal-wa",
+        description: "Shredded carrots slow-cooked in milk, ghee, and sugar with cardamom and nuts — a beloved North Indian winter dessert.",
+        imageUrl: "https://images.unsplash.com/photo-1604908177453-7462950a6a3b?auto=format&fit=crop&w=500&q=80"
+            }
+        ],
+    places: [
+            {
+        name: "Rock Garden",
+        localName: "ਰਾਕ ਗਾਰਡਨ",
+        pronunciation: "Rock Gar-den",
+        description: "A unique 40-acre sculpture garden by artist Nek Chand made entirely from recycled industrial and urban waste.",
+        imageUrl: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Sukhna Lake",
+        localName: "ਸੁਖਨਾ ਝੀਲ",
+        pronunciation: "Suk-hna Lake",
+        description: "A serene man-made reservoir at the foothills of the Shivaliks, perfect for boating, morning walks, and birdwatching.",
+        imageUrl: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Capitol Complex",
+        localName: "ਕੈਪੀਟਲ ਕੰਪਲੈਕਸ",
+        pronunciation: "Cap-i-tol Com-plex",
+        description: "A UNESCO World Heritage masterpiece by Le Corbusier, featuring the High Court, Secretariat, and Assembly buildings.",
+        imageUrl: "https://images.unsplash.com/photo-1597074866923-dc0589150358?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Rose Garden",
+        localName: "ਜ਼ਾਕਿਰ ਹੁਸੈਨ ਰੋਜ਼ ਗਾਰਡਨ",
+        pronunciation: "Za-kir Hu-sain Rose Gar-den",
+        description: "Asia's largest rose garden with 1,600 varieties of roses over 30 acres, blooming spectacularly every February–March.",
+        imageUrl: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Sector 17 Plaza",
+        localName: "ਸੈਕਟਰ 17 ਪਲਾਜ਼ਾ",
+        pronunciation: "Sec-tor 17 Pla-za",
+        description: "Chandigarh's open-air pedestrian commercial and cultural hub designed by Le Corbusier, buzzing with shops and eateries.",
+        imageUrl: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Government Museum and Art Gallery",
+        localName: "ਸਰਕਾਰੀ ਅਜਾਇਬਘਰ",
+        pronunciation: "Gov-ern-ment Mu-se-um",
+        description: "A fine museum housing Gandhara sculptures, Pahari miniature paintings, and a significant collection of modern Indian art.",
+        imageUrl: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Elante Mall",
+        localName: "ਏਲਾਂਤੇ ਮਾਲ",
+        pronunciation: "E-lante Mall",
+        description: "North India's largest shopping mall with over 250 brands, a multiplex, food court, and entertainment zones.",
+        imageUrl: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Pinjore Garden",
+        localName: "ਪਿੰਜੌਰ ਬਾਗ਼",
+        pronunciation: "Pin-jore Gar-den",
+        description: "A 17th-century Mughal terraced garden 20 km from Chandigarh, with fountains, pavilions, and a heritage museum.",
+        imageUrl: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Chhatbir Zoo",
+        localName: "ਛੱਤਬੀੜ ਚਿੜੀਆਘਰ",
+        pronunciation: "Chhat-bir Zoo",
+        description: "A wildlife park 25 km from Chandigarh featuring a lion safari, white tiger enclosure, and spacious natural habitats.",
+        imageUrl: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Open Hand Monument",
+        localName: "ਓਪਨ ਹੈਂਡ ਮੋਨੂਮੈਂਟ",
+        pronunciation: "O-pen Hand Mon-u-ment",
+        description: "Le Corbusier's iconic 26-metre spinning steel sculpture symbolising 'open to give, open to receive' — the official emblem of Chandigarh.",
+        imageUrl: "https://images.unsplash.com/photo-1597074866923-dc0589150358?auto=format&fit=crop&w=500&q=80"
+            }
+        ]
+    },
+
+  Bhubaneswar: {
+    foods: [
+            {
+        name: "Dalma",
+        localName: "ଡାଲ୍ମା",
+        pronunciation: "Dal-ma",
+        description: "A wholesome Odia dish of lentils cooked with vegetables and tempered with panch phutana spices — served as prasad at Jagannath Temple.",
+        imageUrl: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Pakhala Bhata",
+        localName: "ପଖାଳ ଭାତ",
+        pronunciation: "Pa-kha-la Bha-ta",
+        description: "Fermented or watered rice left overnight, served with fried fish, badi, and pickle — Odisha's beloved summer staple.",
+        imageUrl: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Chhena Poda",
+        localName: "ଛେନା ପୋଡ଼ା",
+        pronunciation: "Chhe-na Po-da",
+        description: "A rustic caramelised cottage cheese cake baked on sal leaves — Odisha's beloved GI-tagged dessert, literally 'burnt cheese.'",
+        imageUrl: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Manda Pitha",
+        localName: "ମାଣ୍ଡ ପିଠା",
+        pronunciation: "Man-da Pi-tha",
+        description: "Steamed rice flour dumplings filled with coconut-jaggery stuffing — one of many traditional Odia pithas (rice cakes).",
+        imageUrl: "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Rasabali",
+        localName: "ରସବଲି",
+        pronunciation: "Ra-sa-ba-li",
+        description: "Deep-fried flattened cottage cheese discs soaked in thickened, cardamom-flavoured sweetened milk — a GI-tagged Odia sweet from Kendrapara.",
+        imageUrl: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Machha Besara",
+        localName: "ମାଛ ବେସର",
+        pronunciation: "Ma-chha Be-sa-ra",
+        description: "Fish cooked in a pungent mustard and cumin paste with turmeric and green chillies — a traditional Odia fish curry.",
+        imageUrl: "https://images.unsplash.com/photo-1574653853027-5382a3d23a15?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Santula",
+        localName: "ସନ୍ତୁଳା",
+        pronunciation: "San-tu-la",
+        description: "A lightly boiled and tempered vegetable medley with minimal oil and spices, a healthy Odia everyday vegetable preparation.",
+        imageUrl: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Khiri",
+        localName: "ଖିରି",
+        pronunciation: "Khi-ri",
+        description: "Creamy Odia rice pudding cooked with milk, sugar, and coconut — offered as prasad at temples and served at festivals.",
+        imageUrl: "https://images.unsplash.com/photo-1604908177453-7462950a6a3b?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Dahi Bara Aloo Dum",
+        localName: "ଦହି ବଡ଼ା ଆଳୁ ଦମ",
+        pronunciation: "Da-hi Ba-ra A-lu Dum",
+        description: "Lentil dumplings soaked in yoghurt served alongside spiced potato curry — a favourite Odia street food combo.",
+        imageUrl: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Chhena Jhili",
+        localName: "ଛେନା ଝିଲ୍ଲି",
+        pronunciation: "Chhe-na Jhi-li",
+        description: "Deep-fried cottage cheese balls soaked in sugar syrup from Nimapara town — a crispy and syrupy GI-tagged Odia sweet.",
+        imageUrl: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=500&q=80"
+            }
+        ],
+    places: [
+            {
+        name: "Lingaraj Temple",
+        localName: "ଲିଙ୍ଗରାଜ ମନ୍ଦିର",
+        pronunciation: "Lin-ga-raj Tem-ple",
+        description: "An 11th-century magnificent Kalinga architecture temple dedicated to Lord Shiva (Harihara), the largest temple in Bhubaneswar.",
+        imageUrl: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Mukteshwar Temple",
+        localName: "ମୁକ୍ତେଶ୍ୱର ମନ୍ଦିର",
+        pronunciation: "Muk-tesh-war Tem-ple",
+        description: "A gem of Kalinga architecture from the 10th century, famous for its exquisitely carved torana (ornamental archway).",
+        imageUrl: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Udayagiri and Khandagiri Caves",
+        localName: "ଉଦୟଗିରି ଓ ଖଣ୍ଡଗିରି ଗୁଫା",
+        pronunciation: "U-day-gi-ri Khand-gi-ri Caves",
+        description: "Ancient Jain rock-cut caves from the 2nd century BCE with carved inscriptions and reliefs, offering panoramic city views.",
+        imageUrl: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Odisha State Museum",
+        localName: "ଓଡ଼ିଶା ରାଜ୍ୟ ସଂଗ୍ରହାଳୟ",
+        pronunciation: "O-di-sha State Mu-se-um",
+        description: "A comprehensive museum showcasing Odia tribal art, palm leaf manuscripts, ancient coins, and natural history collections.",
+        imageUrl: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Nandankanan Zoo",
+        localName: "ନନ୍ଦନକାନନ ପ୍ରାଣୀ ଉଦ୍ୟାନ",
+        pronunciation: "Nan-dan-ka-nan Zoo",
+        description: "A world-famous zoo and botanical garden known for successfully breeding rare white tigers and gharials in captivity.",
+        imageUrl: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Parasuramesvara Temple",
+        localName: "ପରଶୁରାମେଶ୍ୱର ମନ୍ଦିର",
+        pronunciation: "Pa-ra-su-ra-mesh-wa-ra Tem-ple",
+        description: "Bhubaneswar's best-preserved 7th-century temple, with intricately carved panels depicting amorous couples and folk motifs.",
+        imageUrl: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Rajarani Temple",
+        localName: "ରାଜରାଣୀ ମନ୍ଦିର",
+        pronunciation: "Ra-ja-ra-ni Tem-ple",
+        description: "An 11th-century temple renowned for its intricate erotic carvings and tower of interlocking miniature towers, now a garden monument.",
+        imageUrl: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "ISKCON Bhubaneswar",
+        localName: "ଇସ୍କନ ଭୁବନେଶ୍ୱର",
+        pronunciation: "IS-KON Tem-ple",
+        description: "A beautifully designed Hare Krishna temple complex in Bhubaneswar with an exquisite shrine, gardens, and cultural centre.",
+        imageUrl: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Dhauli Peace Pagoda",
+        localName: "ଧଉଳି ଶାନ୍ତି ସ୍ତୂପ",
+        pronunciation: "Dhau-li Peace Pa-go-da",
+        description: "A white Shanti Stupa built by Japanese Buddhists atop Dhauli Hill, commemorating Ashoka's transformation after the Kalinga War.",
+        imageUrl: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Ekamra Haat",
+        localName: "ଏକାମ୍ର ହାଟ",
+        pronunciation: "E-kam-ra Haat",
+        description: "A crafts village market showcasing Pattachitra paintings, Dokra metalwork, and tribal handicrafts from across Odisha.",
+        imageUrl: "https://images.unsplash.com/photo-1597074866923-dc0589150358?auto=format&fit=crop&w=500&q=80"
+            }
+        ]
+    },
+
+  Guwahati: {
+    foods: [
+            {
+        name: "Masor Tenga",
+        localName: "মাছৰ টেঙা",
+        pronunciation: "Ma-sor Ten-ga",
+        description: "A light, sour fish curry made with tomatoes, elephant apple (ou tenga), or lemon — a hallmark of Assamese cuisine.",
+        imageUrl: "https://images.unsplash.com/photo-1574653853027-5382a3d23a15?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Pitha",
+        localName: "পিঠা",
+        pronunciation: "Pi-tha",
+        description: "Traditional Assamese rice cakes made during Bihu festivals, available in steamed (bhapot diya), fried, or rolled forms.",
+        imageUrl: "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Aloo Pitika",
+        localName: "আলু পিটিকা",
+        pronunciation: "A-lu Pi-ti-ka",
+        description: "Mashed boiled potatoes mixed with mustard oil, onion, green chillies, and coriander — a simple Assamese everyday dish.",
+        imageUrl: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Duck Curry",
+        localName: "হাঁহৰ মাংস",
+        pronunciation: "Haah-or Maang-so",
+        description: "Assamese roasted duck curry cooked with ash gourd (lau) and aromatic spices — a prized non-vegetarian delicacy.",
+        imageUrl: "https://images.unsplash.com/photo-1574653853027-5382a3d23a15?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Khar",
+        localName: "খাৰ",
+        pronunciation: "Khar",
+        description: "An alkaline preparation cooked with raw papaya or pulses using filtered water from dried banana peel ash — unique to Assam.",
+        imageUrl: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Assam Tea",
+        localName: "অসমীয়া চাহ",
+        pronunciation: "As-sam Cha",
+        description: "Bold, malty, full-bodied black tea grown in the Brahmaputra valley — one of the world's finest teas drunk with milk and sugar.",
+        imageUrl: "https://images.unsplash.com/photo-1559496417-e7f25cb247f3?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Poita Bhat",
+        localName: "পইতা ভাত",
+        pronunciation: "Poi-ta Bhat",
+        description: "Fermented leftover rice soaked overnight in water, eaten with salt, mustard oil, and onion — an ancient Assamese breakfast.",
+        imageUrl: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Til Pitha",
+        localName: "তিল পিঠা",
+        pronunciation: "Til Pi-tha",
+        description: "Thin rolled rice flour crepes stuffed with sesame seeds and jaggery — a special Bihu festival delicacy of Assam.",
+        imageUrl: "https://images.unsplash.com/photo-1604908177453-7462950a6a3b?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Sunga Pitha",
+        localName: "চুঙা পিঠা",
+        pronunciation: "Su-nga Pi-tha",
+        description: "Glutinous rice cooked inside bamboo tubes over an open fire, a traditional Assamese tribal preparation.",
+        imageUrl: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Eri Polu",
+        localName: "এৰি পলু",
+        pronunciation: "E-ri Po-lu",
+        description: "Fried silkworm pupae — a protein-rich tribal delicacy popular among indigenous communities of Assam.",
+        imageUrl: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80"
+            }
+        ],
+    places: [
+            {
+        name: "Kamakhya Temple",
+        localName: "কামাখ্যা মন্দিৰ",
+        pronunciation: "Ka-mak-hya Tem-ple",
+        description: "One of India's most important Shakti peethas, situated atop Nilachal Hill, dedicated to the goddess Kamakhya.",
+        imageUrl: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Umananda Island",
+        localName: "উমানন্দ দ্বীপ",
+        pronunciation: "U-ma-nan-da Is-land",
+        description: "A tiny peacock island on the Brahmaputra river housing a Shiva temple, accessible by ferry and home to rare golden langurs.",
+        imageUrl: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Kaziranga National Park",
+        localName: "কাজিৰঙা ৰাষ্ট্ৰীয় উদ্যান",
+        pronunciation: "Ka-zi-ran-ga Park",
+        description: "A UNESCO World Heritage Site hosting two-thirds of the world's one-horned rhinoceros population, along with tigers and elephants.",
+        imageUrl: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Assam State Zoo",
+        localName: "অসম ৰাজ্য চিৰিয়াখানা",
+        pronunciation: "As-sam Zoo",
+        description: "A zoo and botanical garden housing rare Northeast Indian wildlife including clouded leopards, pygmy hogs, and Hoolock gibbons.",
+        imageUrl: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Brahmaputra River Cruise",
+        localName: "ব্ৰহ্মপুত্ৰ নদী ভ্ৰমণ",
+        pronunciation: "Brah-ma-pu-tra Cruise",
+        description: "Evening cruises on India's mightiest river offering stunning sunset views of Guwahati's skyline and Umananda Island.",
+        imageUrl: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Srimanta Sankardev Kalakshetra",
+        localName: "শ্ৰীমন্ত শংকৰদেৱ কলাক্ষেত্ৰ",
+        pronunciation: "Kal-ak-she-tra",
+        description: "A cultural campus celebrating Assam's saint-reformer Srimanta Sankardev, with museums, open-air theatres, and craft centres.",
+        imageUrl: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Madan Kamdev",
+        localName: "মদন কামদেৱ",
+        pronunciation: "Ma-dan Kam-dev",
+        description: "A ruined 9th-11th century temple complex 35 km from Guwahati, known as the 'Khajuraho of Assam' for its erotic sculptures.",
+        imageUrl: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Pobitora Wildlife Sanctuary",
+        localName: "পবিতৰা অভয়াৰণ্য",
+        pronunciation: "Po-bi-to-ra Sanc-tu-ary",
+        description: "A compact sanctuary 50 km from Guwahati with the world's highest density of Indian one-horned rhinoceroses.",
+        imageUrl: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Navagraha Temple",
+        localName: "নৱগ্ৰহ মন্দিৰ",
+        pronunciation: "Na-va-gra-ha Tem-ple",
+        description: "A unique hilltop temple dedicated to nine planetary deities, historically significant as Assam's ancient centre for astronomical study.",
+        imageUrl: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Fancy Bazaar",
+        localName: "ফেন্সী বজাৰ",
+        pronunciation: "Fan-cy Ba-zar",
+        description: "Guwahati's busiest commercial hub selling everything from silk mekhela chadors to electronics, spices, and street food.",
+        imageUrl: "https://images.unsplash.com/photo-1597074866923-dc0589150358?auto=format&fit=crop&w=500&q=80"
+            }
+        ]
+    },
+
+  Varanasi: {
+    foods: [
+            {
+        name: "Banarasi Paan",
+        localName: "बनारसी पान",
+        pronunciation: "Ba-na-ra-si Paan",
+        description: "Betel leaf stuffed with areca nut, gulkand, and various sweet or meetha fillings — a fragrant end to every Banaras meal.",
+        imageUrl: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Kachori Sabzi",
+        localName: "कचोरी सब्ज़ी",
+        pronunciation: "Ka-cho-ri Sab-zi",
+        description: "Crispy fried pastries with spiced lentil filling, served with spicy aloo sabzi and tamarind chutney — Varanasi's quintessential breakfast.",
+        imageUrl: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Banarasi Thandai",
+        localName: "बनारसी ठंडाई",
+        pronunciation: "Ba-na-ra-si Thand-ai",
+        description: "A chilled milk drink blended with almonds, fennel, rose petals, pepper, and cardamom — a staple of Holi celebrations in Varanasi.",
+        imageUrl: "https://images.unsplash.com/photo-1559496417-e7f25cb247f3?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Malaiyo",
+        localName: "मलैयो",
+        pronunciation: "Ma-lai-yo",
+        description: "An airy, frothy winter sweet made from whipped milk, saffron, and rose water — available only in winter mornings in Varanasi.",
+        imageUrl: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Chena Dahi Vada",
+        localName: "छेना दही वड़ा",
+        pronunciation: "Chhe-na Da-hi Va-da",
+        description: "Soft cottage cheese dumplings in yoghurt with tamarind chutney and spices — a distinctive Varanasi chaat item.",
+        imageUrl: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Rabri",
+        localName: "रबड़ी",
+        pronunciation: "Ra-bri",
+        description: "Condensed sweetened milk with cardamom and rose water, served warm or chilled from Varanasi's famous milk sweet shops.",
+        imageUrl: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Tamatar Chaat",
+        localName: "टमाटर चाट",
+        pronunciation: "Ta-ma-tar Chaat",
+        description: "A spicy, tangy chaat made with tomatoes, peas, and toppings unique to Varanasi's Vishwanath Gali street food lane.",
+        imageUrl: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Aloo Tikki",
+        localName: "आलू टिक्की",
+        pronunciation: "A-lu Tik-ki",
+        description: "Crispy spiced potato patties topped with chutneys and curd, a popular evening street snack along the Varanasi ghats.",
+        imageUrl: "https://images.unsplash.com/photo-1626132647523-66c3f75942a7?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Banarasi Lassi",
+        localName: "बनारसी लस्सी",
+        pronunciation: "Ba-na-ra-si Las-si",
+        description: "Extra-thick creamy yoghurt drink served in a kulhad (clay cup) topped with malai and saffron strands.",
+        imageUrl: "https://images.unsplash.com/photo-1559496417-e7f25cb247f3?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Malabar Halwa",
+        localName: "मलाबार हलवा",
+        pronunciation: "Ma-la-bar Hal-wa",
+        description: "A dense, chewy saffron halwa made from maida and ghee, sold in Varanasi's sweet shops for centuries.",
+        imageUrl: "https://images.unsplash.com/photo-1604908177453-7462950a6a3b?auto=format&fit=crop&w=500&q=80"
+            }
+        ],
+    places: [
+            {
+        name: "Dashashwamedh Ghat",
+        localName: "दशाश्वमेध घाट",
+        pronunciation: "Da-shash-wa-medh Ghat",
+        description: "The main ghat of Varanasi famous for the spectacular Ganga Aarti ceremony performed every evening by priests with fire lamps.",
+        imageUrl: "https://images.unsplash.com/photo-1561361058-c24e0e408b72?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Kashi Vishwanath Temple",
+        localName: "काशी विश्वनाथ मंदिर",
+        pronunciation: "Ka-shi Vish-wa-nath Tem-ple",
+        description: "One of the 12 Jyotirlingas and the most sacred Shiva temple in India, recently renovated with an extensive temple corridor.",
+        imageUrl: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Manikarnika Ghat",
+        localName: "मणिकर्णिका घाट",
+        pronunciation: "Ma-ni-kar-ni-ka Ghat",
+        description: "Varanasi's sacred cremation ghat where funeral pyres burn continuously — believed to grant liberation (moksha) to the departed.",
+        imageUrl: "https://images.unsplash.com/photo-1561361058-c24e0e408b72?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Sarnath",
+        localName: "सारनाथ",
+        pronunciation: "Sar-nath",
+        description: "A major Buddhist pilgrimage site 10 km from Varanasi where Buddha gave his first sermon after enlightenment, housing the Dhamek Stupa.",
+        imageUrl: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Banaras Hindu University",
+        localName: "बनारस हिन्दू विश्वविद्यालय",
+        pronunciation: "BHU",
+        description: "Asia's largest residential university, founded in 1916 by Madan Mohan Malaviya, home to a famous Vishwanath temple and museum.",
+        imageUrl: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Ramnagar Fort",
+        localName: "रामनगर किला",
+        pronunciation: "Ram-na-gar Fort",
+        description: "An 18th-century fort of the Kashi Naresh on the opposite bank of the Ganga, housing a museum of vintage cars and weaponry.",
+        imageUrl: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Assi Ghat",
+        localName: "अस्सी घाट",
+        pronunciation: "As-si Ghat",
+        description: "A vibrant ghat at the confluence of Assi and Ganga rivers, famous for morning yoga, classical music, and literary culture.",
+        imageUrl: "https://images.unsplash.com/photo-1561361058-c24e0e408b72?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Tulsi Manas Temple",
+        localName: "तुलसी मानस मंदिर",
+        pronunciation: "Tul-si Ma-nas Tem-ple",
+        description: "A white marble temple built in 1964 at the site where saint-poet Tulsidas wrote the Ramcharitmanas, with mechanical Ramayana dioramas.",
+        imageUrl: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Chunar Fort",
+        localName: "चुनार किला",
+        pronunciation: "Chu-nar Fort",
+        description: "A strategic hilltop fort 23 km from Varanasi on the banks of the Ganga, occupied by Humayun, Sher Shah Suri, and the British.",
+        imageUrl: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Ganga Boat Ride",
+        localName: "गंगा नाव यात्रा",
+        pronunciation: "Gan-ga Boat Ride",
+        description: "A sunrise rowing boat journey along Varanasi's 84 ghats, revealing the ancient city's spiritual life, temples, and rituals.",
+        imageUrl: "https://images.unsplash.com/photo-1561361058-c24e0e408b72?auto=format&fit=crop&w=500&q=80"
+            }
+        ]
+    },
+
+  Patna: {
+    foods: [
+            {
+        name: "Litti Chokha",
+        localName: "लिट्टी चोखा",
+        pronunciation: "Lit-ti Cho-kha",
+        description: "Roasted wheat balls stuffed with sattu (roasted gram flour) served with mashed fire-roasted brinjal and tomato — Bihar's iconic dish.",
+        imageUrl: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Sattu Sharbat",
+        localName: "सत्तू शर्बत",
+        pronunciation: "Sat-tu Shar-bat",
+        description: "A cooling summer drink of roasted gram flour (sattu) mixed with water, mustard oil, and spices — Bihar's traditional energy drink.",
+        imageUrl: "https://images.unsplash.com/photo-1559496417-e7f25cb247f3?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Thekua",
+        localName: "ठेकुआ",
+        pronunciation: "The-ku-a",
+        description: "Sweet fried cookies made from wheat flour, jaggery, and ghee, offered during Chhath Puja and sold across Bihar.",
+        imageUrl: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Bihari Kebab",
+        localName: "बिहारी कबाब",
+        pronunciation: "Bi-ha-ri Ke-bab",
+        description: "Tender marinated mutton strips grilled on skewers with raw papaya tenderiser, a distinctive Bihari street barbecue.",
+        imageUrl: "https://images.unsplash.com/photo-1529042410759-befb1204b468?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Makhana Kheer",
+        localName: "मखाना खीर",
+        pronunciation: "Mak-ha-na Kheer",
+        description: "Creamy rice pudding made with Bihar's prized fox nuts (makhana) simmered in sweetened milk — a festive Bihar dessert.",
+        imageUrl: "https://images.unsplash.com/photo-1604908177453-7462950a6a3b?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Chana Ghugni",
+        localName: "चना घुगनी",
+        pronunciation: "Cha-na Ghu-gni",
+        description: "Spiced boiled white peas served with chopped onion, ginger, and lime — a popular Patna street snack.",
+        imageUrl: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Dal Pithi",
+        localName: "दाल पिठी",
+        pronunciation: "Dal Pi-thi",
+        description: "Soft wheat dumplings cooked directly in chana dal — a comforting one-pot Bihari home meal.",
+        imageUrl: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Khaja",
+        localName: "खाजा",
+        pronunciation: "Kha-ja",
+        description: "Flaky layered deep-fried sweet pastries made from refined flour and sugar syrup, a GI-tagged Silao Khaja from Bihar.",
+        imageUrl: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Tilkut",
+        localName: "तिलकुट",
+        pronunciation: "Til-kut",
+        description: "A sweet brittle made from sesame seeds and sugar or jaggery, especially famous from Gaya — a Makar Sankranti specialty.",
+        imageUrl: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Anarsa",
+        localName: "अनरसा",
+        pronunciation: "A-nar-sa",
+        description: "Deep-fried rice flour and jaggery cookies coated in poppy seeds — a traditional Bihari festive sweet.",
+        imageUrl: "https://images.unsplash.com/photo-1604908177453-7462950a6a3b?auto=format&fit=crop&w=500&q=80"
+            }
+        ],
+    places: [
+            {
+        name: "Golghar",
+        localName: "गोलघर",
+        pronunciation: "Gol-ghar",
+        description: "A beehive-shaped British-era granary built in 1786 with a 360-degree view of Patna and the Ganga from its spiralling staircase.",
+        imageUrl: "https://images.unsplash.com/photo-1597074866923-dc0589150358?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Patna Museum",
+        localName: "पटना संग्रहालय",
+        pronunciation: "Pat-na Mu-se-um",
+        description: "One of India's finest museums housing a 200-million-year-old fossil tree, Mauryan relics, and the famous Didarganj Yakshi statue.",
+        imageUrl: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Takht Sri Patna Sahib",
+        localName: "तख्त श्री पटना साहिब",
+        pronunciation: "Takht Pat-na Sa-hib",
+        description: "One of the five Takhts of Sikhism, the birthplace of Guru Gobind Singh Ji, a revered Gurdwara visited by devotees worldwide.",
+        imageUrl: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Nalanda",
+        localName: "नालंदा",
+        pronunciation: "Na-lan-da",
+        description: "Ruins of the world's first residential university (5th–12th century CE), a UNESCO World Heritage Site 95 km from Patna.",
+        imageUrl: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Bodh Gaya",
+        localName: "बोध गया",
+        pronunciation: "Bodh Ga-ya",
+        description: "The place where Siddhartha Gautama attained enlightenment under the Bodhi Tree — the holiest site in Buddhism, 100 km from Patna.",
+        imageUrl: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Sanjay Gandhi Biological Park",
+        localName: "संजय गांधी जैविक उद्यान",
+        pronunciation: "Pat-na Zoo",
+        description: "A zoo in the heart of Patna with tigers, gharials, and a famous white tiger pair — one of Bihar's most popular attractions.",
+        imageUrl: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Kumhrar Archaeological Park",
+        localName: "कुम्हरार",
+        pronunciation: "Kum-hrar Park",
+        description: "Excavated ruins of ancient Pataliputra, the Mauryan Empire capital, revealing wooden columns, Ashoka's assembly hall, and artefacts.",
+        imageUrl: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Eco Park Patna",
+        localName: "ईको पार्क पटना",
+        pronunciation: "E-co Park Pat-na",
+        description: "A beautifully landscaped park on the Ganga riverside with a lake, musical fountain, and children's play areas.",
+        imageUrl: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Agam Kuan",
+        localName: "अगम कुआँ",
+        pronunciation: "A-gam Ku-an",
+        description: "A mysterious ancient well from the Mauryan period, said to have been built by Emperor Ashoka and linked to the mythological netherworld.",
+        imageUrl: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Mahavir Mandir Patna",
+        localName: "महावीर मंदिर",
+        pronunciation: "Ma-ha-vir Man-dir",
+        description: "One of North India's most visited Hanuman temples near Patna Junction railway station, known for its charitable hospital and prasad.",
+        imageUrl: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=500&q=80"
+            }
+        ]
+    },
+
+  Mysuru: {
+    foods: [
+            {
+        name: "Mysore Pak",
+        localName: "ಮೈಸೂರು ಪಾಕ್",
+        pronunciation: "My-so-re Pak",
+        description: "A rich, ghee-laden besan fudge invented by royal chef Kakasura Madappa in the Mysore palace kitchen — the city's most iconic sweet.",
+        imageUrl: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Mysore Masala Dosa",
+        localName: "ಮೈಸೂರು ಮಸಾಲೆ ದೋಸೆ",
+        pronunciation: "My-so-re Ma-sa-le Do-se",
+        description: "A crispy dosa spread with a unique red garlic-chilli chutney inside before adding the potato masala — spicier than the standard dosa.",
+        imageUrl: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Obbattu",
+        localName: "ಒಬ್ಬಟ್ಟು",
+        pronunciation: "Ob-bat-tu",
+        description: "Sweet flatbread stuffed with a coconut-jaggery or chana dal filling — a Ugadi festival special in Karnataka.",
+        imageUrl: "https://images.unsplash.com/photo-1604908177453-7462950a6a3b?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Bisi Bele Bath",
+        localName: "ಬಿಸಿ ಬೇಳೆ ಬಾತ್",
+        pronunciation: "Bi-si Be-le Bath",
+        description: "Hot, spiced lentil and rice porridge cooked with tamarind and a special spice mix, topped with ghee and served with raita.",
+        imageUrl: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Kesari Bath",
+        localName: "ಕೇಸರಿ ಬಾತ್",
+        pronunciation: "Ke-sa-ri Bath",
+        description: "Saffron semolina pudding loaded with ghee, cashews, and raisins, a staple sweet served at Karnataka restaurants.",
+        imageUrl: "https://images.unsplash.com/photo-1604908177453-7462950a6a3b?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Nanjangud Rasabale",
+        localName: "ನಂಜನಗೂಡ್ ರಸಬಾಳೆ",
+        pronunciation: "Nan-jan-gud Ra-sa-ba-le",
+        description: "A GI-tagged banana variety from Nanjangud near Mysuru, renowned for its distinctive medicinal flavour and aroma.",
+        imageUrl: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Ragi Mudde",
+        localName: "ರಾಗಿ ಮುದ್ದೆ",
+        pronunciation: "Ra-gi Mud-de",
+        description: "Dense finger millet balls eaten with spicy mutton or chicken saaru, a nutritious staple of rural Karnataka widely loved in Mysuru.",
+        imageUrl: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Mysore Vada",
+        localName: "ಮೈಸೂರು ವಡೆ",
+        pronunciation: "My-so-re Va-de",
+        description: "A softer, richer version of medu vada made with coconut and spices — a popular Mysuru breakfast item.",
+        imageUrl: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Payasam",
+        localName: "ಪಾಯಸ",
+        pronunciation: "Pa-ya-sa",
+        description: "Mysuru royal-style rice or vermicelli kheer cooked in cardamom milk with saffron, a staple at the Dasara royal feast.",
+        imageUrl: "https://images.unsplash.com/photo-1604908177453-7462950a6a3b?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Mysore Coffee",
+        localName: "ಮೈಸೂರು ಕಾಫಿ",
+        pronunciation: "My-so-re Cof-fee",
+        description: "Decoction coffee made with Arabica beans grown in the nearby Kodagu hills, served with frothed milk in a traditional tumbler.",
+        imageUrl: "https://images.unsplash.com/photo-1559496417-e7f25cb247f3?auto=format&fit=crop&w=500&q=80"
+            }
+        ],
+    places: [
+            {
+        name: "Mysore Palace",
+        localName: "ಮೈಸೂರು ಅರಮನೆ",
+        pronunciation: "My-so-re Pal-ace",
+        description: "India's second most visited monument, an opulent 1912 Indo-Saracenic royal palace illuminated by 97,000 bulbs on Sundays and Dasara.",
+        imageUrl: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Chamundi Hills",
+        localName: "ಚಾಮುಂಡಿ ಬೆಟ್ಟ",
+        pronunciation: "Cha-mun-di Hills",
+        description: "A hill rising 1,000 metres above Mysuru, crowned with the Chamundeshwari Temple and a colossal Nandi bull statue on the way up.",
+        imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Brindavan Gardens",
+        localName: "ಬೃಂದಾವನ ಗಾರ್ಡನ್ಸ್",
+        pronunciation: "Brin-da-van Gar-dens",
+        description: "Terraced ornamental gardens below the KRS Dam, famous for their musical fountain show with coloured lights in the evenings.",
+        imageUrl: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Mysore Zoo",
+        localName: "ಮೈಸೂರು ಮೃಗಾಲಯ",
+        pronunciation: "My-so-re Zoo",
+        description: "One of India's oldest and best-maintained zoos, established in 1892 by the Mysore Maharaja, housing gorillas, giraffes, and white tigers.",
+        imageUrl: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "St. Philomena's Cathedral",
+        localName: "ಸೇಂಟ್ ಫಿಲೋಮೆನಾ ಚರ್ಚ್",
+        pronunciation: "St. Phil-o-me-na Ca-the-dral",
+        description: "A stunning neo-Gothic cathedral modelled on Germany's Cologne Cathedral, with twin spires and stained glass windows depicting Christ's life.",
+        imageUrl: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Devaraja Market",
+        localName: "ದೇವರಾಜ ಮಾರ್ಕೆಟ್",
+        pronunciation: "De-va-ra-ja Mar-ket",
+        description: "A vibrant 19th-century market selling jasmine garlands, Mysore agarbatti, sandalwood products, spices, and fruit.",
+        imageUrl: "https://images.unsplash.com/photo-1597074866923-dc0589150358?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Jaganmohan Palace",
+        localName: "ಜಗನ್ಮೋಹನ ಅರಮನೆ",
+        pronunciation: "Ja-gan-mo-han Pal-ace",
+        description: "A 19th-century royal palace turned art gallery housing Ravi Varma paintings, musical instruments, and an extraordinary royal collection.",
+        imageUrl: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Ranganathaswamy Temple Srirangapatna",
+        localName: "ಶ್ರೀರಂಗನಾಥಸ್ವಾಮಿ ದೇವಾಲಯ",
+        pronunciation: "Sri-ran-ga-pat-na Tem-ple",
+        description: "An ancient Vaishnava temple on the river island of Srirangapatna, 16 km from Mysuru, an important Vaishnava pilgrimage centre.",
+        imageUrl: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Namdroling Monastery",
+        localName: "ನಾಮ್‌ಡ್ರೊಲಿಂಗ್ ಮಠ",
+        pronunciation: "Nam-dro-ling Mon-as-tery",
+        description: "The Golden Temple of Tibetan Buddhism in Bylakuppe near Mysuru — one of the largest Nyingma teaching centres outside Tibet.",
+        imageUrl: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=500&q=80"
+            },
+            {
+        name: "Karanji Lake Nature Park",
+        localName: "ಕಾರಂಜಿ ಕೆರೆ",
+        pronunciation: "Ka-ran-ji Lake",
+        description: "A butterfly park and nature reserve around a lake in Mysuru, home to diverse birds and a walk-in aviary — perfect for nature lovers.",
+        imageUrl: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=500&q=80"
+            }
+        ]
+    }
+};
