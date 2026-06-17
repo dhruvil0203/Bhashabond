@@ -126,7 +126,7 @@ export default function TranslatorScreen({
   return (
     <View style={{ flex: 1, backgroundColor: c.bg, paddingHorizontal: 24, paddingTop: 48 }}>
       {/* Header */}
-      <View style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: 16, justifyContent: 'space-between', marginBottom: 8 }}>
+      <View style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: 16, marginBottom: 8 }}>
         <TouchableOpacity
           onPress={onBack}
           style={{ width: 40, height: 40, backgroundColor: c.card, borderRadius: 20, alignItems: 'center', justifyContent: 'center', borderWidth: 1, borderColor: c.cardBorder }}
@@ -134,7 +134,7 @@ export default function TranslatorScreen({
           <Ionicons name="arrow-back" size={22} color={c.textPrimary} />
         </TouchableOpacity>
 
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', flex: 1, marginLeft: 16 }}>
           <Text style={{ fontSize: 16, fontWeight: 'bold', color: c.textPrimary }}>{sourceLang}</Text>
           <TouchableOpacity
             onPress={() => {
@@ -150,8 +150,6 @@ export default function TranslatorScreen({
           </TouchableOpacity>
           <Text style={{ fontSize: 16, fontWeight: 'bold', color: c.textPrimary }}>{targetLang}</Text>
         </View>
-
-        <View style={{ width: 40 }} />
       </View>
 
       <ScrollView style={{ flex: 1 }} contentContainerStyle={{ gap: 16 }} showsVerticalScrollIndicator={false}>

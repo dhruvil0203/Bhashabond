@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, Switch, Alert } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, Switch, Alert, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useUser, useAuth } from '@clerk/clerk-expo';
 import { useTheme } from '../context/ThemeContext';
 import { getColors } from '../theme/colors';
 
@@ -10,6 +11,33 @@ export default function ProfileScreen() {
   const [savedCount, setSavedCount] = useState(0);
   const { isDark, toggleTheme } = useTheme();
   const c = getColors(isDark);
+  const { user } = useUser();
+  const { signOut } = useAuth();
+
+  const displayName = user?.fullName || user?.firstName || 'Traveler';
+  const email = user?.primaryEmailAddress?.emailAddress || '';
+  const avatarUrl = user?.imageUrl || null;
+
+  const handleSignOut = () => {
+    Alert.alert(
+      'Sign Out',
+      'Are you sure you want to sign out?',
+      [
+        { text: 'Cancel', style: 'cancel' },
+        {
+          text: 'Sign Out',
+          style: 'destructive',
+          onPress: async () => {
+            try {
+              await signOut();
+            } catch (err) {
+              console.warn('[SignOut]', err?.message || err);
+            }
+          },
+        },
+      ]
+    );
+  };
 
   useEffect(() => {
     async function loadStats() {
@@ -51,20 +79,30 @@ export default function ProfileScreen() {
         <View style={{
           width: 96, height: 96, backgroundColor: c.iconBg, borderRadius: 48,
           alignItems: 'center', justifyContent: 'center', marginBottom: 16,
-          borderWidth: 1, borderColor: c.iconBgAlt,
+          borderWidth: 1, borderColor: c.iconBgAlt, overflow: 'hidden',
         }}>
-          <Ionicons name="person" size={56} color="#F97316" />
+          {avatarUrl ? (
+            <Image source={{ uri: avatarUrl }} style={{ width: 96, height: 96 }} />
+          ) : (
+            <Ionicons name="person" size={56} color="#F97316" />
+          )}
         </View>
-        <Text style={{ fontSize: 24, fontWeight: '900', color: c.textPrimary }}>Namaste, Traveler!</Text>
-        <Text style={{ fontSize: 14, color: c.textSecondary, marginTop: 4 }}>
-          Exploring India, one phrase at a time.
-        </Text>
+        <Text style={{ fontSize: 24, fontWeight: '900', color: c.textPrimary }}>Namaste, {displayName}!</Text>
+        {email ? (
+          <Text style={{ fontSize: 14, color: c.textSecondary, marginTop: 4 }}>
+            {email}
+          </Text>
+        ) : (
+          <Text style={{ fontSize: 14, color: c.textSecondary, marginTop: 4 }}>
+            Exploring India, one phrase at a time.
+          </Text>
+        )}
         <View style={{
           marginTop: 8, paddingHorizontal: 12, paddingVertical: 4,
           backgroundColor: 'rgba(22,163,74,0.1)', borderRadius: 999,
           borderWidth: 1, borderColor: 'rgba(22,163,74,0.3)',
         }}>
-          <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#16a34a' }}>📱 100% Offline</Text>
+          <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#16a34a' }}>📱 Works Offline</Text>
         </View>
       </View>
 
@@ -160,6 +198,20 @@ export default function ProfileScreen() {
         <Text style={{ textAlign: 'center', color: c.textMuted, fontSize: 12, fontWeight: '600', marginTop: 16 }}>
           BhashaBond v1.0.0 • Made with ❤️ in India
         </Text>
+
+        {/* Sign Out */}
+        <TouchableOpacity
+          activeOpacity={0.85}
+          onPress={handleSignOut}
+          style={{
+            flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
+            backgroundColor: c.card, borderWidth: 1, borderColor: '#ef4444',
+            borderRadius: 16, paddingVertical: 14, marginTop: 16, gap: 8,
+          }}
+        >
+          <Ionicons name="log-out-outline" size={20} color="#ef4444" />
+          <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#ef4444' }}>Sign Out</Text>
+        </TouchableOpacity>
       </View>
     </ScrollView>
   );

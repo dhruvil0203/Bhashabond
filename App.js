@@ -3,15 +3,18 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, StatusBar, ActivityIndicator } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
+import { ClerkProvider, ClerkLoaded, ClerkLoading, SignedIn, SignedOut } from '@clerk/clerk-expo';
 
 import { ThemeProvider, useTheme } from './context/ThemeContext';
 import { getColors } from './theme/colors';
+import { tokenCache } from './lib/tokenCache';
 
 import HomeScreen from './screens/HomeScreen';
 import LanguagePickerScreen from './screens/LanguagePickerScreen';
 import TranslatorScreen from './screens/TranslatorScreen';
 import PhrasebookScreen from './screens/PhrasebookScreen';
 import ProfileScreen from './screens/ProfileScreen';
+import SignInScreen from './screens/SignInScreen';
 
 function AppContent() {
   const [currentTab, setCurrentTab] = useState('Home');
@@ -180,10 +183,70 @@ function AppContent() {
   );
 }
 
+const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
+
+if (!publishableKey) {
+  throw new Error(
+    'Missing Publishable Key. Please set EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY in your .env'
+  );
+}
+
 export default function App() {
   return (
     <ThemeProvider>
-      <AppContent />
+      <ClerkProvider publishableKey={publishableKey} tokenCache={tokenCache}>
+        <AuthGate />
+      </ClerkProvider>
     </ThemeProvider>
+  );
+}
+
+// Branded full-screen loader shown while Clerk restores the cached session.
+function AuthLoading() {
+  const { isDark } = useTheme();
+  const c = getColors(isDark);
+  return (
+    <SafeAreaProvider>
+      <View style={{ flex: 1, backgroundColor: c.bg, alignItems: 'center', justifyContent: 'center' }}>
+        <StatusBar barStyle={c.statusBar} backgroundColor={c.bg} />
+        <Text style={{ fontSize: 28, fontWeight: '900', color: c.textPrimary, letterSpacing: -0.5, marginBottom: 16 }}>
+          BhaashaBond
+        </Text>
+        <ActivityIndicator size="large" color="#F97316" />
+      </View>
+    </SafeAreaProvider>
+  );
+}
+
+// Gates the app: loading → spinner, signed out → sign in, signed in → app.
+function AuthGate() {
+  return (
+    <>
+      <ClerkLoading>
+        <AuthLoading />
+      </ClerkLoading>
+      <ClerkLoaded>
+        <SignedIn>
+          <AppContent />
+        </SignedIn>
+        <SignedOut>
+          <SafeAreaProvider>
+            <SignInGate />
+          </SafeAreaProvider>
+        </SignedOut>
+      </ClerkLoaded>
+    </>
+  );
+}
+
+// Wraps SignInScreen in a themed SafeAreaView + status bar.
+function SignInGate() {
+  const { isDark } = useTheme();
+  const c = getColors(isDark);
+  return (
+    <SafeAreaView style={{ flex: 1, backgroundColor: c.bg }}>
+      <StatusBar barStyle={c.statusBar} backgroundColor={c.bg} />
+      <SignInScreen />
+    </SafeAreaView>
   );
 }

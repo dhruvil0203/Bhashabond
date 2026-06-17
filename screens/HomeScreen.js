@@ -15,8 +15,8 @@ export default function HomeScreen({
   const c = getColors(isDark);
 
   return (
-    <View style={{ flex: 1, backgroundColor: c.bg, paddingHorizontal: 24, paddingTop: 48 }}>
-      <View style={{ alignItems: 'center', marginTop: 24, marginBottom: 32 }}>
+    <View style={{ flex: 1, backgroundColor: c.bg, paddingHorizontal: 24, paddingTop: 32 }}>
+      <View style={{ alignItems: 'center', marginTop: 8, marginBottom: 24 }}>
         <View style={{
           width: 64, height: 64, backgroundColor: c.iconBg, borderRadius: 32,
           alignItems: 'center', justifyContent: 'center', marginBottom: 12,
@@ -42,7 +42,7 @@ export default function HomeScreen({
         </Text>
       </View>
 
-      <View style={{ gap: 16, marginBottom: 40 }}>
+      <View style={{ gap: 16, marginBottom: 24 }}>
         <TouchableOpacity
           activeOpacity={0.8}
           onPress={() => onOpenLanguagePicker('source')}
@@ -91,7 +91,7 @@ export default function HomeScreen({
         </TouchableOpacity>
       </View>
 
-      <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1, marginBottom: 32 }}>
+      <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1, marginBottom: 16 }}>
         <View style={{ alignItems: 'center', justifyContent: 'center' }}>
           <View style={{ width: 176, height: 176, backgroundColor: isDark ? 'rgba(249,115,22,0.15)' : 'rgba(255,232,214,0.4)', borderRadius: 88, alignItems: 'center', justifyContent: 'center' }}>
             <View style={{ width: 144, height: 144, backgroundColor: isDark ? 'rgba(249,115,22,0.25)' : 'rgba(255,232,214,0.85)', borderRadius: 72, alignItems: 'center', justifyContent: 'center' }}>

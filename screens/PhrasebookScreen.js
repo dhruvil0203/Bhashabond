@@ -7,6 +7,17 @@ import { getColors } from '../theme/colors';
 import { getLangCode } from '../services/translator';
 import { CITY_GUIDE_DATA } from './cityGuideData';
 
+// Wikimedia returns HTTP 403 to React Native's default okhttp user-agent, so
+// route those images through an image proxy that fetches them server-side.
+const proxiedImage = (url) => {
+  if (!url) return url;
+  if (url.includes('upload.wikimedia.org')) {
+    const stripped = url.replace(/^https?:\/\//, '');
+    return `https://images.weserv.nl/?url=${encodeURIComponent(stripped)}&w=500`;
+  }
+  return url;
+};
+
 const STATE_TO_CITY_MAP = {
   'Delhi': 'Delhi',
   'Haryana': 'Delhi',
@@ -273,7 +284,7 @@ export default function PhrasebookScreen({
                         ? 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80'
                         : 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=500&q=80'
                       )
-                    : item.imageUrl
+                    : proxiedImage(item.imageUrl),
                 }}
                 onLoadStart={() => {
                   const key = `${item.name}-${idx}`;
@@ -392,9 +403,9 @@ export default function PhrasebookScreen({
   const currentPhrases = PHRASEBOOK_DATA[activeCategory] || [];
 
   return (
-    <View style={{ flex: 1, backgroundColor: c.bg, paddingTop: 48 }}>
+    <View style={{ flex: 1, backgroundColor: c.bg, paddingTop: 32 }}>
       {/* Header */}
-      <View style={{ paddingHorizontal: 24, paddingVertical: 16, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+      <View style={{ paddingHorizontal: 24, paddingTop: 8, paddingBottom: 16, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
         <View style={{ width: 48, height: 48, backgroundColor: '#F97316', borderRadius: 16, alignItems: 'center', justifyContent: 'center' }}>
           <Ionicons name="book" size={24} color="white" />
         </View>

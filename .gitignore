@@ -41,3 +41,14 @@ backend/.env
 # generated native folders
 /ios
 /android
+
+# build export
+.bbexport/
+
+# backups and temporary files
+*.bak
+*.original
+
+# AI agent workspace folders
+.claude/
+.gemini/
