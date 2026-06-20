@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, ToastAndroid, Platform, Image, ActivityIndicator } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, ToastAndroid, Platform, Image, ActivityIndicator, Linking } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import * as Speech from 'expo-speech';
 import { useTheme } from '../context/ThemeContext';
 import { getColors } from '../theme/colors';
 import { getLangCode } from '../services/translator';
 import { CITY_GUIDE_DATA } from './cityGuideData';
+import {
+  EMERGENCY_NUMBERS,
+  WOMENS_HELPLINE,
+  SAFETY_PHRASE,
+  FESTIVAL_GREETINGS,
+  BARGAIN_TIPS,
+  getPhraseGuide,
+} from './phrasebookGuideData';
 
 // Wikimedia returns HTTP 403 to React Native's default okhttp user-agent, so
 // route those images through an image proxy that fetches them server-side.
@@ -209,10 +217,22 @@ export default function PhrasebookScreen({
 
   const targetLangCode = getLangCode(targetLang);
 
+  // Shared city resolver — maps a selected state/city to a known guide city.
+  // Defaults to 'Delhi' so the Food/Travel guides always have data; the
+  // discovery cards below fall back independently via getPhraseGuide().
+  const activeCityName = selectedCity ? (STATE_TO_CITY_MAP[selectedCity] || selectedCity) : 'Delhi';
+
+  const dialNumber = (tel) => {
+    Linking.openURL(`tel:${tel}`).catch(() => {
+      if (Platform.OS === 'android') {
+        ToastAndroid.show('Unable to start call', ToastAndroid.SHORT);
+      }
+    });
+  };
+
   const renderCityGuide = () => {
     if (activeCategory !== 'Food' && activeCategory !== 'Travel') return null;
 
-    const activeCityName = selectedCity ? (STATE_TO_CITY_MAP[selectedCity] || selectedCity) : 'Delhi';
     const cityData = CITY_GUIDE_DATA[activeCityName] || CITY_GUIDE_DATA['Delhi'];
     if (!cityData) return null;
 
@@ -361,6 +381,298 @@ export default function PhrasebookScreen({
     );
   };
 
+  // Shared section header — matches the Food/Travel guide header style.
+  const renderSectionHeader = (icon, kicker, title) => (
+    <View style={{
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom: 16,
+      backgroundColor: isDark ? '#1C1C2E' : '#FFF7ED',
+      padding: 14,
+      borderRadius: 16,
+      borderWidth: 1,
+      borderColor: isDark ? '#2D2D4E' : '#FDDCB8',
+    }}>
+      <View style={{
+        width: 48,
+        height: 48,
+        backgroundColor: '#F97316',
+        borderRadius: 14,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginRight: 12,
+      }}>
+        <Ionicons name={icon} size={24} color="white" />
+      </View>
+      <View style={{ flex: 1 }}>
+        <Text style={{ fontSize: 13, fontWeight: '600', color: c.textSecondary }}>
+          {kicker}
+        </Text>
+        <Text style={{ fontSize: 22, fontWeight: '900', color: '#F97316', letterSpacing: -0.5 }}>
+          {title}
+        </Text>
+      </View>
+    </View>
+  );
+
+  // Reusable hero image with loading spinner + fallback, matching the Food card.
+  const renderHeroImage = (uri, badgeText, fallbackUri) => {
+    const key = `hero-${badgeText}-${uri}`;
+    return (
+      <View style={{ position: 'relative', height: 200, justifyContent: 'center', alignItems: 'center', backgroundColor: c.sectionBg }}>
+        {loadingImages[key] && (
+          <ActivityIndicator size="small" color="#F97316" style={{ position: 'absolute', zIndex: 10 }} />
+        )}
+        <Image
+          source={{ uri: imageErrors[key] ? fallbackUri : proxiedImage(uri) }}
+          onLoadStart={() => setLoadingImages(prev => ({ ...prev, [key]: true }))}
+          onLoadEnd={() => setLoadingImages(prev => ({ ...prev, [key]: false }))}
+          onError={() => {
+            setImageErrors(prev => ({ ...prev, [key]: true }));
+            setLoadingImages(prev => ({ ...prev, [key]: false }));
+          }}
+          style={{ width: '100%', height: '100%' }}
+          resizeMode="cover"
+        />
+        <View style={{
+          position: 'absolute',
+          top: 12,
+          left: 12,
+          backgroundColor: 'rgba(0,0,0,0.55)',
+          paddingHorizontal: 10,
+          paddingVertical: 5,
+          borderRadius: 20,
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: 4,
+        }}>
+          <Ionicons name="location" size={12} color="white" />
+          <Text style={{ color: 'white', fontWeight: '700', fontSize: 12 }}>{badgeText}</Text>
+        </View>
+      </View>
+    );
+  };
+
+  // Card shell matching the Food card (radius 20, border, shadow).
+  const discoveryCardStyle = {
+    backgroundColor: c.card,
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: c.cardBorder,
+    marginBottom: 16,
+    overflow: 'hidden',
+    elevation: 4,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.12,
+    shadowRadius: 10,
+  };
+
+  const FOOD_FALLBACK = 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=500&q=80';
+
+  // ---- Greetings: local customs hero + festival mini-cards ----
+  const renderGreetingsGuide = () => {
+    const guide = getPhraseGuide(activeCityName);
+    return (
+      <View style={{ marginBottom: 24 }}>
+        {renderSectionHeader('hand-left', 'Local Customs in', activeCityName)}
+
+        <View style={discoveryCardStyle}>
+          {renderHeroImage(guide.customsImage, activeCityName, FOOD_FALLBACK)}
+          <View style={{ padding: 16 }}>
+            <Text style={{ fontSize: 20, fontWeight: '800', color: c.textPrimary, marginBottom: 6 }}>
+              Greeting Etiquette
+            </Text>
+            <Text style={{ fontSize: 14, color: c.textSecondary, lineHeight: 21 }}>
+              {guide.customs}
+            </Text>
+          </View>
+        </View>
+
+        <Text style={{ fontSize: 16, fontWeight: '800', color: c.textPrimary, marginTop: 8, marginBottom: 12 }}>
+          Festival Greetings
+        </Text>
+        {FESTIVAL_GREETINGS.map((f, idx) => {
+          const key = `festival-${idx}`;
+          return (
+            <View key={key} style={[discoveryCardStyle, { flexDirection: 'row', alignItems: 'stretch' }]}>
+              <View style={{ width: 96, backgroundColor: c.sectionBg, justifyContent: 'center', alignItems: 'center' }}>
+                {loadingImages[key] && (
+                  <ActivityIndicator size="small" color="#F97316" style={{ position: 'absolute', zIndex: 10 }} />
+                )}
+                <Image
+                  source={{ uri: imageErrors[key] ? FOOD_FALLBACK : proxiedImage(f.imageUrl) }}
+                  onLoadStart={() => setLoadingImages(prev => ({ ...prev, [key]: true }))}
+                  onLoadEnd={() => setLoadingImages(prev => ({ ...prev, [key]: false }))}
+                  onError={() => {
+                    setImageErrors(prev => ({ ...prev, [key]: true }));
+                    setLoadingImages(prev => ({ ...prev, [key]: false }));
+                  }}
+                  style={{ width: '100%', height: '100%' }}
+                  resizeMode="cover"
+                />
+              </View>
+              <View style={{ flex: 1, padding: 14 }}>
+                <Text style={{ fontSize: 12, fontWeight: '700', color: c.textSecondary, marginBottom: 2 }}>
+                  {f.festival}
+                </Text>
+                <Text style={{ fontSize: 18, fontWeight: '800', color: '#F97316', lineHeight: 26 }}>
+                  {f.native}
+                </Text>
+                <Text style={{ fontSize: 13, fontStyle: 'italic', color: c.textSecondary, marginTop: 2 }}>
+                  {f.pronunciation}
+                </Text>
+                <Text style={{ fontSize: 13, color: c.textPrimary, marginTop: 4 }}>
+                  {f.english}
+                </Text>
+                {f.note ? (
+                  <Text style={{ fontSize: 11, fontStyle: 'italic', color: c.textMuted, marginTop: 4 }}>
+                    {f.note}
+                  </Text>
+                ) : null}
+              </View>
+            </View>
+          );
+        })}
+      </View>
+    );
+  };
+
+  // ---- Emergency: tap-to-call number grid + "If You Feel Unsafe" card ----
+  const renderEmergencyGuide = () => (
+    <View style={{ marginBottom: 24 }}>
+      {renderSectionHeader('call', 'Emergency Numbers in', 'India')}
+
+      <View style={[discoveryCardStyle, { padding: 12 }]}>
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+          {EMERGENCY_NUMBERS.map((item) => (
+            <TouchableOpacity
+              key={item.number}
+              onPress={() => dialNumber(item.tel)}
+              activeOpacity={0.8}
+              style={{
+                width: '48%',
+                marginBottom: 10,
+                padding: 12,
+                borderRadius: 16,
+                borderWidth: 1,
+                backgroundColor: item.primary ? '#F97316' : c.sectionBg,
+                borderColor: item.primary ? '#F97316' : c.cardBorder,
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: 10,
+              }}
+            >
+              <View style={{
+                width: 38, height: 38, borderRadius: 12,
+                backgroundColor: item.primary ? 'rgba(255,255,255,0.2)' : c.iconBg,
+                alignItems: 'center', justifyContent: 'center',
+              }}>
+                <Ionicons name={item.icon} size={18} color={item.primary ? 'white' : '#F97316'} />
+              </View>
+              <View style={{ flex: 1 }}>
+                <Text style={{ fontSize: 11, fontWeight: '600', color: item.primary ? 'rgba(255,255,255,0.9)' : c.textSecondary }} numberOfLines={1}>
+                  {item.label}
+                </Text>
+                <Text style={{ fontSize: 18, fontWeight: '900', color: item.primary ? 'white' : c.textPrimary }}>
+                  {item.number}
+                </Text>
+              </View>
+            </TouchableOpacity>
+          ))}
+        </View>
+        <Text style={{ fontSize: 11, color: c.textMuted, marginTop: 2, textAlign: 'center' }}>
+          Tap any number to call. Tourist Helpline also: 1800-11-1363
+        </Text>
+      </View>
+
+      <View style={[discoveryCardStyle, { padding: 16 }]}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+          <Ionicons name="shield-checkmark" size={20} color="#F97316" />
+          <Text style={{ fontSize: 18, fontWeight: '800', color: c.textPrimary }}>
+            If You Feel Unsafe
+          </Text>
+        </View>
+        <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#F97316', lineHeight: 30 }}>
+          {SAFETY_PHRASE.native}
+        </Text>
+        <Text style={{ fontSize: 13, fontStyle: 'italic', color: c.textSecondary, marginTop: 2 }}>
+          {SAFETY_PHRASE.pronunciation}
+        </Text>
+        <Text style={{ fontSize: 13, color: c.textPrimary, marginTop: 2 }}>
+          {SAFETY_PHRASE.english}
+        </Text>
+        <TouchableOpacity
+          onPress={() => dialNumber(WOMENS_HELPLINE.tel)}
+          activeOpacity={0.85}
+          style={{
+            marginTop: 14,
+            paddingVertical: 12,
+            borderRadius: 14,
+            backgroundColor: '#F97316',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 8,
+          }}
+        >
+          <Ionicons name="call" size={18} color="white" />
+          <Text style={{ color: 'white', fontWeight: '800', fontSize: 15 }}>
+            Call Women's Helpline {WOMENS_HELPLINE.number}
+          </Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+
+  // ---- Shopping: best markets hero + "How to Bargain" card ----
+  const renderShoppingGuide = () => {
+    const guide = getPhraseGuide(activeCityName);
+    return (
+      <View style={{ marginBottom: 24 }}>
+        {renderSectionHeader('bag-handle', 'Best Markets to Explore in', activeCityName)}
+
+        <View style={discoveryCardStyle}>
+          {renderHeroImage(guide.marketImage, activeCityName, FOOD_FALLBACK)}
+          <View style={{ padding: 16 }}>
+            {guide.markets.map((m, idx) => (
+              <View key={`${m.name}-${idx}`} style={{ marginBottom: idx === guide.markets.length - 1 ? 0 : 14 }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <Text style={{ fontSize: 17, fontWeight: '800', color: c.textPrimary, flex: 1, paddingRight: 8 }}>
+                    {m.name}
+                  </Text>
+                  {m.localName ? (
+                    <Text style={{ fontSize: 14, fontWeight: '700', color: '#F97316' }}>{m.localName}</Text>
+                  ) : null}
+                </View>
+                <Text style={{ fontSize: 13, color: c.textSecondary, lineHeight: 20, marginTop: 2 }}>
+                  {m.description}
+                </Text>
+              </View>
+            ))}
+          </View>
+        </View>
+
+        <View style={[discoveryCardStyle, { padding: 16 }]}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+            <Ionicons name="pricetags" size={20} color="#F97316" />
+            <Text style={{ fontSize: 18, fontWeight: '800', color: c.textPrimary }}>
+              How to Bargain
+            </Text>
+          </View>
+          {BARGAIN_TIPS.map((tip, idx) => (
+            <View key={idx} style={{ flexDirection: 'row', gap: 10, marginBottom: idx === BARGAIN_TIPS.length - 1 ? 0 : 10 }}>
+              <Ionicons name={tip.icon} size={18} color="#F97316" style={{ marginTop: 1 }} />
+              <Text style={{ flex: 1, fontSize: 13, color: c.textSecondary, lineHeight: 20 }}>
+                {tip.text}
+              </Text>
+            </View>
+          ))}
+        </View>
+      </View>
+    );
+  };
+
   const toggleBookmark = (phraseId) => {
     const key = `${activeCategory}_${phraseId}`;
     const next = !bookmarks[key];
@@ -455,6 +767,9 @@ export default function PhrasebookScreen({
         showsVerticalScrollIndicator={false}
       >
         {renderCityGuide()}
+        {activeCategory === 'Greetings' && renderGreetingsGuide()}
+        {activeCategory === 'Emergency' && renderEmergencyGuide()}
+        {activeCategory === 'Shopping' && renderShoppingGuide()}
         {activeCategory !== 'Food' && activeCategory !== 'Travel' && currentPhrases.map((phrase) => {
           const { text: nativeText, pronunciation } = getTranslation(phrase);
           const isPlaying = playingId === phrase.id;
