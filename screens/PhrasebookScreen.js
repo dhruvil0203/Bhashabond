@@ -495,8 +495,8 @@ export default function PhrasebookScreen({
         {FESTIVAL_GREETINGS.map((f, idx) => {
           const key = `festival-${idx}`;
           return (
-            <View key={key} style={[discoveryCardStyle, { flexDirection: 'row', alignItems: 'stretch' }]}>
-              <View style={{ width: 96, backgroundColor: c.sectionBg, justifyContent: 'center', alignItems: 'center' }}>
+            <View key={key} style={[discoveryCardStyle, { flexDirection: 'row', alignItems: 'center', minHeight: 120 }]}>
+              <View style={{ width: 96, alignSelf: 'stretch', backgroundColor: c.sectionBg, justifyContent: 'center', alignItems: 'center' }}>
                 {loadingImages[key] && (
                   <ActivityIndicator size="small" color="#F97316" style={{ position: 'absolute', zIndex: 10 }} />
                 )}

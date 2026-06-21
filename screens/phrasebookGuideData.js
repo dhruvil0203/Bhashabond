@@ -117,6 +117,11 @@ export const CITY_PHRASE_GUIDE = {
 };
 
 // Resolve a city to its phrase-guide entry, falling back to DEFAULT_CITY.
+// `resolvedCity` is the city the returned data actually belongs to, so headers
+// can label the content correctly instead of showing a city we have no data for.
 export function getPhraseGuide(cityName) {
-  return CITY_PHRASE_GUIDE[cityName] || CITY_PHRASE_GUIDE[DEFAULT_CITY];
+  if (CITY_PHRASE_GUIDE[cityName]) {
+    return { ...CITY_PHRASE_GUIDE[cityName], resolvedCity: cityName };
+  }
+  return { ...CITY_PHRASE_GUIDE[DEFAULT_CITY], resolvedCity: DEFAULT_CITY };
 }
