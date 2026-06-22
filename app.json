@@ -1,5 +1,6 @@
 {
   "expo": {
+    "owner": "dhruvil0203",
     "name": "BhashaBond",
     "slug": "BhashaBond",
     "version": "1.0.0",
@@ -23,14 +24,21 @@
       },
       "permissions": [
         "RECORD_AUDIO"
-      ]
+      ],
+      "package": "com.dhruvil0203.BhashaBond"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
       "expo-secure-store",
-      "expo-web-browser"
-    ]
+      "expo-web-browser",
+      "expo-font"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "263d5152-d7f1-4c03-b26d-304d3900d0f2"
+      }
+    }
   }
 }

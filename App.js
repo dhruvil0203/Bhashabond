@@ -185,19 +185,41 @@ function AppContent() {
 
 const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
-if (!publishableKey) {
-  throw new Error(
-    'Missing Publishable Key. Please set EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY in your .env'
-  );
-}
-
 export default function App() {
+  // Render a readable error screen instead of throwing at module load.
+  // A bare throw here crashes the app to the OS before any UI mounts, which
+  // looks identical to a native crash and gives the user nothing to act on.
+  if (!publishableKey) {
+    return <ConfigError />;
+  }
+
   return (
     <ThemeProvider>
       <ClerkProvider publishableKey={publishableKey} tokenCache={tokenCache}>
         <AuthGate />
       </ClerkProvider>
     </ThemeProvider>
+  );
+}
+
+// Shown when the Clerk publishable key was not bundled into the build.
+// EXPO_PUBLIC_* vars are inlined at build time from .env (local) or the
+// matching eas.json profile's env block (EAS builds).
+function ConfigError() {
+  return (
+    <SafeAreaProvider>
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#0A0A0A', alignItems: 'center', justifyContent: 'center', padding: 32 }}>
+        <StatusBar barStyle="light-content" backgroundColor="#0A0A0A" />
+        <Text style={{ fontSize: 22, fontWeight: '900', color: '#FFFFFF', marginBottom: 12, textAlign: 'center' }}>
+          Configuration error
+        </Text>
+        <Text style={{ fontSize: 15, color: '#A1A1AA', textAlign: 'center', lineHeight: 22 }}>
+          The authentication key is missing from this build. Set{' '}
+          <Text style={{ color: '#F97316', fontWeight: '700' }}>EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY</Text>{' '}
+          in your .env (local) or the matching eas.json profile, then rebuild.
+        </Text>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 
