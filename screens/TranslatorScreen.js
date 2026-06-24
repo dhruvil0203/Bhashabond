@@ -56,13 +56,13 @@ export default function TranslatorScreen({
         setPronunciation('');
         if (Platform.OS === 'android') {
           ToastAndroid.show(
-            'Translation failed. Check your internet connection and try again.',
+            'Translation failed. Try common phrases offline or connect to the internet.',
             ToastAndroid.LONG
           );
         } else {
           Alert.alert(
             'Translation Failed',
-            'Could not translate this phrase.\n\n• Make sure you are connected to the internet\n• The backend server must be running\n• Common phrases work offline: Hello, Thank you, Help me...'
+            'Could not translate this phrase.\n\n• Common phrases work offline (Hello, Thank you, Help me, etc.)\n• For other phrases, connect to the internet\n• Make sure the backend server is running'
           );
         }
       } else {

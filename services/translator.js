@@ -56,19 +56,19 @@ async function setCachedTranslation(sourceText, sourceLangCode, targetLangCode, 
   await saveCache(cache);
 }
 
-// Candidates for backend URL
-// 192.168.0.101: Host Wi-Fi IP (works for physical devices)
-// localhost: works for simulators & web
-// 10.0.2.2: works for Android emulator
-// 172.31.16.1: works for WSL environment/bridge
+// Candidates for backend URL (checked in order)
+// Priority: Environment variable > Production > Development
+const RENDER_URL = process.env.EXPO_PUBLIC_API_URL || 'https://bhashabond-api.onrender.com';
+
 const CANDIDATE_URLS = [
-  'http://192.168.0.101:8000',
-  'http://localhost:8000',
-  'http://10.0.2.2:8000',
-  'http://172.31.16.1:8000',
+  RENDER_URL,                           // Production: Deployed on Render (works globally)
+  'http://192.168.0.101:8000',          // Local Wi-Fi IP (for development)
+  'http://localhost:8000',              // Simulator/web
+  'http://10.0.2.2:8000',               // Android emulator
+  'http://172.31.16.1:8000',            // WSL environment
 ];
 
-let activeApiBase = 'http://192.168.0.101:8000'; // Default fallback
+let activeApiBase = RENDER_URL; // Default to production
 let isProbing = false;
 let hasProbed = false;
 
@@ -82,7 +82,9 @@ export async function probeBackend() {
   for (const url of CANDIDATE_URLS) {
     try {
       const controller = new AbortController();
-      const id = setTimeout(() => controller.abort(), 600); // quick 600ms timeout
+      // Use longer timeout for production URLs (Render can be slower on free tier)
+      const timeout = url.includes('https://') ? 3000 : 600;
+      const id = setTimeout(() => controller.abort(), timeout);
       const res = await fetch(`${url}/api/health`, { signal: controller.signal });
       clearTimeout(id);
       if (res.ok) {
@@ -185,7 +187,9 @@ export async function translate(sourceText, sourceLang, targetLang) {
     const API_BASE = await probeBackend();
 
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 seconds timeout
+    // Use longer timeout for production (Render free tier can be slower)
+    const timeout = API_BASE.includes('https://') ? 15000 : 5000;
+    const timeoutId = setTimeout(() => controller.abort(), timeout);
 
     const response = await fetch(`${API_BASE}/api/translate`, {
       method: 'POST',
@@ -219,6 +223,37 @@ export async function translate(sourceText, sourceLang, targetLang) {
     return result;
   } catch (error) {
     console.warn('[Translation]', error.message);
+    
+    // ── Step 3: Offline Pivot Translation (Indian Lang → English → Indian Lang) ──
+    // If online translation fails and we're translating between two non-English languages,
+    // try pivot translation through English using the offline dictionary
+    if (sourceLangCode !== 'eng_Latn' && targetLangCode !== 'eng_Latn') {
+      console.log('[Translation Service] Attempting offline pivot translation via English...');
+      
+      // Step 3a: Source → English
+      const sourceToEnglish = lookupDictionary(sourceText, sourceLangCode, 'eng_Latn');
+      
+      if (sourceToEnglish) {
+        console.log('[Translation Service] Found source → English:', sourceToEnglish.text);
+        
+        // Step 3b: English → Target
+        const englishToTarget = lookupDictionary(sourceToEnglish.text, 'eng_Latn', targetLangCode);
+        
+        if (englishToTarget) {
+          console.log('[Translation Service] Found English → target, pivot translation successful');
+          return {
+            translatedText: englishToTarget.text,
+            pronunciation: englishToTarget.pronunciation || romanize(englishToTarget.text, targetLangCode),
+            source: 'offline',
+          };
+        } else {
+          console.warn('[Translation Service] Pivot failed: No English → target translation');
+        }
+      } else {
+        console.warn('[Translation Service] Pivot failed: No source → English translation');
+      }
+    }
+    
     throw new Error('TRANSLATION_FAILED');
   }
 }
