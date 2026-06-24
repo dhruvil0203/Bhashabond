@@ -147,6 +147,48 @@ export const CITY_GUIDE_DATA = {
         description: "A modern cable-stayed bridge spanning 5.6 km across Mahim Bay, dramatically reducing travel time across Mumbai.",
         imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Bandra%E2%80%93Worli_Sea_Link.jpg/500px-Bandra%E2%80%93Worli_Sea_Link.jpg"
             }
+        ],
+    shopping: [
+            {
+        name: "Colaba Causeway",
+        localName: "कुलाबा कॉजवे",
+        pronunciation: "Co-la-ba Cause-way",
+        description: "A bustling street market for clothes, jewellery, souvenirs, and antiques. Prime bargaining territory with cafes and colonial architecture.",
+        address: "Colaba, South Mumbai, Maharashtra 400001",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Colaba_Causeway_-_panoramio_%282%29.jpg/500px-Colaba_Causeway_-_panoramio_%282%29.jpg"
+            },
+            {
+        name: "Crawford Market",
+        localName: "क्रॉफर्ड मार्केट",
+        pronunciation: "Craw-ford Mar-ket",
+        description: "A historic Victorian-era market built in 1869, selling fresh produce, spices, flowers, pets, and household goods.",
+        address: "Lokmanya Tilak Marg, near CSMT, Mumbai 400001",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Crawford_market_Mumbai.jpg/500px-Crawford_market_Mumbai.jpg"
+            },
+            {
+        name: "Linking Road",
+        localName: "लिंकिंग रोड",
+        pronunciation: "Lin-king Road",
+        description: "A popular street shopping hub in Bandra for trendy clothes, footwear, accessories, and street food at bargain prices.",
+        address: "Linking Road, Bandra West, Mumbai 400050",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Bandra_Linking_Road.jpg/500px-Bandra_Linking_Road.jpg"
+            },
+            {
+        name: "Chor Bazaar",
+        localName: "चोर बाज़ार",
+        pronunciation: "Chor Ba-zaar",
+        description: "The 'Thieves Market' - a treasure trove of antiques, vintage items, Bollywood memorabilia, and old furniture.",
+        address: "Mutton Street, Bhendi Bazaar, Mumbai 400003",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Chor_Bazaar_Mumbai.jpg/500px-Chor_Bazaar_Mumbai.jpg"
+            },
+            {
+        name: "Fashion Street",
+        localName: "फॅशन स्ट्रीट",
+        pronunciation: "Fa-shion Street",
+        description: "600+ stalls selling affordable trendy clothes, bags, shoes, and accessories near Churchgate station.",
+        address: "MG Road, Azad Maidan, Churchgate, Mumbai 400020",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Fashion_Street_Mumbai_2011.jpg/500px-Fashion_Street_Mumbai_2011.jpg"
+            }
         ]
     },
 
@@ -294,6 +336,48 @@ export const CITY_GUIDE_DATA = {
         description: "A serene 90-acre park dotted with 15th-century Lodi dynasty tombs, popular for morning walks and picnics.",
         imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Lodhi_Gardens_on_a_sunny_day.jpg/500px-Lodhi_Gardens_on_a_sunny_day.jpg"
             }
+        ],
+    shopping: [
+            {
+        name: "Chandni Chowk",
+        localName: "चांदनी चौक",
+        pronunciation: "Chan-dni Chowk",
+        description: "Asia's oldest and busiest markets with narrow lanes selling spices, textiles, jewellery, electronics, and street food.",
+        address: "Chandni Chowk, Old Delhi, New Delhi 110006",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Gurudwara_Sisganj_Sahib_Chandni_Chowk_19.jpg/500px-Gurudwara_Sisganj_Sahib_Chandni_Chowk_19.jpg"
+            },
+            {
+        name: "Sarojini Nagar Market",
+        localName: "सरोजिनी नगर मार्केट",
+        pronunciation: "Sa-ro-ji-ni Na-gar Mar-ket",
+        description: "Delhi's most popular budget shopping destination for trendy clothes, bags, shoes, and accessories with export surplus items.",
+        address: "Sarojini Nagar, New Delhi 110023",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Sarojini_Nagar_Market.jpg/500px-Sarojini_Nagar_Market.jpg"
+            },
+            {
+        name: "Dilli Haat",
+        localName: "दिल्ली हाट",
+        pronunciation: "Dil-li Haat",
+        description: "An open-air food plaza and craft bazaar showcasing handicrafts, handlooms, and regional cuisines from all Indian states.",
+        address: "INA Market, Sri Aurobindo Marg, New Delhi 110023",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Dilli_Haat_INA.jpg/500px-Dilli_Haat_INA.jpg"
+            },
+            {
+        name: "Lajpat Nagar Central Market",
+        localName: "लाजपत नगर सेंट्रल मार्केट",
+        pronunciation: "Laj-pat Na-gar Mar-ket",
+        description: "A vibrant market known for Indian ethnic wear, jewellery, shoes, and home decor at reasonable prices.",
+        address: "Lajpat Nagar IV, New Delhi 110024",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Lajpat_Nagar_Market_Delhi.jpg/500px-Lajpat_Nagar_Market_Delhi.jpg"
+            },
+            {
+        name: "Connaught Place",
+        localName: "कनॉट प्लेस",
+        pronunciation: "Con-naught Place",
+        description: "Delhi's premium shopping district with branded stores, bookshops, restaurants, and cafes in colonial-era buildings.",
+        address: "Connaught Place, Rajiv Chowk, New Delhi 110001",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Skyline_at_Rajiv_Chowk.JPG/500px-Skyline_at_Rajiv_Chowk.JPG"
+            }
         ]
     },
 
@@ -440,6 +524,48 @@ export const CITY_GUIDE_DATA = {
         pronunciation: "Nan-di Hills",
         description: "An ancient hill fortress 60 km from Bengaluru, offering breathtaking sunrise views, trekking trails, and a Tipu Sultan summer retreat.",
         imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Sunrise_at_Nandi_Hills.jpg/500px-Sunrise_at_Nandi_Hills.jpg"
+            }
+        ],
+    shopping: [
+            {
+        name: "Commercial Street",
+        localName: "ಕಮರ್ಷಿಯಲ್ ಸ್ಟ್ರೀಟ್",
+        pronunciation: "Com-mer-cial Street",
+        description: "Bengaluru's most famous shopping street with 1.5 km of shops selling fashion, footwear, accessories, and electronics at bargain prices.",
+        address: "Commercial Street, Shivaji Nagar, Bengaluru 560001",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Commercial_Street_Bangalore.jpg/500px-Commercial_Street_Bangalore.jpg"
+            },
+            {
+        name: "Chickpet Market",
+        localName: "ಚಿಕ್ಕಪೇಟೆ",
+        pronunciation: "Chik-pet",
+        description: "A historic wholesale market famous for silk sarees, traditional jewellery, and ethnic wear at wholesale rates.",
+        address: "Chickpet, Bengaluru 560053",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Chickpet_Market_Bangalore.jpg/500px-Chickpet_Market_Bangalore.jpg"
+            },
+            {
+        name: "Brigade Road",
+        localName: "ಬ್ರಿಗೇಡ್ ರೋಡ್",
+        pronunciation: "Bri-gade Road",
+        description: "A vibrant shopping hub with branded stores, bookshops, cafes, and pubs - the heart of Bengaluru's youth culture.",
+        address: "Brigade Road, MG Road, Bengaluru 560001",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Brigade_Road_Bangalore.jpg/500px-Brigade_Road_Bangalore.jpg"
+            },
+            {
+        name: "Malleshwaram Market",
+        localName: "ಮಲ್ಲೇಶ್ವರಂ ಮಾರುಕಟ್ಟೆ",
+        pronunciation: "Mal-lesh-wa-ram Mar-ket",
+        description: "A traditional neighborhood market selling fresh produce, flowers, spices, and South Indian groceries in old Bengaluru charm.",
+        address: "8th Main Road, Malleshwaram, Bengaluru 560003",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Malleshwaram_Market.jpg/500px-Malleshwaram_Market.jpg"
+            },
+            {
+        name: "UB City Mall",
+        localName: "ಯುಬಿ ಸಿಟಿ",
+        pronunciation: "U B City",
+        description: "Bengaluru's most luxurious shopping destination with international brands, fine dining restaurants, and art galleries.",
+        address: "24, Vittal Mallya Road, Bengaluru 560001",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/UBtowers.jpg/500px-UBtowers.jpg"
             }
         ]
     },
@@ -882,6 +1008,48 @@ export const CITY_GUIDE_DATA = {
         description: "One of India's largest zoos with over 1,500 species including white tigers, lions, rhinos, and a prehistoric animal park.",
         imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Hyderabad_zoo.jpg/500px-Hyderabad_zoo.jpg"
             }
+        ],
+    shopping: [
+            {
+        name: "Laad Bazaar",
+        localName: "లాడ్ బజార్",
+        pronunciation: "Laad Ba-zaar",
+        description: "Famous century-old market near Charminar specializing in traditional lac bangles, pearls, bridal wear, and Hyderabadi jewellery.",
+        address: "Laad Bazaar Road, Charminar, Hyderabad 500002",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Laad_Bazaar_Hyderabad.jpg/500px-Laad_Bazaar_Hyderabad.jpg"
+            },
+            {
+        name: "Begum Bazaar",
+        localName: "బేగం బజార్",
+        pronunciation: "Be-gum Ba-zaar",
+        description: "One of Asia's largest wholesale markets selling everything from spices, grains, textiles, to electronics at wholesale rates.",
+        address: "Begum Bazaar, Hyderabad 500012",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Begum_Bazaar_Hyderabad.jpg/500px-Begum_Bazaar_Hyderabad.jpg"
+            },
+            {
+        name: "Shilparamam",
+        localName: "శిల్పారామం",
+        pronunciation: "Shil-pa-ra-mam",
+        description: "An arts and crafts village showcasing traditional Indian handicrafts, handlooms, pottery, and folk performances.",
+        address: "HITEC City, Madhapur, Hyderabad 500081",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Shilparamam_Hyderabad.jpg/500px-Shilparamam_Hyderabad.jpg"
+            },
+            {
+        name: "Moazzam Jahi Market",
+        localName: "మొయ్యజమ్ జాహీ మార్కెట్",
+        pronunciation: "Mo-az-zam Ja-hi Mar-ket",
+        description: "A historic 1930s market with beautiful yellow buildings selling fruits, vegetables, flowers, and traditional items.",
+        address: "Pathargatti, Hyderabad 500002",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Moazzam_Jahi_Market.jpg/500px-Moazzam_Jahi_Market.jpg"
+            },
+            {
+        name: "Inorbit Mall",
+        localName: "ఇనార్బిట్ మాల్",
+        pronunciation: "In-or-bit Mall",
+        description: "Hyderabad's premium shopping destination with international brands, multiplex cinema, food court, and entertainment zones.",
+        address: "HITEC City, Madhapur, Hyderabad 500081",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Inorbit_Mall_Hyderabad.jpg/500px-Inorbit_Mall_Hyderabad.jpg"
+            }
         ]
     },
 
@@ -1028,6 +1196,48 @@ export const CITY_GUIDE_DATA = {
         pronunciation: "Bha-dra Fort",
         description: "A 15th-century fort built by Ahmedabad's founder, housing the Bhadra Kali Temple and commanding the historic old city.",
         imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Bhadra_Fort_in_Ahmedabad%2C_Gujarat%2C_India_-_1872.jpg/500px-Bhadra_Fort_in_Ahmedabad%2C_Gujarat%2C_India_-_1872.jpg"
+            }
+        ],
+    shopping: [
+            {
+        name: "Law Garden Night Market",
+        localName: "લૉ ગાર્ડન માર્કેટ",
+        pronunciation: "Law Gar-den",
+        description: "Famous evening market for traditional Gujarati embroidered clothing, handicrafts, mirror work, and street food stalls.",
+        address: "Law Garden Road, Ellisbridge, Ahmedabad 380006",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Law_Garden%2C_Ahmedabad_-_India_%284050720558%29.jpg/500px-Law_Garden%2C_Ahmedabad_-_India_%284050720558%29.jpg"
+            },
+            {
+        name: "Manek Chowk",
+        localName: "માણેક ચોક",
+        pronunciation: "Ma-nek Chowk",
+        description: "A bustling market that transforms from jewellery market by day to street food paradise by night - Ahmedabad's iconic bazaar.",
+        address: "Manek Chowk, Old City, Ahmedabad 380001",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Manek_Chowk_Ahmedabad.jpg/500px-Manek_Chowk_Ahmedabad.jpg"
+            },
+            {
+        name: "Rani No Hajiro",
+        localName: "રાણી નો હજીરો",
+        pronunciation: "Ra-ni No Ha-ji-ro",
+        description: "A traditional textile market near historic mosques selling traditional Gujarati fabrics, bandhani, and embroidered sarees.",
+        address: "Astodia, Ahmedabad 380001",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Ahmedabad_Old_City_Market.jpg/500px-Ahmedabad_Old_City_Market.jpg"
+            },
+            {
+        name: "CG Road",
+        localName: "સી.જી. રોડ",
+        pronunciation: "C G Road",
+        description: "Ahmedabad's premier shopping street with branded showrooms, boutiques, restaurants, and modern shopping complexes.",
+        address: "C.G. Road (Chimanlal Girdharlal Road), Ahmedabad 380009",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/CG_Road_Ahmedabad.jpg/500px-CG_Road_Ahmedabad.jpg"
+            },
+            {
+        name: "AlphaOne Mall",
+        localName: "આલ્ફાવન મોલ",
+        pronunciation: "Al-pha-One Mall",
+        description: "Ahmedabad's largest shopping mall with international brands, food court, multiplex cinema, and entertainment zones.",
+        address: "Vastrapur, Ahmedabad 380015",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/AlphaOne_Mall_Ahmedabad.jpg/500px-AlphaOne_Mall_Ahmedabad.jpg"
             }
         ]
     },
@@ -1176,6 +1386,48 @@ export const CITY_GUIDE_DATA = {
         description: "A magnificent early 19th-century Peshwa mansion with intricate wooden carvings, now housing a post office and retail shops.",
         imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Vishram_Baug_Wada.jpg/500px-Vishram_Baug_Wada.jpg"
             }
+        ],
+    shopping: [
+            {
+        name: "Tulsi Baug",
+        localName: "तुळशीबाग",
+        pronunciation: "Tul-si Baug",
+        description: "A historic market near Parvati Hill famous for traditional jewellery, household items, religious articles, and affordable shopping.",
+        address: "Tulsi Baug Road, Pune 411002",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Tulsi_Baug_Market_Pune.jpg/500px-Tulsi_Baug_Market_Pune.jpg"
+            },
+            {
+        name: "FC Road (Fergusson College Road)",
+        localName: "एफ.सी. रोड",
+        pronunciation: "F C Road",
+        description: "A vibrant 2 km shopping street popular with students and youth, lined with clothing stores, bookshops, and cafes.",
+        address: "Fergusson College Road, Shivajinagar, Pune 411004",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/FC_Road_Pune.jpg/500px-FC_Road_Pune.jpg"
+            },
+            {
+        name: "Laxmi Road",
+        localName: "लक्ष्मी रोड",
+        pronunciation: "Lax-mi Road",
+        description: "Pune's busiest commercial street for traditional Maharashtrian jewellery, textiles, and wedding shopping.",
+        address: "Laxmi Road, Pune 411030",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Laxmi_Road_Pune.jpg/500px-Laxmi_Road_Pune.jpg"
+            },
+            {
+        name: "Hong Kong Lane",
+        localName: "हाँग काँग लेन",
+        pronunciation: "Hong Kong Lane",
+        description: "A popular lane in Camp area known for affordable fashion, accessories, footwear, and street-style shopping.",
+        address: "MG Road, Camp Area, Pune 411001",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Hong_Kong_Lane_Pune.jpg/500px-Hong_Kong_Lane_Pune.jpg"
+            },
+            {
+        name: "Phoenix Marketcity",
+        localName: "फिनिक्स मार्केटसिटी",
+        pronunciation: "Phoe-nix Mar-ket-ci-ty",
+        description: "Pune's largest shopping mall with premium brands, hypermarket, multiplex cinema, and diverse dining options.",
+        address: "Viman Nagar, Pune 411014",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Phoenix_Marketcity_Pune.jpg/500px-Phoenix_Marketcity_Pune.jpg"
+            }
         ]
     },
 
@@ -1322,6 +1574,48 @@ export const CITY_GUIDE_DATA = {
         pronunciation: "Al-bert Hall Mu-se-um",
         description: "Rajasthan's oldest museum in a spectacular Indo-Saracenic building housing Egyptian mummies, carpets, crystal works, and coins.",
         imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Albert_Hall_%28_Jaipur_%29.jpg/500px-Albert_Hall_%28_Jaipur_%29.jpg"
+            }
+        ],
+    shopping: [
+            {
+        name: "Johari Bazaar",
+        localName: "जोहरी बाजार",
+        pronunciation: "Jo-ha-ri Ba-zaar",
+        description: "Jaipur's famous jewellery market specializing in traditional Rajasthani gold, silver, gemstones, and Kundan meenakari jewellery.",
+        address: "Johari Bazaar Road, Jaipur 302003",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Johari_Bazaar_Jaipur.jpg/500px-Johari_Bazaar_Jaipur.jpg"
+            },
+            {
+        name: "Bapu Bazaar",
+        localName: "बापू बाजार",
+        pronunciation: "Ba-pu Ba-zaar",
+        description: "A vibrant market for traditional Rajasthani textiles, mojari (leather shoes), handicrafts, and bandhani tie-dye fabrics.",
+        address: "Bapu Bazaar, Jaipur 302001",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Bapu_Bazaar_Jaipur.jpg/500px-Bapu_Bazaar_Jaipur.jpg"
+            },
+            {
+        name: "Tripolia Bazaar",
+        localName: "त्रिपोलिया बाजार",
+        pronunciation: "Tri-po-lia Ba-zaar",
+        description: "Famous for lac bangles, traditional Rajasthani iron work, brassware, and colorful bridal churas (bangle sets).",
+        address: "Tripolia Bazaar, Near City Palace, Jaipur 302002",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Tripolia_Bazaar_Jaipur.jpg/500px-Tripolia_Bazaar_Jaipur.jpg"
+            },
+            {
+        name: "Chandpol Bazaar",
+        localName: "चांदपोल बाजार",
+        pronunciation: "Chand-pol Ba-zaar",
+        description: "A historic market known for marble sculptures, wooden handicrafts, block-printed textiles, and traditional Rajasthani artifacts.",
+        address: "Chandpol Bazaar, Jaipur 302001",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Chandpol_Bazaar_Jaipur.jpg/500px-Chandpol_Bazaar_Jaipur.jpg"
+            },
+            {
+        name: "World Trade Park",
+        localName: "वर्ल्ड ट्रेड पार्क",
+        pronunciation: "World Trade Park",
+        description: "Jaipur's premium shopping mall with international brands, IMAX cinema, food courts, and entertainment zones.",
+        address: "Jawahar Lal Nehru Marg, Malviya Nagar, Jaipur 302017",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/World_Trade_Park_Jaipur.jpg/500px-World_Trade_Park_Jaipur.jpg"
             }
         ]
     },
@@ -1617,6 +1911,48 @@ export const CITY_GUIDE_DATA = {
         description: "A heritage street in Mattancherry with antique shops, spice merchants, and the famous Paradesi Synagogue — a cultural treasure trove.",
         imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Jew_Street_Mattancherry%2C_Fort_Kochi%2C_Ernakulam%2C_Kerala%2C_India_IMG_20190526_150112.jpg/500px-Jew_Street_Mattancherry%2C_Fort_Kochi%2C_Ernakulam%2C_Kerala%2C_India_IMG_20190526_150112.jpg"
             }
+        ],
+    shopping: [
+            {
+        name: "Broadway Market",
+        localName: "ബ്രോഡ്‌വേ",
+        pronunciation: "Broad-way",
+        description: "Kochi's oldest and busiest market street selling spices, textiles, electronics, and traditional Kerala items at wholesale prices.",
+        address: "Broadway, Ernakulam, Kochi 682031",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Broadway_Kochi.jpg/500px-Broadway_Kochi.jpg"
+            },
+            {
+        name: "MG Road Shopping",
+        localName: "എം.ജി. റോഡ്",
+        pronunciation: "M G Road",
+        description: "Kochi's premium shopping destination with branded stores, jewellery shops, textile showrooms, and modern boutiques.",
+        address: "Mahatma Gandhi Road, Ernakulam, Kochi 682011",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/MG_Road_Kochi.jpg/500px-MG_Road_Kochi.jpg"
+            },
+            {
+        name: "Lulu Mall",
+        localName: "ലുലു മാൾ",
+        pronunciation: "Lu-lu Mall",
+        description: "India's largest shopping mall (by total area) with 225+ stores, hypermarket, food court, ice rink, and entertainment zones.",
+        address: "34/1111, NH Bypass, Edappally, Kochi 682024",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Lulu_Mall_Kochi.jpg/500px-Lulu_Mall_Kochi.jpg"
+            },
+            {
+        name: "Jew Town Antique Market",
+        localName: "ജൂതപട്ടണം",
+        pronunciation: "Jew Town",
+        description: "A historic market street in Mattancherry famous for antique furniture, spice shops, curios, and traditional Kerala artifacts.",
+        address: "Jew Town Road, Mattancherry, Kochi 682002",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Jew_Street_Mattancherry%2C_Fort_Kochi%2C_Ernakulam%2C_Kerala%2C_India_IMG_20190526_150112.jpg/500px-Jew_Street_Mattancherry%2C_Fort_Kochi%2C_Ernakulam%2C_Kerala%2C_India_IMG_20190526_150112.jpg"
+            },
+            {
+        name: "Oberon Mall",
+        localName: "ഒബെറോൺ മാൾ",
+        pronunciation: "O-be-ron Mall",
+        description: "A popular shopping mall in Ernakulam with fashion brands, electronics stores, food court, and multiplex cinema.",
+        address: "NH Bypass Road, Edappally, Kochi 682024",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Oberon_Mall_Kochi.jpg/500px-Oberon_Mall_Kochi.jpg"
+            }
         ]
     },
 
@@ -1763,6 +2099,48 @@ export const CITY_GUIDE_DATA = {
         pronunciation: "O-pen Hand Mon-u-ment",
         description: "Le Corbusier's iconic 26-metre spinning steel sculpture symbolising 'open to give, open to receive' — the official emblem of Chandigarh.",
         imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Chandigarh_Capitol_Complex_-_Le_Corbusier_-_Open_hand_monument.jpg/500px-Chandigarh_Capitol_Complex_-_Le_Corbusier_-_Open_hand_monument.jpg"
+            }
+        ],
+    shopping: [
+            {
+        name: "Sector 17 Market",
+        localName: "ਸੈਕਟਰ 17",
+        pronunciation: "Sec-tor 17",
+        description: "Chandigarh's iconic shopping hub with hundreds of branded stores, cafes, showrooms, and street shopping in a well-planned layout.",
+        address: "Sector 17, Chandigarh 160017",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Sector_17_Chandigarh.jpg/500px-Sector_17_Chandigarh.jpg"
+            },
+            {
+        name: "Sector 22 Market",
+        localName: "ਸੈਕਟਰ 22",
+        pronunciation: "Sec-tor 22",
+        description: "A popular local shopping market known for affordable clothing, footwear, accessories, and street food stalls.",
+        address: "Sector 22, Chandigarh 160022",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Sector_22_Market_Chandigarh.jpg/500px-Sector_22_Market_Chandigarh.jpg"
+            },
+            {
+        name: "Elante Mall",
+        localName: "ਈਲਾਂਤੇ ਮਾਲ",
+        pronunciation: "E-lan-te Mall",
+        description: "North India's largest shopping mall with 200+ brands, hypermarket, PVR multiplex, food court, and fun zone.",
+        address: "178-178A, Industrial Area Phase-I, Chandigarh 160002",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Elante_Mall_Chandigarh.jpg/500px-Elante_Mall_Chandigarh.jpg"
+            },
+            {
+        name: "Sector 35 Market",
+        localName: "ਸੈਕਟਰ 35",
+        pronunciation: "Sec-tor 35",
+        description: "A vibrant market area popular with students for trendy fashion, bookstores, cafes, and budget-friendly shopping.",
+        address: "Sector 35, Chandigarh 160035",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Sector_35_Chandigarh.jpg/500px-Sector_35_Chandigarh.jpg"
+            },
+            {
+        name: "Palika Bazaar",
+        localName: "ਪਾਲਿਕਾ ਬਾਜ਼ਾਰ",
+        pronunciation: "Pa-li-ka Ba-zaar",
+        description: "An underground market in Sector 19 selling electronics, accessories, clothes, and household items at bargain prices.",
+        address: "Sector 19, Chandigarh 160019",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Palika_Bazaar_Chandigarh.jpg/500px-Palika_Bazaar_Chandigarh.jpg"
             }
         ]
     },
@@ -1911,6 +2289,48 @@ export const CITY_GUIDE_DATA = {
         description: "A crafts village market showcasing Pattachitra paintings, Dokra metalwork, and tribal handicrafts from across Odisha.",
         imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Bhubaneswar_at_night_from_sky.jpg/500px-Bhubaneswar_at_night_from_sky.jpg"
             }
+        ],
+    shopping: [
+            {
+        name: "Ekamra Haat",
+        localName: "ଏକାମ୍ର ହାଟ",
+        pronunciation: "E-kam-ra Haat",
+        description: "A crafts village and open-air market showcasing Odisha's handicrafts, handlooms, Pattachitra paintings, and tribal art.",
+        address: "Panthanivas Complex, Forest Park, Bhubaneswar 751001",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Ekamra_Haat_Bhubaneswar.jpg/500px-Ekamra_Haat_Bhubaneswar.jpg"
+            },
+            {
+        name: "Bapuji Nagar Market",
+        localName: "ବାପୁଜୀ ନଗର",
+        pronunciation: "Ba-pu-ji Na-gar",
+        description: "Bhubaneswar's popular shopping hub for textiles, traditional Odia sarees, jewellery, and handicrafts at reasonable prices.",
+        address: "Bapuji Nagar, Bhubaneswar 751009",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Bapuji_Nagar_Bhubaneswar.jpg/500px-Bapuji_Nagar_Bhubaneswar.jpg"
+            },
+            {
+        name: "Esplanade One Mall",
+        localName: "ଏସ୍ପ୍ଲାନେଡ୍ ମଲ୍",
+        pronunciation: "Es-pla-nade Mall",
+        description: "Bhubaneswar's largest shopping mall with national and international brands, food court, and multiplex cinema.",
+        address: "Rasulgarh, Bhubaneswar 751010",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Esplanade_One_Mall_Bhubaneswar.jpg/500px-Esplanade_One_Mall_Bhubaneswar.jpg"
+            },
+            {
+        name: "Market Building (Unit-I)",
+        localName: "ମାର୍କେଟ ବିଲଡିଂ",
+        pronunciation: "Mar-ket Buil-ding",
+        description: "A traditional market area in Unit-I selling fresh produce, spices, Odia sweets, and daily essentials.",
+        address: "Unit-I, Bhubaneswar 751001",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Market_Building_Bhubaneswar.jpg/500px-Market_Building_Bhubaneswar.jpg"
+            },
+            {
+        name: "Utkalika (Govt Emporium)",
+        localName: "ଉତ୍କଳିକା",
+        pronunciation: "Ut-ka-li-ka",
+        description: "Government-run emporium showcasing authentic Odisha handicrafts, handlooms, silver filigree work, and tribal art.",
+        address: "Western Tower, Rupali Square, Bhubaneswar 751001",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Utkalika_Bhubaneswar.jpg/500px-Utkalika_Bhubaneswar.jpg"
+            }
         ]
     },
 
@@ -2057,6 +2477,48 @@ export const CITY_GUIDE_DATA = {
         pronunciation: "Fan-cy Ba-zar",
         description: "Guwahati's busiest commercial hub selling everything from silk mekhela chadors to electronics, spices, and street food.",
         imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Guwahati_citysky.jpg/500px-Guwahati_citysky.jpg"
+            }
+        ],
+    shopping: [
+            {
+        name: "Fancy Bazaar",
+        localName: "ফেন্সি বজাৰ",
+        pronunciation: "Fan-cy Ba-zaar",
+        description: "Guwahati's busiest commercial hub with shops selling Assamese silk mekhela chadors, traditional jewellery, and handicrafts.",
+        address: "Fancy Bazaar, Guwahati 781001",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Fancy_Bazaar_Guwahati.jpg/500px-Fancy_Bazaar_Guwahati.jpg"
+            },
+            {
+        name: "Paltan Bazaar",
+        localName: "পাল্টন বজাৰ",
+        pronunciation: "Pal-tan Ba-zaar",
+        description: "A major wholesale and retail market selling textiles, electronics, footwear, and daily essentials at competitive prices.",
+        address: "Paltan Bazaar, Guwahati 781008",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Paltan_Bazaar_Guwahati.jpg/500px-Paltan_Bazaar_Guwahati.jpg"
+            },
+            {
+        name: "Hub Mall",
+        localName: "হাব মল",
+        pronunciation: "Hub Mall",
+        description: "Guwahati's modern shopping destination with branded stores, food court, gaming zones, and multiplex cinema.",
+        address: "G.S. Road, Christian Basti, Guwahati 781005",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Hub_Mall_Guwahati.jpg/500px-Hub_Mall_Guwahati.jpg"
+            },
+            {
+        name: "Assam State Emporium",
+        localName: "অসম ৰাজ্যিক ভঁৰাল",
+        pronunciation: "As-sam Em-po-ri-um",
+        description: "Government emporium showcasing authentic Assamese silk, Muga silk products, bamboo handicrafts, and traditional items.",
+        address: "Machkhowa, Uzanbazar, Guwahati 781001",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Assam_Emporium_Guwahati.jpg/500px-Assam_Emporium_Guwahati.jpg"
+            },
+            {
+        name: "Uzan Bazaar",
+        localName: "উজান বজাৰ",
+        pronunciation: "U-zan Ba-zaar",
+        description: "A traditional market near the Brahmaputra riverfront selling fresh fish, spices, vegetables, and local Assamese products.",
+        address: "Uzan Bazaar, Guwahati 781001",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Uzan_Bazaar_Guwahati.jpg/500px-Uzan_Bazaar_Guwahati.jpg"
             }
         ]
     },
@@ -2205,6 +2667,48 @@ export const CITY_GUIDE_DATA = {
         description: "A sunrise rowing boat journey along Varanasi's 84 ghats, revealing the ancient city's spiritual life, temples, and rituals.",
         imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Ahilya_Ghat_by_the_Ganges%2C_Varanasi.jpg/500px-Ahilya_Ghat_by_the_Ganges%2C_Varanasi.jpg"
             }
+        ],
+    shopping: [
+            {
+        name: "Vishwanath Gali",
+        localName: "विश्वनाथ गली",
+        pronunciation: "Vish-wa-nath Ga-li",
+        description: "A narrow traditional market lane leading to Kashi Vishwanath Temple, selling religious items, silk sarees, and Banarasi handicrafts.",
+        address: "Vishwanath Gali, Godowlia, Varanasi 221001",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Vishwanath_Gali_Varanasi.jpg/500px-Vishwanath_Gali_Varanasi.jpg"
+            },
+            {
+        name: "Thatheri Bazaar",
+        localName: "ठठेरी बाज़ार",
+        pronunciation: "Tha-the-ri Ba-zaar",
+        description: "Historic brass and copper utensil market where artisans craft traditional metalware using centuries-old techniques.",
+        address: "Thatheri Bazaar, Varanasi 221001",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Thatheri_Bazaar_Varanasi.jpg/500px-Thatheri_Bazaar_Varanasi.jpg"
+            },
+            {
+        name: "Banarasi Silk Weaving Centers",
+        localName: "बनारसी रेशम",
+        pronunciation: "Ba-na-ra-si Silk",
+        description: "Traditional handloom centers in Peeli Kothi and Alaitola areas producing world-famous Banarasi silk sarees with gold zari work.",
+        address: "Peeli Kothi, Madanpura, Varanasi 221001",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Banarasi_Silk_Weaving.jpg/500px-Banarasi_Silk_Weaving.jpg"
+            },
+            {
+        name: "Godowlia Market",
+        localName: "गोदौलिया",
+        pronunciation: "Go-dow-lia",
+        description: "Varanasi's main commercial hub with shops selling everything from silk sarees and religious items to electronics and street food.",
+        address: "Godowlia Chowk, Varanasi 221001",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Godowlia_Market_Varanasi.jpg/500px-Godowlia_Market_Varanasi.jpg"
+            },
+            {
+        name: "Lahurabir Market",
+        localName: "लहुराबीर बाज़ार",
+        pronunciation: "La-hu-ra-bir Ba-zaar",
+        description: "A bustling local market near the main railway station selling textiles, handicrafts, street food, and daily essentials.",
+        address: "Lahurabir, Varanasi 221010",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Lahurabir_Market_Varanasi.jpg/500px-Lahurabir_Market_Varanasi.jpg"
+            }
         ]
     },
 
@@ -2352,6 +2856,48 @@ export const CITY_GUIDE_DATA = {
         description: "One of North India's most visited Hanuman temples near Patna Junction railway station, known for its charitable hospital and prasad.",
         imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Mahavir_Mandir_from_Buddha_Smriti_Park.JPG/500px-Mahavir_Mandir_from_Buddha_Smriti_Park.JPG"
             }
+        ],
+    shopping: [
+            {
+        name: "Maurya Lok Complex",
+        localName: "मौर्य लोक काम्प्लेक्स",
+        pronunciation: "Maur-ya Lok",
+        description: "Patna's popular shopping and entertainment hub with shops selling handicrafts, Madhubani paintings, and Bihar's traditional items.",
+        address: "Fraser Road, Patna 800001",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Maurya_Lok_Patna.jpg/500px-Maurya_Lok_Patna.jpg"
+            },
+            {
+        name: "Patna Market (Hathwa Market)",
+        localName: "पटना मार्केट",
+        pronunciation: "Pat-na Mar-ket",
+        description: "A historic wholesale market for textiles, garments, and traditional Bihari handlooms at competitive prices.",
+        address: "Ashok Rajpath, Patna 800004",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Patna_Market.jpg/500px-Patna_Market.jpg"
+            },
+            {
+        name: "Khadi Bhandar",
+        localName: "खादी भंडार",
+        pronunciation: "Kha-di Bhan-dar",
+        description: "Government emporium selling authentic Khadi fabric, handloom products, and traditional handicrafts from Bihar artisans.",
+        address: "Dak Bungalow Road, Patna 800001",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Khadi_Bhandar_Patna.jpg/500px-Khadi_Bhandar_Patna.jpg"
+            },
+            {
+        name: "P&M Mall",
+        localName: "पी एंड एम मॉल",
+        pronunciation: "P and M Mall",
+        description: "Patna's modern shopping mall with branded stores, food court, multiplex cinema, and entertainment zones.",
+        address: "Frazer Road, Patna 800001",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/P_and_M_Mall_Patna.jpg/500px-P_and_M_Mall_Patna.jpg"
+            },
+            {
+        name: "Exhibition Road Market",
+        localName: "एक्जीबिशन रोड",
+        pronunciation: "Ex-hi-bi-tion Road",
+        description: "A popular shopping area for fashion, footwear, electronics, and books - frequented by students and young shoppers.",
+        address: "Exhibition Road, Patna 800001",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Exhibition_Road_Patna.jpg/500px-Exhibition_Road_Patna.jpg"
+            }
         ]
     },
 
@@ -2498,6 +3044,48 @@ export const CITY_GUIDE_DATA = {
         pronunciation: "Ka-ran-ji Lake",
         description: "A butterfly park and nature reserve around a lake in Mysuru, home to diverse birds and a walk-in aviary — perfect for nature lovers.",
         imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Karanji_lake_pic.jpg/500px-Karanji_lake_pic.jpg"
+            }
+        ],
+    shopping: [
+            {
+        name: "Devaraja Market",
+        localName: "ದೇವರಾಜ ಮಾರ್ಕೆಟ್",
+        pronunciation: "De-va-ra-ja Mar-ket",
+        description: "A vibrant 19th-century market selling fresh flowers, sandalwood products, Mysore silk, traditional spices, and local handicrafts.",
+        address: "Devaraja Urs Road, Mysuru 570001",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Devaraja_Market%2C_Mysore_%28306989724%29.jpg/500px-Devaraja_Market%2C_Mysore_%28306989724%29.jpg"
+            },
+            {
+        name: "Mysore Silk Saree Shops",
+        localName: "ಮೈಸೂರು ರೇಷ್ಮೆ ಸೀರೆ",
+        pronunciation: "My-so-re Silk Sa-ree",
+        description: "Famous for pure silk sarees with gold zari work - Government Silk Factory and KSIC showrooms offer authentic Mysore silk.",
+        address: "Sayyaji Rao Road & Mananthody Road, Mysuru 570001",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Mysore_Silk_Saree.jpg/500px-Mysore_Silk_Saree.jpg"
+            },
+            {
+        name: "Cauvery Arts & Crafts Emporium",
+        localName: "ಕಾವೇರಿ ಕಲಾ ಮತ್ತು ಕರಕುಶಲ",
+        pronunciation: "Cau-ve-ry Em-po-ri-um",
+        description: "Government emporium showcasing Mysore's traditional handicrafts including sandalwood carvings, rosewood inlay work, and silk products.",
+        address: "Sayyaji Rao Road, Mysuru 570024",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Cauvery_Emporium_Mysore.jpg/500px-Cauvery_Emporium_Mysore.jpg"
+            },
+            {
+        name: "Mandi Mohalla",
+        localName: "ಮಂಡಿ ಮೊಹಲ್ಲಾ",
+        pronunciation: "Man-di Mo-hal-la",
+        description: "A traditional market area known for wholesale spices, grains, Mysore pak sweet shops, and local grocery items.",
+        address: "Mandi Mohalla, Mysuru 570021",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Mandi_Mohalla_Mysore.jpg/500px-Mandi_Mohalla_Mysore.jpg"
+            },
+            {
+        name: "Mall of Mysore",
+        localName: "ಮಾಲ್ ಆಫ್ ಮೈಸೂರು",
+        pronunciation: "Mall of My-so-re",
+        description: "Mysuru's modern shopping mall with national and international brands, food court, and multiplex cinema.",
+        address: "MG Road, Nazarbad, Mysuru 570010",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Mall_of_Mysore.jpg/500px-Mall_of_Mysore.jpg"
             }
         ]
     }

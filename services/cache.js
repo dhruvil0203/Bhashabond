@@ -198,12 +198,6 @@ function getDefaultCities() {
 
 function getDefaultPhrasebook() {
   return {
-    Greetings: [
-      { id: 1, english: 'Hello / Good Morning', translations: {} },
-      { id: 2, english: 'Thank you', translations: {} },
-      { id: 3, english: 'Good night', translations: {} },
-      { id: 4, english: 'How are you?', translations: {} },
-    ],
     Food: [
       { id: 5, english: 'I am hungry', translations: {} },
       { id: 6, english: 'Give me water', translations: {} },
@@ -220,8 +214,6 @@ function getDefaultPhrasebook() {
       { id: 13, english: 'I am lost', translations: {} },
     ],
     Shopping: [
-      { id: 14, english: 'How much does this cost?', translations: {} },
-      { id: 15, english: 'Very expensive', translations: {} },
       { id: 16, english: 'Please reduce the price', translations: {} },
     ],
   };

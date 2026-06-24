@@ -66,52 +66,10 @@ const STATE_TO_CITY_MAP = {
   'Tripura': 'Kolkata',
 };
 
-const CATEGORIES = ["Greetings", "Food", "Travel", "Emergency", "Shopping"];
+const CATEGORIES = ["Food", "Travel", "Emergency", "Shopping"];
 
 // Hardcoded phrasebook — fully offline, no API needed
 const PHRASEBOOK_DATA = {
-  Greetings: [
-    { id: 1, english: 'Hello / Good Morning', translations: {
-      kan_Knda: { text: 'ನಮಸ್ಕಾರ', pronunciation: 'Namaskāra' },
-      hin_Deva: { text: 'नमस्ते', pronunciation: 'Namaste' },
-      tam_Taml: { text: 'வணக்கம்', pronunciation: 'Vanakkam' },
-      guj_Gujr: { text: 'નમસ્તે', pronunciation: 'Namaste' },
-      ben_Beng: { text: 'নমস্কার', pronunciation: 'Nomoshkar' },
-      tel_Telu: { text: 'నమస్కారం', pronunciation: 'Namaskāram' },
-      mal_Mlym: { text: 'നമസ്കാരം', pronunciation: 'Namaskāram' },
-      mar_Deva: { text: 'नमस्कार', pronunciation: 'Namaskār' },
-    }},
-    { id: 2, english: 'Thank you', translations: {
-      kan_Knda: { text: 'ಧನ್ಯವಾದ', pronunciation: 'Dhanyavāda' },
-      hin_Deva: { text: 'धन्यवाद', pronunciation: 'Dhanyavād' },
-      tam_Taml: { text: 'நன்றி', pronunciation: 'Nandri' },
-      guj_Gujr: { text: 'આભાર', pronunciation: 'Aabhaar' },
-      ben_Beng: { text: 'ধন্যবাদ', pronunciation: 'Dhonnobad' },
-      tel_Telu: { text: 'ధన్యవాదాలు', pronunciation: 'Dhanyavādālu' },
-      mal_Mlym: { text: 'നന്ദി', pronunciation: 'Nandi' },
-    }},
-    { id: 3, english: 'Good night', translations: {
-      kan_Knda: { text: 'ಶುಭ ರಾತ್ರಿ', pronunciation: 'Śubha rātri' },
-      hin_Deva: { text: 'शुभ रात्रि', pronunciation: 'Shubh rātri' },
-      tam_Taml: { text: 'இனிய இரவு', pronunciation: 'Iniya iravu' },
-      guj_Gujr: { text: 'શુભ રાત્રી', pronunciation: 'Shubh rātrī' },
-    }},
-    { id: 4, english: 'How are you?', translations: {
-      kan_Knda: { text: 'ಹೇಗಿದ್ದೀರಾ?', pronunciation: 'Hēgiddīrā?' },
-      hin_Deva: { text: 'आप कैसे हैं?', pronunciation: 'Aap kaise hain?' },
-      tam_Taml: { text: 'எப்படி இருக்கீர்கள்?', pronunciation: 'Eppadi irukkīrgal?' },
-      guj_Gujr: { text: 'તમે કેમ છો?', pronunciation: 'Tame kem chho?' },
-      ben_Beng: { text: 'কেমন আছেন?', pronunciation: 'Kemon āchhen?' },
-      tel_Telu: { text: 'ఎలా ఉన్నారు?', pronunciation: 'Elā unnāru?' },
-    }},
-    { id: 20, english: 'Goodbye', translations: {
-      kan_Knda: { text: 'ವಿದಾಯ', pronunciation: 'Vidāya' },
-      hin_Deva: { text: 'अलविदा', pronunciation: 'Alvidā' },
-      tam_Taml: { text: 'விடைபெறுகிறேன்', pronunciation: 'Vidaiperukirēn' },
-      guj_Gujr: { text: 'આવજો', pronunciation: 'Āvjo' },
-      ben_Beng: { text: 'বিদায়', pronunciation: 'Bidāy' },
-    }},
-  ],
   Food: [
     { id: 5, english: 'I am hungry', translations: {
       kan_Knda: { text: 'ನನಗೆ ಹಸಿವಾಗಿದೆ', pronunciation: 'Nanage hasivāgide' },
@@ -185,16 +143,6 @@ const PHRASEBOOK_DATA = {
     }},
   ],
   Shopping: [
-    { id: 14, english: 'How much does this cost?', translations: {
-      kan_Knda: { text: 'ಇದರ ಬೆಲೆ ಎಷ್ಟು?', pronunciation: 'Idara bele eṣṭu?' },
-      hin_Deva: { text: 'इसकी कीमत क्या है?', pronunciation: 'Iskī kīmat kya hai?' },
-      tam_Taml: { text: 'இதன் விலை என்ன?', pronunciation: 'Idhan vilai enna?' },
-      guj_Gujr: { text: 'આનો ભાવ શું છે?', pronunciation: 'Āno bhāv shun chhe?' },
-    }},
-    { id: 15, english: 'Very expensive', translations: {
-      kan_Knda: { text: 'ತುಂಬಾ ದುಬಾರಿ', pronunciation: 'Tumbā dubāri' },
-      hin_Deva: { text: 'बहुत महंगा', pronunciation: 'Bahut mahangā' },
-    }},
     { id: 16, english: 'Please reduce the price', translations: {
       kan_Knda: { text: 'ದಯವಿಟ್ಟು ಬೆಲೆ ಕಡಿಮೆ ಮಾಡಿ', pronunciation: 'Dayaviṭṭu bele kaḍime māḍi' },
       hin_Deva: { text: 'कृपया कीमत कम करें', pronunciation: 'Kripayā kīmat kam karein' },
@@ -207,7 +155,7 @@ export default function PhrasebookScreen({
   targetLang = "Kannada",
   selectedCity = null
 }) {
-  const [activeCategory, setActiveCategory] = useState("Greetings");
+  const [activeCategory, setActiveCategory] = useState("Food");
   const [bookmarks, setBookmarks] = useState({});
   const [playingId, setPlayingId] = useState(null);
   const [imageErrors, setImageErrors] = useState({});
