@@ -2,6 +2,22 @@
 
 A React Native offline-first translation app supporting 23 Indian languages + English with smart offline capabilities and Google Translate API integration.
 
+## Screenshots
+
+<div align="center">
+  <img src="assets/screenshots/home.png" alt="Home Screen" width="250"/>
+  <img src="assets/screenshots/translator.png" alt="Translator" width="250"/>
+  <img src="assets/screenshots/phrasebook.png" alt="Phrasebook" width="250"/>
+</div>
+
+<div align="center">
+  <img src="assets/screenshots/greetings.png" alt="Festival Greetings" width="250"/>
+  <img src="assets/screenshots/food.png" alt="Local Food Guide" width="250"/>
+  <img src="assets/screenshots/emergency.png" alt="Emergency Numbers" width="250"/>
+</div>
+
+> **Note**: Add your app screenshots to `assets/screenshots/` directory
+
 ## Features
 
 ✨ **Offline Translation**

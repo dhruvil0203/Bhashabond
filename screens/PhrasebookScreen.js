@@ -470,33 +470,69 @@ export default function PhrasebookScreen({
 
   const FOOD_FALLBACK = 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=500&q=80';
 
-  // ---- Greetings: local customs hero + festival mini-cards ----
+  // ---- Greetings: Compact customs + Beautiful festival cards ----
   const renderGreetingsGuide = () => {
     const guide = getPhraseGuide(activeCityName);
     return (
       <View style={{ marginBottom: 24 }}>
-        {renderSectionHeader('hand-left', 'Local Customs in', activeCityName)}
+        {renderSectionHeader('hand-left', 'Greeting Etiquette in', activeCityName)}
 
-        <View style={discoveryCardStyle}>
-          {renderHeroImage(guide.customsImage, activeCityName, FOOD_FALLBACK)}
-          <View style={{ padding: 16 }}>
-            <Text style={{ fontSize: 20, fontWeight: '800', color: c.textPrimary, marginBottom: 6 }}>
-              Greeting Etiquette
-            </Text>
-            <Text style={{ fontSize: 14, color: c.textSecondary, lineHeight: 21 }}>
-              {guide.customs}
+        {/* Compact Customs Card (No huge image) */}
+        <View style={[discoveryCardStyle, { padding: 18, marginBottom: 20 }]}>
+          <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 14 }}>
+            {/* Icon instead of large image */}
+            <View style={{
+              width: 56,
+              height: 56,
+              backgroundColor: '#FFF7ED',
+              borderRadius: 16,
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderWidth: 2,
+              borderColor: '#FDDCB8',
+            }}>
+              <Text style={{ fontSize: 28 }}>🙏</Text>
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text style={{ fontSize: 17, fontWeight: '800', color: c.textPrimary, marginBottom: 6 }}>
+                How to Greet Locals
+              </Text>
+              <Text style={{ fontSize: 13, color: c.textSecondary, lineHeight: 20 }}>
+                {guide.customs}
+              </Text>
+            </View>
+          </View>
+        </View>
+
+        {/* Festival Greetings Title */}
+        <View style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: 8,
+          marginBottom: 14,
+        }}>
+          <Text style={{ fontSize: 18, fontWeight: '800', color: c.textPrimary }}>
+            Festival Greetings
+          </Text>
+          <View style={{
+            backgroundColor: '#FFF7ED',
+            paddingHorizontal: 8,
+            paddingVertical: 3,
+            borderRadius: 8,
+          }}>
+            <Text style={{ fontSize: 11, fontWeight: '700', color: '#F97316' }}>
+              {FESTIVAL_GREETINGS.length}
             </Text>
           </View>
         </View>
 
-        <Text style={{ fontSize: 16, fontWeight: '800', color: c.textPrimary, marginTop: 8, marginBottom: 12 }}>
-          Festival Greetings
-        </Text>
+        {/* Beautiful Full-Width Festival Cards */}
         {FESTIVAL_GREETINGS.map((f, idx) => {
           const key = `festival-${idx}`;
           return (
-            <View key={key} style={[discoveryCardStyle, { flexDirection: 'row', alignItems: 'center', minHeight: 120 }]}>
-              <View style={{ width: 96, alignSelf: 'stretch', backgroundColor: c.sectionBg, justifyContent: 'center', alignItems: 'center' }}>
+            <View key={key} style={discoveryCardStyle}>
+              {/* Full-width festival image */}
+              <View style={{ position: 'relative', height: 180, justifyContent: 'center', alignItems: 'center', backgroundColor: c.sectionBg }}>
                 {loadingImages[key] && (
                   <ActivityIndicator size="small" color="#F97316" style={{ position: 'absolute', zIndex: 10 }} />
                 )}
@@ -511,24 +547,87 @@ export default function PhrasebookScreen({
                   style={{ width: '100%', height: '100%' }}
                   resizeMode="cover"
                 />
-              </View>
-              <View style={{ flex: 1, padding: 14 }}>
-                <Text style={{ fontSize: 12, fontWeight: '700', color: c.textSecondary, marginBottom: 2 }}>
-                  {f.festival}
-                </Text>
-                <Text style={{ fontSize: 18, fontWeight: '800', color: '#F97316', lineHeight: 26 }}>
-                  {f.native}
-                </Text>
-                <Text style={{ fontSize: 13, fontStyle: 'italic', color: c.textSecondary, marginTop: 2 }}>
-                  {f.pronunciation}
-                </Text>
-                <Text style={{ fontSize: 13, color: c.textPrimary, marginTop: 4 }}>
-                  {f.english}
-                </Text>
-                {f.note ? (
-                  <Text style={{ fontSize: 11, fontStyle: 'italic', color: c.textMuted, marginTop: 4 }}>
-                    {f.note}
+                
+                {/* Gradient overlay for text readability */}
+                <View style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  height: 120,
+                  background: 'linear-gradient(to top, rgba(0,0,0,0.7), transparent)',
+                  backgroundColor: 'rgba(0,0,0,0.4)', // Fallback for React Native
+                }} />
+
+                {/* Festival name badge (top-left) */}
+                <View style={{
+                  position: 'absolute',
+                  top: 12,
+                  left: 12,
+                  backgroundColor: 'rgba(249, 115, 22, 0.95)',
+                  paddingHorizontal: 12,
+                  paddingVertical: 6,
+                  borderRadius: 20,
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  gap: 6,
+                }}>
+                  <Text style={{ fontSize: 16 }}>🎊</Text>
+                  <Text style={{ color: 'white', fontWeight: '800', fontSize: 13 }}>
+                    {f.festival}
                   </Text>
+                </View>
+
+                {/* Native text overlay (bottom) */}
+                <View style={{
+                  position: 'absolute',
+                  bottom: 12,
+                  left: 16,
+                  right: 16,
+                }}>
+                  <Text style={{
+                    fontSize: 24,
+                    fontWeight: '900',
+                    color: 'white',
+                    textShadowColor: 'rgba(0, 0, 0, 0.8)',
+                    textShadowOffset: { width: 0, height: 2 },
+                    textShadowRadius: 4,
+                    lineHeight: 32,
+                  }}>
+                    {f.native}
+                  </Text>
+                </View>
+              </View>
+
+              {/* Card content */}
+              <View style={{ padding: 16 }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 6 }}>
+                  <Ionicons name="volume-medium" size={16} color="#F97316" />
+                  <Text style={{ fontSize: 14, fontStyle: 'italic', color: c.textSecondary, fontWeight: '600' }}>
+                    {f.pronunciation}
+                  </Text>
+                </View>
+                
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 4 }}>
+                  <Ionicons name="language" size={16} color={c.textSecondary} />
+                  <Text style={{ fontSize: 14, color: c.textPrimary }}>
+                    {f.english}
+                  </Text>
+                </View>
+
+                {f.note ? (
+                  <View style={{
+                    marginTop: 10,
+                    padding: 10,
+                    backgroundColor: isDark ? '#1C1C2E' : '#FFF7ED',
+                    borderRadius: 10,
+                    borderLeftWidth: 3,
+                    borderLeftColor: '#F97316',
+                  }}>
+                    <Text style={{ fontSize: 12, color: c.textSecondary, lineHeight: 18 }}>
+                      💡 {f.note}
+                    </Text>
+                  </View>
                 ) : null}
               </View>
             </View>
