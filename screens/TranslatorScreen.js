@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import {
   View, Text, TouchableOpacity, TextInput, ScrollView,
-  ToastAndroid, Platform, Alert, ActivityIndicator,
+  ToastAndroid, Platform, Alert, ActivityIndicator, Modal,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import * as Speech from 'expo-speech';
@@ -10,12 +10,40 @@ import { getColors } from '../theme/colors';
 import { translate, getQuickPhrasesForLang } from '../services/translator';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+// All 23 scheduled languages + English
+const LANGUAGES = [
+  { id: 'en',  name: 'English',   native: 'English',       icon: '🌐' },
+  { id: 'hi',  name: 'Hindi',     native: 'हिन्दी',          icon: '🪔' },
+  { id: 'bn',  name: 'Bengali',   native: 'বাংলা',          icon: '🌾' },
+  { id: 'te',  name: 'Telugu',    native: 'తెలుగు',          icon: '🏛️' },
+  { id: 'mr',  name: 'Marathi',   native: 'मराठी',           icon: '🏰' },
+  { id: 'ta',  name: 'Tamil',     native: 'தமிழ்',           icon: '🌴' },
+  { id: 'gu',  name: 'Gujarati',  native: 'ગુજરાતી',         icon: '🦁' },
+  { id: 'kn',  name: 'Kannada',   native: 'ಕನ್ನಡ',           icon: '🌺' },
+  { id: 'ml',  name: 'Malayalam', native: 'മലയാളം',          icon: '🥥' },
+  { id: 'pa',  name: 'Punjabi',   native: 'ਪੰਜਾਬੀ',          icon: '🌾' },
+  { id: 'or',  name: 'Odia',      native: 'ଓଡ଼ିଆ',           icon: '🛞' },
+  { id: 'as',  name: 'Assamese',  native: 'অসমীয়া',         icon: '🦏' },
+  { id: 'mai', name: 'Maithili',  native: 'মৈথিলী',          icon: '🪷' },
+  { id: 'ur',  name: 'Urdu',      native: 'اردو',            icon: '🕌' },
+  { id: 'ks',  name: 'Kashmiri',  native: 'كٲشُر',           icon: '⛵' },
+  { id: 'doi', name: 'Dogri',     native: 'डोगरी',           icon: '🏔️' },
+  { id: 'kok', name: 'Konkani',   native: 'कोंकणी',          icon: '🏖️' },
+  { id: 'mni', name: 'Manipuri',  native: 'মণিপুরী',         icon: '💃' },
+  { id: 'ne',  name: 'Nepali',    native: 'नेपाली',          icon: '🏔️' },
+  { id: 'brx', name: 'Bodo',      native: 'बड़ो',            icon: '🌳' },
+  { id: 'sa',  name: 'Sanskrit',  native: 'संस्कृतम्',        icon: '📜' },
+  { id: 'sat', name: 'Santali',   native: 'ᱥᱟᱱᱛᱟᱲᱤ',      icon: '🌿' },
+  { id: 'sd',  name: 'Sindhi',    native: 'سنڌي',            icon: '🏜️' },
+];
+
 export default function TranslatorScreen({
   onBack,
   sourceLang = "English",
   targetLang = "Hindi",
   initialText = '',
   onSwapLanguages,
+  onChangeLanguages,
 }) {
   const [sourceText, setSourceText] = useState(initialText);
   const [translatedText, setTranslatedText] = useState('');
@@ -25,6 +53,13 @@ export default function TranslatorScreen({
   const [isSaved, setIsSaved] = useState(false);
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
   const [isListening, setIsListening] = useState(false);
+  
+  // Language picker state
+  const [showLanguagePicker, setShowLanguagePicker] = useState(false);
+  const [pickerType, setPickerType] = useState('source'); // 'source' | 'target'
+  const [searchQuery, setSearchQuery] = useState('');
+  const [localSourceLang, setLocalSourceLang] = useState(sourceLang);
+  const [localTargetLang, setLocalTargetLang] = useState(targetLang);
 
   const { isDark } = useTheme();
   const c = getColors(isDark);
@@ -33,7 +68,7 @@ export default function TranslatorScreen({
     const textToTranslate = text || sourceText;
     if (!textToTranslate.trim()) return;
 
-    if (targetLang === 'Select City / Language') {
+    if (localTargetLang === 'Select City / Language') {
       if (Platform.OS === 'android') {
         ToastAndroid.show('Please select a target language first', ToastAndroid.SHORT);
       } else {
@@ -45,33 +80,99 @@ export default function TranslatorScreen({
     setIsTranslating(true);
 
     try {
-      const result = await translate(textToTranslate, sourceLang, targetLang);
+      const result = await translate(textToTranslate, localSourceLang, localTargetLang);
       setTranslatedText(result.translatedText);
       setPronunciation(result.pronunciation);
       setTranslationSource(result.source || 'google');
       setIsSaved(false);
     } catch (error) {
-      if (error.message === 'TRANSLATION_FAILED') {
-        setTranslatedText('');
-        setPronunciation('');
-        if (Platform.OS === 'android') {
-          ToastAndroid.show(
-            'Translation failed. Try common phrases offline or connect to the internet.',
-            ToastAndroid.LONG
-          );
+      setTranslatedText('');
+      setPronunciation('');
+      
+      let errorTitle = 'Translation Failed';
+      let errorMessage = 'Could not translate this phrase.';
+      
+      if (error.message === 'OFFLINE_PIVOT_FAILED_STAGE1') {
+        errorTitle = 'Translation Not Available Offline';
+        errorMessage = `This phrase is not available for offline translation from ${localSourceLang}.\n\n` +
+          `🔌 Offline Translation Tips:\n` +
+          `• Use common phrases (Hello, Thank you, Help me, etc.)\n` +
+          `• Or translate via English first\n` +
+          `• Connect to internet for unlimited translations`;
+      } else if (error.message === 'OFFLINE_PIVOT_FAILED_STAGE2') {
+        errorTitle = 'Translation Not Available Offline';
+        errorMessage = `This phrase is not available for offline translation to ${localTargetLang}.\n\n` +
+          `🔌 Offline Translation Tips:\n` +
+          `• Use common phrases (Hello, Thank you, Help me, etc.)\n` +
+          `• Or translate via English first\n` +
+          `• Connect to internet for unlimited translations`;
+      } else if (error.message === 'TRANSLATION_FAILED') {
+        if (localSourceLang !== 'English' && localTargetLang !== 'English') {
+          errorTitle = 'Translation Unavailable';
+          errorMessage = `Cannot translate between ${localSourceLang} and ${localTargetLang} offline for this phrase.\n\n` +
+            `🌐 Options:\n` +
+            `• Connect to internet for full translation support\n` +
+            `• Use common offline phrases (Hello, Thank you, etc.)\n` +
+            `• Translate to/from English instead`;
         } else {
-          Alert.alert(
-            'Translation Failed',
-            'Could not translate this phrase.\n\n• Common phrases work offline (Hello, Thank you, Help me, etc.)\n• For other phrases, connect to the internet\n• Make sure the backend server is running'
-          );
+          errorMessage = 'Could not translate this phrase.\n\n• Common phrases work offline (Hello, Thank you, Help me, etc.)\n• For other phrases, connect to the internet\n• Make sure the backend server is running';
         }
-      } else {
-        console.warn('[Translator]', error.message);
       }
+      
+      if (Platform.OS === 'android') {
+        ToastAndroid.show(errorMessage, ToastAndroid.LONG);
+      } else {
+        Alert.alert(errorTitle, errorMessage);
+      }
+      
+      console.warn('[Translator]', error.message);
     } finally {
       setIsTranslating(false);
     }
-  }, [sourceText, sourceLang, targetLang]);
+  }, [sourceText, localSourceLang, localTargetLang]);
+
+  const openLanguagePicker = (type) => {
+    setPickerType(type);
+    setSearchQuery('');
+    setShowLanguagePicker(true);
+  };
+
+  const selectLanguage = (langName) => {
+    if (pickerType === 'source') {
+      setLocalSourceLang(langName);
+      if (onChangeLanguages) {
+        onChangeLanguages(langName, localTargetLang);
+      }
+    } else {
+      setLocalTargetLang(langName);
+      if (onChangeLanguages) {
+        onChangeLanguages(localSourceLang, langName);
+      }
+    }
+    setShowLanguagePicker(false);
+    setTranslatedText('');
+    setPronunciation('');
+  };
+
+  const swapLanguages = () => {
+    const temp = localSourceLang;
+    setLocalSourceLang(localTargetLang);
+    setLocalTargetLang(temp);
+    if (onChangeLanguages) {
+      onChangeLanguages(localTargetLang, temp);
+    }
+    if (onSwapLanguages) {
+      onSwapLanguages();
+    }
+    setTranslatedText('');
+    setPronunciation('');
+    setSourceText('');
+  };
+
+  const filteredLanguages = LANGUAGES.filter(lang => 
+    lang.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    lang.native.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   const handleSave = async () => {
     if (!translatedText) return;
@@ -83,8 +184,8 @@ export default function TranslatorScreen({
       const saved = raw ? JSON.parse(raw) : [];
       saved.unshift({
         id: Date.now().toString(),
-        sourceLang,
-        targetLang,
+        sourceLang: localSourceLang,
+        targetLang: localTargetLang,
         sourceText,
         translatedText,
         pronunciation,
@@ -134,21 +235,37 @@ export default function TranslatorScreen({
           <Ionicons name="arrow-back" size={22} color={c.textPrimary} />
         </TouchableOpacity>
 
-        <View style={{ flexDirection: 'row', alignItems: 'center', flex: 1, marginLeft: 16 }}>
-          <Text style={{ fontSize: 16, fontWeight: 'bold', color: c.textPrimary }}>{sourceLang}</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', flex: 1, marginLeft: 12, justifyContent: 'space-between' }}>
+          {/* Source Language Dropdown */}
           <TouchableOpacity
-            onPress={() => {
-              setTranslatedText('');
-              setPronunciation('');
-              setSourceText('');
-              if (onSwapLanguages) onSwapLanguages();
-            }}
+            onPress={() => openLanguagePicker('source')}
             activeOpacity={0.7}
-            style={{ width: 36, height: 36, backgroundColor: c.iconBg, borderRadius: 18, alignItems: 'center', justifyContent: 'center', marginHorizontal: 10, borderWidth: 1, borderColor: '#F97316' }}
+            style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 12, paddingVertical: 8, backgroundColor: c.card, borderRadius: 12, borderWidth: 1, borderColor: c.cardBorder, maxWidth: '40%' }}
+          >
+            <Text style={{ fontSize: 14, fontWeight: 'bold', color: c.textPrimary, marginRight: 4 }} numberOfLines={1}>{localSourceLang}</Text>
+            <Ionicons name="chevron-down" size={14} color={c.textSecondary} />
+          </TouchableOpacity>
+
+          {/* Swap Button */}
+          <TouchableOpacity
+            onPress={swapLanguages}
+            activeOpacity={0.7}
+            style={{ width: 36, height: 36, backgroundColor: c.iconBg, borderRadius: 18, alignItems: 'center', justifyContent: 'center', marginHorizontal: 8, borderWidth: 1, borderColor: '#F97316' }}
           >
             <Ionicons name="swap-horizontal" size={18} color="#F97316" />
           </TouchableOpacity>
-          <Text style={{ fontSize: 16, fontWeight: 'bold', color: c.textPrimary }}>{targetLang}</Text>
+
+          {/* Target Language Dropdown */}
+          <TouchableOpacity
+            onPress={() => openLanguagePicker('target')}
+            activeOpacity={0.7}
+            style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 12, paddingVertical: 8, backgroundColor: c.card, borderRadius: 12, borderWidth: 1, borderColor: c.cardBorder, maxWidth: '40%' }}
+          >
+            <Text style={{ fontSize: 14, fontWeight: 'bold', color: localTargetLang === 'Select City / Language' ? c.textMuted : c.textPrimary, marginRight: 4 }} numberOfLines={1}>
+              {localTargetLang === 'Select City / Language' ? 'Select Lang' : localTargetLang}
+            </Text>
+            <Ionicons name="chevron-down" size={14} color={c.textSecondary} />
+          </TouchableOpacity>
         </View>
       </View>
 
@@ -156,7 +273,7 @@ export default function TranslatorScreen({
         {/* Text Input */}
         <View style={{ backgroundColor: c.card, borderRadius: 24, padding: 20, borderWidth: 1, borderColor: c.cardBorder, minHeight: 120 }}>
           <View style={{ alignSelf: 'flex-start', paddingHorizontal: 12, paddingVertical: 4, backgroundColor: c.iconBg, borderRadius: 999, marginBottom: 12, borderWidth: 1, borderColor: c.iconBgAlt }}>
-            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#F97316' }}>{sourceLang}</Text>
+            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#F97316' }}>{localSourceLang}</Text>
           </View>
           <TextInput
             value={sourceText}
@@ -196,7 +313,7 @@ export default function TranslatorScreen({
             <View>
               <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 12, gap: 8 }}>
                 <View style={{ paddingHorizontal: 12, paddingVertical: 4, backgroundColor: '#F97316', borderRadius: 999 }}>
-                  <Text style={{ fontSize: 12, fontWeight: 'bold', color: 'white' }}>{targetLang}</Text>
+                  <Text style={{ fontSize: 12, fontWeight: 'bold', color: 'white' }}>{localTargetLang}</Text>
                 </View>
                 {translationSource === 'offline' ? (
                   <View style={{ paddingHorizontal: 8, paddingVertical: 2, backgroundColor: 'rgba(22,163,74,0.15)', borderRadius: 999, borderWidth: 1, borderColor: 'rgba(22,163,74,0.3)' }}>
@@ -305,6 +422,73 @@ export default function TranslatorScreen({
           </TouchableOpacity>
         </View>
       )}
+
+      {/* Language Picker Modal */}
+      <Modal
+        visible={showLanguagePicker}
+        transparent={true}
+        animationType="slide"
+        onRequestClose={() => setShowLanguagePicker(false)}
+      >
+        <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.5)', justifyContent: 'flex-end' }}>
+          <View style={{ backgroundColor: c.bg, borderTopLeftRadius: 24, borderTopRightRadius: 24, maxHeight: '80%', paddingTop: 16 }}>
+            {/* Header */}
+            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 24, paddingBottom: 16 }}>
+              <Text style={{ fontSize: 20, fontWeight: 'bold', color: c.textPrimary }}>
+                Select {pickerType === 'source' ? 'Source' : 'Target'} Language
+              </Text>
+              <TouchableOpacity onPress={() => setShowLanguagePicker(false)}>
+                <Ionicons name="close" size={28} color={c.textPrimary} />
+              </TouchableOpacity>
+            </View>
+
+            {/* Search Bar */}
+            <View style={{ paddingHorizontal: 24, marginBottom: 16 }}>
+              <View style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: c.card, borderRadius: 16, padding: 12, borderWidth: 1, borderColor: c.cardBorder }}>
+                <Ionicons name="search" size={20} color={c.textMuted} style={{ marginRight: 8 }} />
+                <TextInput
+                  value={searchQuery}
+                  onChangeText={setSearchQuery}
+                  placeholder="Search languages..."
+                  placeholderTextColor={c.textMuted}
+                  style={{ flex: 1, fontSize: 16, color: c.textPrimary }}
+                />
+              </View>
+            </View>
+
+            {/* Language List */}
+            <ScrollView style={{ paddingHorizontal: 24, paddingBottom: 24 }}>
+              {filteredLanguages.map((lang) => (
+                <TouchableOpacity
+                  key={lang.id}
+                  onPress={() => selectLanguage(lang.name)}
+                  activeOpacity={0.7}
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    paddingVertical: 16,
+                    paddingHorizontal: 16,
+                    backgroundColor: (pickerType === 'source' ? localSourceLang : localTargetLang) === lang.name ? 'rgba(249,115,22,0.1)' : c.card,
+                    borderRadius: 16,
+                    marginBottom: 8,
+                    borderWidth: 1,
+                    borderColor: (pickerType === 'source' ? localSourceLang : localTargetLang) === lang.name ? '#F97316' : c.cardBorder,
+                  }}
+                >
+                  <Text style={{ fontSize: 28, marginRight: 16 }}>{lang.icon}</Text>
+                  <View style={{ flex: 1 }}>
+                    <Text style={{ fontSize: 18, fontWeight: 'bold', color: c.textPrimary }}>{lang.name}</Text>
+                    <Text style={{ fontSize: 14, color: c.textSecondary, marginTop: 2 }}>{lang.native}</Text>
+                  </View>
+                  {(pickerType === 'source' ? localSourceLang : localTargetLang) === lang.name && (
+                    <Ionicons name="checkmark-circle" size={24} color="#F97316" />
+                  )}
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 }

@@ -248,9 +248,11 @@ export async function translate(sourceText, sourceLang, targetLang) {
           };
         } else {
           console.warn('[Translation Service] Pivot failed: No English → target translation');
+          throw new Error('OFFLINE_PIVOT_FAILED_STAGE2');
         }
       } else {
         console.warn('[Translation Service] Pivot failed: No source → English translation');
+        throw new Error('OFFLINE_PIVOT_FAILED_STAGE1');
       }
     }
     
@@ -914,4 +916,25 @@ export function getQuickPhrasesForLang(langName) {
     }
     return p.charAt(0).toUpperCase() + p.slice(1);
   });
+}
+
+/**
+ * Get list of all phrases available in the offline dictionary (English keys)
+ */
+export function getOfflinePhrasesList() {
+  return Object.keys(OFFLINE_DICTIONARY);
+}
+
+/**
+ * Check if a specific phrase is available offline for a language pair
+ */
+export function isPhraseAvailableOffline(sourceText, sourceLang, targetLang) {
+  const sourceLangCode = getLangCode(sourceLang);
+  const targetLangCode = getLangCode(targetLang);
+  
+  if (!sourceLangCode || !targetLangCode) return false;
+  if (sourceLangCode === targetLangCode) return true;
+  
+  const result = lookupDictionary(sourceText, sourceLangCode, targetLangCode);
+  return result !== null;
 }
