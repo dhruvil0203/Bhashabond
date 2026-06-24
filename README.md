@@ -4,7 +4,7 @@ A React Native offline-first translation app supporting 23 Indian languages + En
 
 ## 📱 App Preview
 
-![BhashaBond Home Screen](./public/Home_Screen.jpeg)
+<img src="./public/Home_Screen.jpeg" alt="BhashaBond Home Screen" width="300" />
 
 ## Features
 
