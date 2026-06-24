@@ -2,19 +2,9 @@
 
 A React Native offline-first translation app supporting 23 Indian languages + English with smart offline capabilities and Google Translate API integration.
 
-## 📱 Screenshots
+## 📱 App Preview
 
-<div align="center">
-  <img src="public/home.jpg" alt="Home Screen" width="250"/>
-  <img src="public/translator.jpg" alt="Translator" width="250"/>
-  <img src="public/phrasebook.jpg" alt="Phrasebook" width="250"/>
-</div>
-
-<div align="center">
-  <img src="public/food.jpg" alt="Local Food Guide" width="250"/>
-  <img src="public/emergency.jpg" alt="Emergency Numbers" width="250"/>
-  <img src="public/profile.jpg" alt="Profile" width="250"/>
-</div>
+![BhashaBond Home Screen](./public/Home_Screen.jpeg)
 
 ## Features
 
