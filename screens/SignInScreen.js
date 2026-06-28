@@ -41,20 +41,71 @@ export default function SignInScreen() {
   const onGooglePress = useCallback(async () => {
     if (loading) return;
     setLoading(true);
+
+    const redirectUrl = AuthSession.makeRedirectUri();
+    console.log('[SignIn] OAuth redirect URL:', redirectUrl);
+
     try {
-      const { createdSessionId, setActive } = await startSSOFlow({
+      const { createdSessionId, setActive, signIn, signUp } = await startSSOFlow({
         strategy: 'oauth_google',
-        redirectUrl: AuthSession.makeRedirectUri(),
+        redirectUrl,
+      });
+
+      console.log('[SignIn] OAuth result:', {
+        createdSessionId: !!createdSessionId,
+        hasSetActive: !!setActive,
+        signInStatus: signIn?.status,
+        signUpStatus: signUp?.status,
       });
 
       if (createdSessionId && setActive) {
-        // Activates the session; the SignedIn gate in App.js takes over.
         await setActive({ session: createdSessionId });
+        return;
       }
-      // If no session was created the user cancelled — nothing to do.
+
+      // If sign-up was created by OAuth, activate its session
+      if (signUp?.createdSessionId && setActive) {
+        await setActive({ session: signUp.createdSessionId });
+        return;
+      }
+
+      // If sign-in needs verification, attempt to complete it
+      if (signIn?.status === 'needs_second_factor') {
+        console.warn('[SignIn] MFA required but not supported');
+        Alert.alert('Sign in failed', 'Two-factor authentication is not supported yet.');
+        return;
+      }
+
+      // OAuth completed but no session — likely a config issue
+      const hasOAuthCompleted = signUp?.status === 'complete' || signIn?.status === 'complete';
+      if (hasOAuthCompleted && !createdSessionId && setActive) {
+        // Try activating from signIn or signUp
+        const sid = signUp?.createdSessionId || signIn?.createdSessionId;
+        if (sid) {
+          await setActive({ session: sid });
+          return;
+        }
+      }
+
+      // If still nothing, show the user a helpful message
+      if (redirectUrl.startsWith('bhashabond://')) {
+        Alert.alert(
+          'Configuration Required',
+          'Make sure "bhashabond://oauth" is added to the Redirect URLs in your Clerk Dashboard:\n' +
+          'Clerk Dashboard → User & Authentication → Social Connections → Google → Redirect URLs.\n\n' +
+          'After adding it, rebuild the app and try again.'
+        );
+      } else {
+        Alert.alert(
+          'Sign in incomplete',
+          'The sign-in flow didn\'t complete. Please try again.\n\n' +
+          `Redirect URL: ${redirectUrl}\n` +
+          `Status: signIn=${signIn?.status || 'none'}, signUp=${signUp?.status || 'none'}`
+        );
+      }
     } catch (err) {
-      Alert.alert('Sign in failed', 'Could not complete Google sign in. Please check your connection and try again.');
-      console.warn('[SignIn]', err?.message || err);
+      console.warn('[SignIn] Error:', err?.message || err, err);
+      Alert.alert('Sign in failed', `Could not complete Google sign in.\n\n${err?.message || 'Please check your connection and try again.'}`);
     } finally {
       setLoading(false);
     }
