@@ -4,7 +4,9 @@ Provides dynamic translation for all languages when the offline dictionary doesn
 
 Priority order:
   1. Google Cloud Translation API (if GOOGLE_TRANSLATE_API_KEY is set)
-  2. Free Google Translate endpoint (no key required, unofficial)
+  2. Lingva Translate (free, no key needed, works from Render)
+  3. Free Google Translate endpoint (no key required, unofficial)
+  4. MyMemory free translation API (fallback)
 """
 
 import os
@@ -113,7 +115,7 @@ class TranslateRequest(BaseModel):
 
 class TranslateResponse(BaseModel):
     translated_text: str
-    source: str  # 'google_cloud', 'google_free', or 'error'
+    source: str  # 'google_cloud', 'lingva', 'google_free', or 'mymemory'
 
 
 async def translate_via_google_cloud(text: str, source_code: str, target_code: str) -> str:
@@ -178,6 +180,31 @@ async def translate_via_mymemory(text: str, source_code: str, target_code: str) 
 
         if not translated_text:
             raise Exception("Empty translation response from MyMemory API")
+
+        return translated_text
+
+
+async def translate_via_lingva(text: str, source_code: str, target_code: str) -> str:
+    """
+    Translate using Lingva Translate (free Google Translate frontend).
+    Supports 100+ languages including all Indian Scheduled Languages.
+    No API key needed. Works from cloud servers like Render.
+    """
+    import urllib.parse
+    encoded_text = urllib.parse.quote(text)
+    url = f"https://lingva.ml/api/v1/{source_code}/{target_code}/{encoded_text}"
+
+    async with httpx.AsyncClient(timeout=15.0) as client:
+        response = await client.get(url)
+
+        if response.status_code != 200:
+            raise Exception(f"Lingva API returned status {response.status_code}: {response.text}")
+
+        data = response.json()
+        translated_text = data.get("translation", "")
+
+        if not translated_text:
+            raise Exception("Empty translation response from Lingva")
 
         return translated_text
 
@@ -264,7 +291,18 @@ async def translate_text(request: TranslateRequest):
         except Exception as e:
             print(f"[Translate] Google Cloud API failed: {e}. Trying free fallback...")
 
-    # ── Path 2: Free Google Translate endpoint ───────────────────────────────
+    # ── Path 2: Lingva Translate (free, works from Render) ──────────────────
+    try:
+        translated = await translate_via_lingva(
+            request.text, source_code, target_code
+        )
+        print(f"[Translate] Lingva Translate: {request.source_lang} -> {request.target_lang}")
+        set_cached_translation(request.source_lang, request.target_lang, request.text, translated, "lingva")
+        return TranslateResponse(translated_text=translated, source="lingva")
+    except Exception as e:
+        print(f"[Translate] Lingva Translate failed: {e}. Trying Google free...")
+
+    # ── Path 3: Free Google Translate endpoint ───────────────────────────────
     try:
         translated = await translate_via_google_free(
             request.text, source_code, target_code
@@ -275,7 +313,7 @@ async def translate_text(request: TranslateRequest):
     except Exception as e:
         print(f"[Translate] Google free endpoint failed: {e}. Trying MyMemory...")
 
-    # ── Path 3: MyMemory free translation API ──────────────────────────────
+    # ── Path 4: MyMemory free translation API ──────────────────────────────
     try:
         translated = await translate_via_mymemory(
             request.text, source_code, target_code
