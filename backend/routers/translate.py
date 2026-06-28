@@ -156,14 +156,39 @@ async def translate_via_google_cloud(text: str, source_code: str, target_code: s
         return translated_text
 
 
+async def translate_via_mymemory(text: str, source_code: str, target_code: str) -> str:
+    """
+    Fallback: MyMemory free translation API (no API key needed).
+    Works reliably from cloud servers unlike Google's unofficial endpoints.
+    """
+    url = "https://api.mymemory.translated.net/get"
+    params = {
+        "q": text,
+        "langpair": f"{source_code}|{target_code}",
+    }
+
+    async with httpx.AsyncClient(timeout=15.0) as client:
+        response = await client.get(url, params=params)
+
+        if response.status_code != 200:
+            raise Exception(f"MyMemory API returned status {response.status_code}")
+
+        data = response.json()
+        translated_text = data.get("responseData", {}).get("translatedText", "")
+
+        if not translated_text:
+            raise Exception("Empty translation response from MyMemory API")
+
+        return translated_text
+
+
 async def translate_via_google_free(text: str, source_code: str, target_code: str) -> str:
     """
-    Fallback: free unofficial Google Translate endpoint (no API key needed).
-    Uses browser-like headers to avoid being blocked.
+    Free unofficial Google Translate endpoint via clients5 (works from some servers).
     """
-    url = "https://translate.googleapis.com/translate_a/single"
+    url = "https://clients5.google.com/translate_a/t"
     params = {
-        "client": "gtx",
+        "client": "dict-chrome-ex",
         "sl": source_code,
         "tl": target_code,
         "dt": "t",
@@ -171,16 +196,13 @@ async def translate_via_google_free(text: str, source_code: str, target_code: st
     }
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-        "Accept": "application/json, text/javascript, */*; q=0.01",
-        "Accept-Language": "en-US,en;q=0.9",
-        "Referer": "https://translate.google.com/",
     }
 
-    async with httpx.AsyncClient(timeout=10.0) as client:
+    async with httpx.AsyncClient(timeout=10.0, follow_redirects=True) as client:
         response = await client.get(url, params=params, headers=headers)
 
         if response.status_code != 200:
-            raise Exception(f"Free Google Translate returned status {response.status_code}")
+            raise Exception(f"Google free endpoint returned status {response.status_code}")
 
         data = response.json()
         segments = []
@@ -191,7 +213,7 @@ async def translate_via_google_free(text: str, source_code: str, target_code: st
 
         translated_text = "".join(segments)
         if not translated_text:
-            raise Exception("Empty translation response from free Google Translate")
+            raise Exception("Empty translation response from Google free endpoint")
 
         return translated_text
 
@@ -235,7 +257,7 @@ async def translate_text(request: TranslateRequest):
         except Exception as e:
             print(f"[Translate] Google Cloud API failed: {e}. Trying free fallback...")
 
-    # ── Path 2: Free unofficial Google Translate endpoint ───────────────────────
+    # ── Path 2: Free Google Translate endpoint ───────────────────────────────
     try:
         translated = await translate_via_google_free(
             request.text, source_code, target_code
@@ -243,6 +265,17 @@ async def translate_text(request: TranslateRequest):
         print(f"[Translate] Free Google Translate: {request.source_lang} -> {request.target_lang}")
         set_cached_translation(request.source_lang, request.target_lang, request.text, translated, "google_free")
         return TranslateResponse(translated_text=translated, source="google_free")
+    except Exception as e:
+        print(f"[Translate] Google free endpoint failed: {e}. Trying MyMemory...")
+
+    # ── Path 3: MyMemory free translation API ──────────────────────────────
+    try:
+        translated = await translate_via_mymemory(
+            request.text, source_code, target_code
+        )
+        print(f"[Translate] MyMemory API: {request.source_lang} -> {request.target_lang}")
+        set_cached_translation(request.source_lang, request.target_lang, request.text, translated, "mymemory")
+        return TranslateResponse(translated_text=translated, source="mymemory")
     except Exception as e:
         print(f"[Translate] All translation attempts failed: {e}")
         raise HTTPException(
