@@ -184,7 +184,7 @@ async def translate_via_mymemory(text: str, source_code: str, target_code: str) 
 
 async def translate_via_google_free(text: str, source_code: str, target_code: str) -> str:
     """
-    Free unofficial Google Translate endpoint via clients5 (works from some servers).
+    Free Google Translate endpoint via clients5 (works from cloud servers).
     """
     url = "https://clients5.google.com/translate_a/t"
     params = {
@@ -205,13 +205,20 @@ async def translate_via_google_free(text: str, source_code: str, target_code: st
             raise Exception(f"Google free endpoint returned status {response.status_code}")
 
         data = response.json()
-        segments = []
-        if data and len(data) > 0 and data[0]:
-            for segment in data[0]:
-                if segment and len(segment) > 0 and segment[0]:
-                    segments.append(segment[0])
 
-        translated_text = "".join(segments)
+        # clients5 returns ["translated text"] — a simple string array
+        if isinstance(data, list) and len(data) > 0:
+            if isinstance(data[0], str):
+                translated_text = data[0]
+            elif isinstance(data[0], list):
+                # translate_a/single returns nested: [["text", null, ...], ...]
+                segments = [seg[0] for seg in data[0] if seg and len(seg) > 0 and seg[0]]
+                translated_text = "".join(segments)
+            else:
+                raise Exception("Unexpected response format from Google free endpoint")
+        else:
+            raise Exception("Empty response from Google free endpoint")
+
         if not translated_text:
             raise Exception("Empty translation response from Google free endpoint")
 
