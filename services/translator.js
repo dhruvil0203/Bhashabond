@@ -57,16 +57,26 @@ async function setCachedTranslation(sourceText, sourceLangCode, targetLangCode, 
 }
 
 // Candidates for backend URL (checked in order)
-// Priority: Environment variable > Production > Development
+// Priority: EXPO_PUBLIC_API_URL (env) > Render Production > Development URLs
 const RENDER_URL = process.env.EXPO_PUBLIC_API_URL || 'https://bhashabond-api.onrender.com';
 
-const CANDIDATE_URLS = [
-  RENDER_URL,                           // Production: Deployed on Render (works globally)
-  'http://192.168.0.101:8000',          // Local Wi-Fi IP (for development)
-  'http://localhost:8000',              // Simulator/web
-  'http://10.0.2.2:8000',               // Android emulator
-  'http://172.31.16.1:8000',            // WSL environment
-];
+const CANDIDATE_URLS = (() => {
+  const urls = [RENDER_URL];
+
+  // If env URL is already set to something other than Render, it's the primary target
+  if (RENDER_URL !== 'https://bhashabond-api.onrender.com') {
+    urls.unshift(RENDER_URL);
+  }
+
+  urls.push(
+    'http://localhost:8000',              // Simulator/web
+    'http://10.0.2.2:8000',               // Android emulator
+    'http://172.31.16.1:8000',            // WSL environment
+  );
+
+  // Deduplicate
+  return [...new Set(urls)];
+})();
 
 let activeApiBase = RENDER_URL; // Default to production
 let isProbing = false;
@@ -83,7 +93,7 @@ export async function probeBackend() {
     try {
       const controller = new AbortController();
       // Use longer timeout for production URLs (Render can be slower on free tier)
-      const timeout = url.includes('https://') ? 3000 : 600;
+      const timeout = url.includes('https://') ? 5000 : 600;
       const id = setTimeout(() => controller.abort(), timeout);
       const res = await fetch(`${url}/api/health`, { signal: controller.signal });
       clearTimeout(id);

@@ -131,8 +131,13 @@ async def translate_via_google_cloud(text: str, source_code: str, target_code: s
         "format": "text",
     }
 
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+        "Accept": "application/json",
+    }
+
     async with httpx.AsyncClient(timeout=10.0) as client:
-        response = await client.post(url, params=params)
+        response = await client.post(url, params=params, headers=headers)
 
         if response.status_code != 200:
             error_body = response.text
@@ -154,7 +159,7 @@ async def translate_via_google_cloud(text: str, source_code: str, target_code: s
 async def translate_via_google_free(text: str, source_code: str, target_code: str) -> str:
     """
     Fallback: free unofficial Google Translate endpoint (no API key needed).
-    Less reliable but works for basic use without a billing account.
+    Uses browser-like headers to avoid being blocked.
     """
     url = "https://translate.googleapis.com/translate_a/single"
     params = {
@@ -164,9 +169,15 @@ async def translate_via_google_free(text: str, source_code: str, target_code: st
         "dt": "t",
         "q": text,
     }
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+        "Accept": "application/json, text/javascript, */*; q=0.01",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Referer": "https://translate.google.com/",
+    }
 
     async with httpx.AsyncClient(timeout=10.0) as client:
-        response = await client.get(url, params=params)
+        response = await client.get(url, params=params, headers=headers)
 
         if response.status_code != 200:
             raise Exception(f"Free Google Translate returned status {response.status_code}")

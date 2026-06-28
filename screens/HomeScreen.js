@@ -1,7 +1,6 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import Svg, { Path, Circle } from 'react-native-svg';
 import { useTheme } from '../context/ThemeContext';
 import { getColors } from '../theme/colors';
 
@@ -18,15 +17,16 @@ export default function HomeScreen({
     <View style={{ flex: 1, backgroundColor: c.bg, paddingHorizontal: 24, paddingTop: 32 }}>
       <View style={{ alignItems: 'center', marginTop: 8, marginBottom: 24 }}>
         <View style={{
-          width: 64, height: 64, backgroundColor: c.iconBg, borderRadius: 32,
+          width: 72, height: 72, borderRadius: 36,
           alignItems: 'center', justifyContent: 'center', marginBottom: 12,
+          overflow: 'hidden',
+          borderWidth: 2, borderColor: '#F97316',
         }}>
-          <Svg width="36" height="36" viewBox="0 0 24 24" fill="none">
-            <Circle cx="12" cy="8" r="3.5" stroke="#F97316" strokeWidth="2.5" />
-            <Circle cx="8.5" cy="14" r="3.5" stroke="#F97316" strokeWidth="2.5" />
-            <Circle cx="15.5" cy="14" r="3.5" stroke="#F97316" strokeWidth="2.5" />
-            <Circle cx="12" cy="13.5" r="1.5" fill="#F97316" />
-          </Svg>
+          <Image
+            source={require('../assets/icon.png')}
+            style={{ width: 72, height: 72 }}
+            resizeMode="cover"
+          />
         </View>
         <Text style={{ fontSize: 30, fontWeight: '900', color: c.textPrimary, letterSpacing: -0.5 }}>
           BhaashaBond

@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { View, Text, TouchableOpacity, ActivityIndicator, Alert } from 'react-native';
+import { View, Text, TouchableOpacity, ActivityIndicator, Alert, Image } from 'react-native';
 import Svg, { Path, Circle } from 'react-native-svg';
 import * as WebBrowser from 'expo-web-browser';
 import * as AuthSession from 'expo-auth-session';
@@ -65,15 +65,16 @@ export default function SignInScreen() {
       {/* Logo + brand */}
       <View style={{ alignItems: 'center', marginBottom: 48 }}>
         <View style={{
-          width: 80, height: 80, backgroundColor: c.iconBg, borderRadius: 40,
+          width: 88, height: 88, borderRadius: 44,
           alignItems: 'center', justifyContent: 'center', marginBottom: 20,
+          overflow: 'hidden',
+          borderWidth: 2, borderColor: '#F97316',
         }}>
-          <Svg width="44" height="44" viewBox="0 0 24 24" fill="none">
-            <Circle cx="12" cy="8" r="3.5" stroke="#F97316" strokeWidth="2.5" />
-            <Circle cx="8.5" cy="14" r="3.5" stroke="#F97316" strokeWidth="2.5" />
-            <Circle cx="15.5" cy="14" r="3.5" stroke="#F97316" strokeWidth="2.5" />
-            <Circle cx="12" cy="13.5" r="1.5" fill="#F97316" />
-          </Svg>
+          <Image
+            source={require('../assets/icon.png')}
+            style={{ width: 88, height: 88 }}
+            resizeMode="cover"
+          />
         </View>
         <Text style={{ fontSize: 32, fontWeight: '900', color: c.textPrimary, letterSpacing: -0.5 }}>
           BhaashaBond
