@@ -1,12 +1,11 @@
 """
-Translation API using Google Cloud Translation API v2
-Provides dynamic translation for all languages when the offline dictionary doesn't have a phrase.
+Translation API providing dynamic translation for all Indian Scheduled Languages.
 
 Priority order:
   1. Google Cloud Translation API (if GOOGLE_TRANSLATE_API_KEY is set)
-  2. Lingva Translate (free, no key needed, works from Render)
-  3. Free Google Translate endpoint (no key required, unofficial)
-  4. MyMemory free translation API (fallback)
+  2. Google Gemini API (free, no billing needed, supports all Indian languages)
+  3. Free Google Translate endpoint (unofficial, blocked from some cloud providers)
+  4. MyMemory free translation API (fallback — low quality for Indian languages)
 """
 
 import os
@@ -20,6 +19,10 @@ router = APIRouter()
 
 # Google Cloud Translation API key (optional — free endpoint used as fallback)
 GOOGLE_TRANSLATE_API_KEY = os.getenv("GOOGLE_TRANSLATE_API_KEY", "")
+
+# Google Gemini API Key (free, no billing account needed)
+# Get one: https://aistudio.google.com/apikey
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 
 # SQLite Cache database file
 CACHE_DB_PATH = os.path.join(os.path.dirname(__file__), "..", "translation_cache.db")
@@ -107,6 +110,10 @@ GOOGLE_LANG_MAP = {
 }
 
 
+# Reverse map: ISO language code → human-readable name for Gemini prompt
+LANG_NAMES = {v: k for k, v in GOOGLE_LANG_MAP.items()}
+
+
 class TranslateRequest(BaseModel):
     text: str
     source_lang: str  # App language code (e.g., 'guj_Gujr')
@@ -115,7 +122,7 @@ class TranslateRequest(BaseModel):
 
 class TranslateResponse(BaseModel):
     translated_text: str
-    source: str  # 'google_cloud', 'lingva', 'google_free', or 'mymemory'
+    source: str  # 'google_cloud', 'gemini', 'google_free', or 'mymemory'
 
 
 async def translate_via_google_cloud(text: str, source_code: str, target_code: str) -> str:
@@ -184,30 +191,53 @@ async def translate_via_mymemory(text: str, source_code: str, target_code: str) 
         return translated_text
 
 
-async def translate_via_lingva(text: str, source_code: str, target_code: str) -> str:
+async def translate_via_gemini(text: str, source_code: str, target_code: str) -> str:
     """
-    Translate using Lingva Translate (free Google Translate frontend).
-    Supports 100+ languages including all Indian Scheduled Languages.
-    No API key needed. Works from cloud servers like Render.
-    Uses lingva.dialectapp.org instance (no Cloudflare protection).
+    Translate using Google Gemini API (free, no billing account needed).
+    Supports all Indian languages with high quality.
+    Free tier: 60 requests/min, 1,500 requests/day.
     """
     import urllib.parse
-    encoded_text = urllib.parse.quote(text)
-    url = f"https://lingva.dialectapp.org/api/v1/{source_code}/{target_code}/{encoded_text}"
+
+    api_key = GEMINI_API_KEY
+    if not api_key:
+        raise Exception("GEMINI_API_KEY not configured")
+
+    source_name = LANG_NAMES.get(source_code, source_code)
+    target_name = LANG_NAMES.get(target_code, target_code)
+
+    prompt = f"Translate the following {source_name} text to {target_name}. Output only the translated text, nothing else.\n\n{text}"
+
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}"
+
+    body = {
+        "contents": [{
+            "parts": [{"text": prompt}]
+        }]
+    }
 
     async with httpx.AsyncClient(timeout=15.0) as client:
-        response = await client.get(url)
+        response = await client.post(url, json=body)
 
         if response.status_code != 200:
-            raise Exception(f"Lingva API returned status {response.status_code}: {response.text}")
+            raise Exception(f"Gemini API returned status {response.status_code}: {response.text}")
 
         data = response.json()
-        translated_text = data.get("translation", "")
+        candidates = data.get("candidates", [])
+        if not candidates:
+            raise Exception("Empty candidates from Gemini API")
+
+        translated_text = (
+            candidates[0]
+            .get("content", {})
+            .get("parts", [{}])[0]
+            .get("text", "")
+        )
 
         if not translated_text:
-            raise Exception("Empty translation response from Lingva")
+            raise Exception("Empty translation response from Gemini")
 
-        return translated_text
+        return translated_text.strip()
 
 
 async def translate_via_google_free(text: str, source_code: str, target_code: str) -> str:
@@ -257,8 +287,7 @@ async def translate_via_google_free(text: str, source_code: str, target_code: st
 async def translate_text(request: TranslateRequest):
     """
     Translate text dynamically.
-    Uses Google Cloud Translation API v2 when GOOGLE_TRANSLATE_API_KEY is configured,
-    otherwise falls back to the free (unofficial) Google Translate endpoint.
+    Priority: Google Cloud API (if key set) → Gemini API (free) → Google free → MyMemory.
     Supports all 22 Indian Scheduled Languages + English.
     """
     source_code = GOOGLE_LANG_MAP.get(request.source_lang)
@@ -292,16 +321,16 @@ async def translate_text(request: TranslateRequest):
         except Exception as e:
             print(f"[Translate] Google Cloud API failed: {e}. Trying free fallback...")
 
-    # ── Path 2: Lingva Translate (free, works from Render) ──────────────────
+    # ── Path 2: Google Gemini API (free, works from Render) ────────────────
     try:
-        translated = await translate_via_lingva(
+        translated = await translate_via_gemini(
             request.text, source_code, target_code
         )
-        print(f"[Translate] Lingva Translate: {request.source_lang} -> {request.target_lang}")
-        set_cached_translation(request.source_lang, request.target_lang, request.text, translated, "lingva")
-        return TranslateResponse(translated_text=translated, source="lingva")
+        print(f"[Translate] Gemini API: {request.source_lang} -> {request.target_lang}")
+        set_cached_translation(request.source_lang, request.target_lang, request.text, translated, "gemini")
+        return TranslateResponse(translated_text=translated, source="gemini")
     except Exception as e:
-        print(f"[Translate] Lingva Translate failed: {e}. Trying Google free...")
+        print(f"[Translate] Gemini API failed: {e}. Trying Google free...")
 
     # ── Path 3: Free Google Translate endpoint ───────────────────────────────
     try:
