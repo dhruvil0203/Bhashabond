@@ -189,10 +189,11 @@ async def translate_via_lingva(text: str, source_code: str, target_code: str) ->
     Translate using Lingva Translate (free Google Translate frontend).
     Supports 100+ languages including all Indian Scheduled Languages.
     No API key needed. Works from cloud servers like Render.
+    Uses lingva.dialectapp.org instance (no Cloudflare protection).
     """
     import urllib.parse
     encoded_text = urllib.parse.quote(text)
-    url = f"https://lingva.ml/api/v1/{source_code}/{target_code}/{encoded_text}"
+    url = f"https://lingva.dialectapp.org/api/v1/{source_code}/{target_code}/{encoded_text}"
 
     async with httpx.AsyncClient(timeout=15.0) as client:
         response = await client.get(url)
