@@ -372,7 +372,7 @@ export default function TranslatorScreen({
               ⚡ Quick Phrases
             </Text>
             <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
-              {getQuickPhrasesForLang(sourceLang).map((phrase) => (
+              {getQuickPhrasesForLang(localSourceLang).map((phrase) => (
                 <TouchableOpacity
                   key={phrase}
                   onPress={() => { setSourceText(phrase); handleTranslate(phrase); }}

@@ -69,6 +69,7 @@ const CANDIDATE_URLS = (() => {
   }
 
   urls.push(
+    'http://192.168.0.101:8000',          // LAN (Expo Go on physical device)
     'http://localhost:8000',              // Simulator/web
     'http://10.0.2.2:8000',               // Android emulator
     'http://172.31.16.1:8000',            // WSL environment
@@ -81,9 +82,11 @@ const CANDIDATE_URLS = (() => {
 let activeApiBase = RENDER_URL; // Default to production
 let isProbing = false;
 let hasProbed = false;
+let probeSucceeded = false;
 
 export async function probeBackend() {
-  if (hasProbed) return activeApiBase;
+  // Skip if already probed successfully; allow re-probe if previous probe failed
+  if (hasProbed && probeSucceeded) return activeApiBase;
   if (isProbing) return activeApiBase;
   
   isProbing = true;
@@ -92,8 +95,8 @@ export async function probeBackend() {
   for (const url of CANDIDATE_URLS) {
     try {
       const controller = new AbortController();
-      // Use longer timeout for production URLs (Render can be slower on free tier)
-      const timeout = url.includes('https://') ? 5000 : 600;
+      // Use longer timeout for production URLs (Render free tier has 30-60s cold starts)
+      const timeout = url.includes('https://') ? 15000 : 600;
       const id = setTimeout(() => controller.abort(), timeout);
       const res = await fetch(`${url}/api/health`, { signal: controller.signal });
       clearTimeout(id);
@@ -102,6 +105,7 @@ export async function probeBackend() {
         console.log('[Translation Service] Found active backend at:', url);
         isProbing = false;
         hasProbed = true;
+        probeSucceeded = true;
         return url;
       }
     } catch (e) {
@@ -111,6 +115,7 @@ export async function probeBackend() {
   
   isProbing = false;
   hasProbed = true;
+  probeSucceeded = false;
   console.warn('[Translation Service] No running backend found. Using fallback:', activeApiBase);
   return activeApiBase;
 }
@@ -174,17 +179,7 @@ export async function translate(sourceText, sourceLang, targetLang) {
     return { translatedText: sourceText, pronunciation: sourceText, source: 'offline' };
   }
 
-  // ── Step 1: Offline dictionary (instant, no network) ──────────────────────────
-  const dictResult = lookupDictionary(sourceText, sourceLangCode, targetLangCode);
-  if (dictResult) {
-    return {
-      translatedText: dictResult.text,
-      pronunciation: dictResult.pronunciation || romanize(dictResult.text, targetLangCode),
-      source: 'offline',
-    };
-  }
-
-  // ── Step 1.5: Dynamic Cache (local persistent cache) ─────────────────────────
+  // ── Step 1: Dynamic Cache (local persistent cache) ─────────────────────────
   const cached = await getCachedTranslation(sourceText, sourceLangCode, targetLangCode);
   if (cached) {
     console.log('[Translation Service] Cache hit:', sourceText);
@@ -233,39 +228,6 @@ export async function translate(sourceText, sourceLang, targetLang) {
     return result;
   } catch (error) {
     console.warn('[Translation]', error.message);
-    
-    // ── Step 3: Offline Pivot Translation (Indian Lang → English → Indian Lang) ──
-    // If online translation fails and we're translating between two non-English languages,
-    // try pivot translation through English using the offline dictionary
-    if (sourceLangCode !== 'eng_Latn' && targetLangCode !== 'eng_Latn') {
-      console.log('[Translation Service] Attempting offline pivot translation via English...');
-      
-      // Step 3a: Source → English
-      const sourceToEnglish = lookupDictionary(sourceText, sourceLangCode, 'eng_Latn');
-      
-      if (sourceToEnglish) {
-        console.log('[Translation Service] Found source → English:', sourceToEnglish.text);
-        
-        // Step 3b: English → Target
-        const englishToTarget = lookupDictionary(sourceToEnglish.text, 'eng_Latn', targetLangCode);
-        
-        if (englishToTarget) {
-          console.log('[Translation Service] Found English → target, pivot translation successful');
-          return {
-            translatedText: englishToTarget.text,
-            pronunciation: englishToTarget.pronunciation || romanize(englishToTarget.text, targetLangCode),
-            source: 'offline',
-          };
-        } else {
-          console.warn('[Translation Service] Pivot failed: No English → target translation');
-          throw new Error('OFFLINE_PIVOT_FAILED_STAGE2');
-        }
-      } else {
-        console.warn('[Translation Service] Pivot failed: No source → English translation');
-        throw new Error('OFFLINE_PIVOT_FAILED_STAGE1');
-      }
-    }
-    
     throw new Error('TRANSLATION_FAILED');
   }
 }
@@ -814,43 +776,22 @@ function lookupDictionary(sourceText, sourceLangCode, targetLangCode) {
       if (exactQ[targetLangCode]) return exactQ[targetLangCode];
     }
 
-    // 2. Substring containment
+    // 2. Substring containment (only when input contains key, preventing fragment matches)
     for (const key of dictKeys) {
       const cleanKey = key.replace(/[?]/g, '');
-      if (normalizedInput.includes(cleanKey) || cleanKey.includes(normalizedInput)) {
-        const entry = OFFLINE_DICTIONARY[key];
-        if (entry) {
-          if (targetLangCode === 'eng_Latn') return { text: key, pronunciation: key };
-          if (entry[targetLangCode]) return entry[targetLangCode];
+      const lengthRatio = normalizedInput.length / (cleanKey.length || 1);
+      if (lengthRatio <= 2 && lengthRatio >= 1.0) { // input must be longer or equal
+        if (normalizedInput.includes(cleanKey)) {
+          const entry = OFFLINE_DICTIONARY[key];
+          if (entry) {
+            if (targetLangCode === 'eng_Latn') return { text: key, pronunciation: key };
+            if (entry[targetLangCode]) return entry[targetLangCode];
+          }
         }
       }
     }
 
-    // 3. Word overlap ≥50%
-    const inputWords = new Set(normalizedInput.split(/\s+/));
-    let bestMatch = null;
-    let bestScore = 0;
-
-    for (const key of dictKeys) {
-      const entry = OFFLINE_DICTIONARY[key];
-      const keyWords = new Set(key.replace(/[?]/g, '').split(/\s+/));
-      let overlap = 0;
-      for (const word of inputWords) {
-        if (keyWords.has(word)) overlap++;
-      }
-
-      const score = overlap / Math.max(inputWords.size, keyWords.size);
-      if (score > bestScore && score >= 0.5) {
-        bestScore = score;
-        if (targetLangCode === 'eng_Latn') {
-          bestMatch = { text: key, pronunciation: key };
-        } else {
-          bestMatch = (entry && entry[targetLangCode]) ? entry[targetLangCode] : null;
-        }
-      }
-    }
-
-    return bestMatch;
+    return null;
   }
 
   // Case 2: Source is NOT English (Indian Language to Indian Language / English)
@@ -865,18 +806,24 @@ function lookupDictionary(sourceText, sourceLangCode, targetLangCode) {
       const cleanText = (langEntry.text || '').trim().toLowerCase().replace(/[.!?,?|।]+$/g, '').trim();
       const cleanPron = (langEntry.pronunciation || '').trim().toLowerCase().replace(/[.!?,?|।]+$/g, '').trim();
 
-      // Check exact match or substring match in native script or pronunciation
-      if (
-        cleanText === normalizedInput ||
-        cleanPron === normalizedInput ||
-        normalizedInput.includes(cleanText) ||
-        cleanText.includes(normalizedInput) ||
-        normalizedInput.includes(cleanPron) ||
-        cleanPron.includes(normalizedInput)
-      ) {
+      // Exact match — always accept
+      if (cleanText === normalizedInput || cleanPron === normalizedInput) {
         matchedKey = key;
         matchedEntry = entry;
         break;
+      }
+
+      // Substring match — only when input contains the dictionary phrase
+      const lengthRatio = normalizedInput.length / (cleanText.length || 1);
+      if (lengthRatio <= 2 && lengthRatio >= 1.0) {
+        if (
+          normalizedInput.includes(cleanText) ||
+          normalizedInput.includes(cleanPron)
+        ) {
+          matchedKey = key;
+          matchedEntry = entry;
+          break;
+        }
       }
     }
   }

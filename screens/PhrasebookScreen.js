@@ -20,8 +20,7 @@ import {
 const proxiedImage = (url) => {
   if (!url) return url;
   if (url.includes('upload.wikimedia.org')) {
-    const stripped = url.replace(/^https?:\/\//, '');
-    return `https://images.weserv.nl/?url=${encodeURIComponent(stripped)}&w=500`;
+    return `https://images.weserv.nl/?url=${encodeURIComponent(url)}&w=500`;
   }
   return url;
 };

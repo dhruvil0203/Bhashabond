@@ -76,33 +76,19 @@ export default function SignInScreen() {
         return;
       }
 
-      // OAuth completed but no session — likely a config issue
-      const hasOAuthCompleted = signUp?.status === 'complete' || signIn?.status === 'complete';
-      if (hasOAuthCompleted && !createdSessionId && setActive) {
-        // Try activating from signIn or signUp
-        const sid = signUp?.createdSessionId || signIn?.createdSessionId;
-        if (sid) {
-          await setActive({ session: sid });
-          return;
-        }
+      // OAuth completed but no session — try to find any session ID
+      const sid = signUp?.createdSessionId || signIn?.createdSessionId;
+      if (sid && setActive) {
+        await setActive({ session: sid });
+        return;
       }
 
-      // If still nothing, show the user a helpful message
-      if (redirectUrl.startsWith('bhashabond://')) {
-        Alert.alert(
-          'Configuration Required',
-          'Make sure "bhashabond://oauth" is added to the Redirect URLs in your Clerk Dashboard:\n' +
-          'Clerk Dashboard → User & Authentication → Social Connections → Google → Redirect URLs.\n\n' +
-          'After adding it, rebuild the app and try again.'
-        );
-      } else {
-        Alert.alert(
-          'Sign in incomplete',
-          'The sign-in flow didn\'t complete. Please try again.\n\n' +
-          `Redirect URL: ${redirectUrl}\n` +
-          `Status: signIn=${signIn?.status || 'none'}, signUp=${signUp?.status || 'none'}`
-        );
-      }
+      // If truly nothing worked, show the user a helpful message
+      Alert.alert(
+        'Sign in incomplete',
+        'The sign-in flow didn\'t complete. Please try again.\n\n' +
+        `Status: signIn=${signIn?.status || 'none'}, signUp=${signUp?.status || 'none'}`
+      );
     } catch (err) {
       console.warn('[SignIn] Error:', err?.message || err, err);
       Alert.alert('Sign in failed', `Could not complete Google sign in.\n\n${err?.message || 'Please check your connection and try again.'}`);

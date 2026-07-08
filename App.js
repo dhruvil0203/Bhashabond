@@ -1,7 +1,9 @@
 import "./global.css";
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, StatusBar, ActivityIndicator } from 'react-native';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { View, Text, TouchableOpacity, StatusBar, ActivityIndicator, LogBox } from 'react-native';
+
+LogBox.ignoreLogs(['Clerk: Clerk has been loaded with development keys']);
+import { SafeAreaProvider, SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { ClerkProvider, ClerkLoaded, ClerkLoading, SignedIn, SignedOut } from '@clerk/clerk-expo';
 
@@ -17,6 +19,7 @@ import ProfileScreen from './screens/ProfileScreen';
 import SignInScreen from './screens/SignInScreen';
 
 function AppContent() {
+  const insets = useSafeAreaInsets();
   const [currentTab, setCurrentTab] = useState('Home');
   const [selectedSourceLang, setSelectedSourceLang] = useState('English');
   const [selectedTargetLang, setSelectedTargetLang] = useState('Select City / Language');
@@ -75,16 +78,14 @@ function AppContent() {
   // Language picker overlay
   if (isLanguagePickerOpen) {
     return (
-      <SafeAreaProvider>
-        <SafeAreaView style={{ flex: 1, backgroundColor: c.bg }}>
-          <StatusBar barStyle={c.statusBar} backgroundColor={c.bg} />
-          <LanguagePickerScreen
-            initialSelectedLanguage={pickerType === 'source' ? selectedSourceLang : selectedTargetLang}
-            onSelectLanguage={handleSelectLanguage}
-            onClose={() => setIsLanguagePickerOpen(false)}
-          />
-        </SafeAreaView>
-      </SafeAreaProvider>
+      <SafeAreaView style={{ flex: 1, backgroundColor: c.bg }}>
+        <StatusBar barStyle={c.statusBar} backgroundColor={c.bg} />
+        <LanguagePickerScreen
+          initialSelectedLanguage={pickerType === 'source' ? selectedSourceLang : selectedTargetLang}
+          onSelectLanguage={handleSelectLanguage}
+          onClose={() => setIsLanguagePickerOpen(false)}
+        />
+      </SafeAreaView>
     );
   }
 
@@ -115,6 +116,10 @@ function AppContent() {
             initialText={translationSource}
             onBack={() => setCurrentTab('Home')}
             onSwapLanguages={handleSwapLanguages}
+            onChangeLanguages={(src, tgt) => {
+              setSelectedSourceLang(src);
+              setSelectedTargetLang(tgt);
+            }}
           />
         );
       case 'Profile':
@@ -125,61 +130,60 @@ function AppContent() {
   };
 
   return (
-    <SafeAreaProvider>
-      <SafeAreaView style={{ flex: 1, backgroundColor: c.bg }}>
-        <StatusBar barStyle={c.statusBar} backgroundColor={c.bg} />
-        <View style={{ flex: 1 }}>
-          {renderScreen()}
-        </View>
+    <SafeAreaView style={{ flex: 1, backgroundColor: c.bg }} edges={['top']}>
+      <StatusBar barStyle={c.statusBar} backgroundColor={c.bg} />
+      <View style={{ flex: 1 }}>
+        {renderScreen()}
+      </View>
 
-        {/* Bottom Navigation */}
-        <View style={{
-          flexDirection: 'row',
-          backgroundColor: c.navBg,
-          borderTopWidth: 1,
-          borderTopColor: c.navBorder,
-          paddingTop: 8,
-          paddingBottom: 20,
-          paddingHorizontal: 24,
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}>
-          {[
-            { tab: 'Home', icon: 'home' },
-            { tab: 'Phrasebook', icon: 'book' },
-            { tab: 'Translate', icon: 'language' },
-            { tab: 'Profile', icon: 'person' },
-          ].map(({ tab, icon }) => {
-            const isActive = currentTab === tab;
-            return (
-              <TouchableOpacity
-                key={tab}
-                onPress={() => setCurrentTab(tab)}
-                activeOpacity={0.8}
-                style={{ alignItems: 'center', flex: 1, justifyContent: 'center', paddingVertical: 4 }}
-              >
-                <Ionicons
-                  name={isActive ? icon : `${icon}-outline`}
-                  size={24}
-                  color={isActive ? '#F97316' : c.textMuted}
-                />
-                <Text style={{
-                  fontSize: 12,
-                  marginTop: 4,
-                  color: isActive ? '#F97316' : c.textSecondary,
-                  fontWeight: isActive ? 'bold' : '500',
-                }}>
-                  {tab}
-                </Text>
-                {isActive && (
-                  <View style={{ width: 6, height: 6, backgroundColor: '#F97316', borderRadius: 3, marginTop: 4 }} />
-                )}
-              </TouchableOpacity>
-            );
-          })}
-        </View>
-      </SafeAreaView>
-    </SafeAreaProvider>
+
+      {/* Bottom Navigation — uses safe area insets for gesture nav devices */}
+      <View style={{
+        flexDirection: 'row',
+        backgroundColor: c.navBg,
+        borderTopWidth: 1,
+        borderTopColor: c.navBorder,
+        paddingTop: 8,
+        paddingBottom: Math.max(insets.bottom, 12),
+        paddingHorizontal: 24,
+        justifyContent: 'space-between',
+        alignItems: 'center',
+      }}>
+        {[
+          { tab: 'Home', icon: 'home' },
+          { tab: 'Phrasebook', icon: 'book' },
+          { tab: 'Translate', icon: 'language' },
+          { tab: 'Profile', icon: 'person' },
+        ].map(({ tab, icon }) => {
+          const isActive = currentTab === tab;
+          return (
+            <TouchableOpacity
+              key={tab}
+              onPress={() => setCurrentTab(tab)}
+              activeOpacity={0.8}
+              style={{ alignItems: 'center', flex: 1, justifyContent: 'center', paddingVertical: 4 }}
+            >
+              <Ionicons
+                name={isActive ? icon : `${icon}-outline`}
+                size={24}
+                color={isActive ? '#F97316' : c.textMuted}
+              />
+              <Text style={{
+                fontSize: 12,
+                marginTop: 4,
+                color: isActive ? '#F97316' : c.textSecondary,
+                fontWeight: isActive ? 'bold' : '500',
+              }}>
+                {tab}
+              </Text>
+              {isActive && (
+                <View style={{ width: 6, height: 6, backgroundColor: '#F97316', borderRadius: 3, marginTop: 4 }} />
+              )}
+            </TouchableOpacity>
+          );
+        })}
+      </View>
+    </SafeAreaView>
   );
 }
 
@@ -190,15 +194,21 @@ export default function App() {
   // A bare throw here crashes the app to the OS before any UI mounts, which
   // looks identical to a native crash and gives the user nothing to act on.
   if (!publishableKey) {
-    return <ConfigError />;
+    return (
+      <SafeAreaProvider>
+        <ConfigError />
+      </SafeAreaProvider>
+    );
   }
 
   return (
-    <ThemeProvider>
-      <ClerkProvider publishableKey={publishableKey} tokenCache={tokenCache}>
-        <AuthGate />
-      </ClerkProvider>
-    </ThemeProvider>
+    <SafeAreaProvider>
+      <ThemeProvider>
+        <ClerkProvider publishableKey={publishableKey} tokenCache={tokenCache}>
+          <AuthGate />
+        </ClerkProvider>
+      </ThemeProvider>
+    </SafeAreaProvider>
   );
 }
 
@@ -207,19 +217,17 @@ export default function App() {
 // matching eas.json profile's env block (EAS builds).
 function ConfigError() {
   return (
-    <SafeAreaProvider>
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#0A0A0A', alignItems: 'center', justifyContent: 'center', padding: 32 }}>
-        <StatusBar barStyle="light-content" backgroundColor="#0A0A0A" />
-        <Text style={{ fontSize: 22, fontWeight: '900', color: '#FFFFFF', marginBottom: 12, textAlign: 'center' }}>
-          Configuration error
-        </Text>
-        <Text style={{ fontSize: 15, color: '#A1A1AA', textAlign: 'center', lineHeight: 22 }}>
-          The authentication key is missing from this build. Set{' '}
-          <Text style={{ color: '#F97316', fontWeight: '700' }}>EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY</Text>{' '}
-          in your .env (local) or the matching eas.json profile, then rebuild.
-        </Text>
-      </SafeAreaView>
-    </SafeAreaProvider>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#0A0A0A', alignItems: 'center', justifyContent: 'center', padding: 32 }}>
+      <StatusBar barStyle="light-content" backgroundColor="#0A0A0A" />
+      <Text style={{ fontSize: 22, fontWeight: '900', color: '#FFFFFF', marginBottom: 12, textAlign: 'center' }}>
+        Configuration error
+      </Text>
+      <Text style={{ fontSize: 15, color: '#A1A1AA', textAlign: 'center', lineHeight: 22 }}>
+        The authentication key is missing from this build. Set{' '}
+        <Text style={{ color: '#F97316', fontWeight: '700' }}>EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY</Text>{' '}
+        in your .env (local) or the matching eas.json profile, then rebuild.
+      </Text>
+    </SafeAreaView>
   );
 }
 
@@ -228,15 +236,13 @@ function AuthLoading() {
   const { isDark } = useTheme();
   const c = getColors(isDark);
   return (
-    <SafeAreaProvider>
-      <View style={{ flex: 1, backgroundColor: c.bg, alignItems: 'center', justifyContent: 'center' }}>
-        <StatusBar barStyle={c.statusBar} backgroundColor={c.bg} />
-        <Text style={{ fontSize: 28, fontWeight: '900', color: c.textPrimary, letterSpacing: -0.5, marginBottom: 16 }}>
-          BhaashaBond
-        </Text>
-        <ActivityIndicator size="large" color="#F97316" />
-      </View>
-    </SafeAreaProvider>
+    <View style={{ flex: 1, backgroundColor: c.bg, alignItems: 'center', justifyContent: 'center' }}>
+      <StatusBar barStyle={c.statusBar} backgroundColor={c.bg} />
+      <Text style={{ fontSize: 28, fontWeight: '900', color: c.textPrimary, letterSpacing: -0.5, marginBottom: 16 }}>
+        BhaashaBond
+      </Text>
+      <ActivityIndicator size="large" color="#F97316" />
+    </View>
   );
 }
 
@@ -252,9 +258,7 @@ function AuthGate() {
           <AppContent />
         </SignedIn>
         <SignedOut>
-          <SafeAreaProvider>
-            <SignInGate />
-          </SafeAreaProvider>
+          <SignInGate />
         </SignedOut>
       </ClerkLoaded>
     </>
