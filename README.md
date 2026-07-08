@@ -59,7 +59,6 @@ Google OAuth sign-in powered by Clerk — your account, synced and secure.
 | **Backend** | FastAPI (Python) |
 | **Translation** | Google Translate API / Gemini API |
 | **Hosting** | Render |
-| **Database** | SQLite (Local cache) & Supabase (Optional cloud sync) |
 
 ---
 
@@ -123,18 +122,11 @@ Create `backend/.env`:
 ```env
 GOOGLE_TRANSLATE_API_KEY=your_google_api_key   # Optional — free endpoint used as fallback
 GEMINI_API_KEY=your_gemini_api_key             # Optional — free via aistudio.google.com
-SUPABASE_URL=your_supabase_url                 # Optional — for user phrasebook sync
-SUPABASE_SERVICE_ROLE_KEY=your_supabase_key   # Optional — for user phrasebook sync
 ```
 
 ```bash
 uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 ```
-
-### 🗄️ Database Architecture & Setup
-
-- **Local Translation Cache (SQLite)**: The backend automatically initializes a local SQLite file (`translation_cache.db`) on startup to cache dynamic translations and reduce external API latency/costs. No manual setup is required.
-- **User Cloud Sync (Supabase)**: Used to store and sync user phrasebooks and translation history across devices. Execute the schema migration found in [backend/migrations/001_schema.sql](file:///d:/BhashaBond/backend/migrations/001_schema.sql) in your Supabase SQL Editor if configuring sync.
 
 To deploy on Render, connect the repository — `render.yaml` handles the rest.
 
@@ -220,7 +212,6 @@ MIT License — see [LICENSE](LICENSE) for details.
 - [Expo](https://expo.dev/) — React Native framework
 - [Clerk](https://clerk.com/) — Authentication
 - [Render](https://render.com/) — Backend hosting
-- [Supabase](https://supabase.com/) — Database
 
 ---
 

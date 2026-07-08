@@ -67,8 +67,6 @@ Set these in Render Dashboard:
 | Variable | Required | Description |
 |----------|----------|-------------|
 | `GOOGLE_TRANSLATE_API_KEY` | Optional | Google Cloud Translation API key (better reliability) |
-| `SUPABASE_URL` | Optional | Supabase project URL for user sync |
-| `SUPABASE_SERVICE_ROLE_KEY` | Optional | Supabase service key |
 
 ### Without API Key
 Backend automatically uses free Google Translate endpoint (less reliable but unlimited).
