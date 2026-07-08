@@ -1,85 +1,103 @@
 # BhashaBond 🌍
 
-A React Native offline-first translation app supporting 23 Indian languages + English with smart offline capabilities and Google Translate API integration.
-
-## 📱 App Preview
+**Speak Local, Feel Local** — A travel-first translation app for India, supporting all 22 scheduled Indian languages + English with real-time translation, curated travel phrasebooks, city guides, and pronunciation assistance.
 
 <img src="./public/Home_Screen.jpeg" alt="BhashaBond Home Screen" width="300" />
 
-## Features
+---
 
-✨ **Offline Translation**
-- 40+ common travel phrases work instantly without internet
-- Pivot translation: Translate between Indian languages offline (e.g., Gujarati → Bengali via English)
-- Perfect for travelers and offline scenarios
+## ✨ Features
 
-🌐 **Dynamic Translation**
-- Any phrase, any language pair via Google Translate API
-- Smart caching for better performance
-- Support for all 23 scheduled Indian languages
+### 🗣️ Real-Time Translation
+Translate any phrase between **24 languages** instantly. Type or speak — get accurate translations with romanized pronunciation guides so you can read and speak any Indian script confidently.
 
-💾 **Smart Features**
-- Persistent translation cache
-- Save favorite translations to phrasebook
-- Romanization for non-Latin scripts
-- Speech-to-text input support
-- Text-to-speech output
+### 📚 Travel Phrasebook
+Curated, ready-to-use phrases across **4 categories** — Food, Travel, Emergency, and Shopping — each with native script translations and pronunciation for the most widely spoken Indian languages.
 
-## Supported Languages
+### 🏙️ City Guides
+Pick your destination from **20+ major Indian cities** and get local food recommendations, must-visit tourist spots, and city-specific travel tips — all with photos.
 
-English, Hindi, Bengali, Telugu, Marathi, Tamil, Gujarati, Kannada, Malayalam, Punjabi, Odia, Assamese, Maithili, Urdu, Sindhi, Konkani, Nepali, Manipuri, Bodo, Sanskrit, Kashmiri, Dogri, Santali
+### 🚨 Emergency Toolkit
+One-tap access to India's emergency numbers (112, 100, 101, 102), women's helpline (1091), tourist helpline (1363), and a safety phrase card with instant dial support.
 
-## Architecture
+### 🎙️ Voice Input & Audio Playback
+Speak into the mic to translate hands-free. Tap any translation to hear it spoken aloud with adjustable pronunciation speed.
 
-```
-React Native App (Expo)
-    ↓
-Translation Service
-    ├── Offline Dictionary (40+ phrases)
-    ├── Pivot Translation (Indian ↔ Indian via English)
-    ├── Local Cache (Previously translated)
-    └── Backend API (FastAPI on Render)
-            ↓
-        Google Translate API
-```
+### 📌 Save & Copy
+Bookmark translations to your personal phrasebook (up to 200 saved) and copy translations with a single tap.
 
-## Installation
+### 🗺️ State & Region Picker
+Select your destination by **Indian state or union territory** (all 28 states + 8 UTs covered). The app automatically maps your destination to the local language and nearest major city guide.
+
+### 🌗 Dark & Light Mode
+Full dark mode support with a polished warm-tone design system.
+
+### 🔐 Secure Authentication
+Google OAuth sign-in powered by Clerk — your account, synced and secure.
+
+---
+
+## 🌐 Supported Languages
+
+| | | | |
+|:---|:---|:---|:---|
+| English | Hindi | Bengali | Telugu |
+| Marathi | Tamil | Gujarati | Kannada |
+| Malayalam | Punjabi | Odia | Assamese |
+| Maithili | Urdu | Sindhi | Konkani |
+| Nepali | Manipuri | Bodo | Sanskrit |
+| Kashmiri | Dogri | Santali | |
+
+---
+
+## 🏗️ Tech Stack
+
+| Layer | Technology |
+|:---|:---|
+| **Frontend** | React Native (Expo SDK 54) |
+| **Auth** | Clerk (Google OAuth SSO) |
+| **Backend** | FastAPI (Python) |
+| **Translation** | Google Translate API / Gemini API |
+| **Hosting** | Render |
+| **Database** | Supabase |
+
+---
+
+## 🚀 Getting Started
 
 ### Prerequisites
+
 - Node.js 18+
 - npm or yarn
 - Expo CLI
-- Android Studio (for Android builds) or Xcode (for iOS builds)
+- Android Studio or Xcode
 
-### Setup
+### 1. Clone & Install
 
-1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/BhashaBond.git
+git clone https://github.com/dhruvil0203/Bhashabond.git
 cd BhashaBond
-```
-
-2. **Install dependencies**
-```bash
 npm install
 ```
 
-3. **Configure environment**
-```bash
-# Copy .env.example to .env
-cp .env.example .env
+### 2. Configure Environment
 
-# Edit .env with your credentials
+```bash
+cp .env.example .env
+```
+
+Edit `.env`:
+```env
 EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_key
 EXPO_PUBLIC_API_URL=https://bhashabond-api.onrender.com
 ```
 
-4. **Start the development server**
+### 3. Run
+
 ```bash
 npm start
 ```
 
-5. **Run on device/emulator**
 ```bash
 # Android
 npm run android
@@ -88,186 +106,116 @@ npm run android
 npm run ios
 ```
 
-## Backend Setup
+---
 
-The backend is deployed on Render at `https://bhashabond-api.onrender.com`
+## ⚙️ Backend Setup
 
-To deploy your own instance:
+The production backend is live at `https://bhashabond-api.onrender.com`
 
-1. **Setup backend locally**
+To run your own instance:
+
 ```bash
 cd backend
 pip install -r requirements.txt
 ```
 
-2. **Configure environment**
-```bash
-# Create backend/.env
-GOOGLE_TRANSLATE_API_KEY=your_google_api_key  # Optional
+Create `backend/.env`:
+```env
+GOOGLE_TRANSLATE_API_KEY=your_google_api_key   # Optional — free endpoint used as fallback
+GEMINI_API_KEY=your_gemini_api_key             # Optional — free via aistudio.google.com
 SUPABASE_URL=your_supabase_url
 SUPABASE_SERVICE_ROLE_KEY=your_supabase_key
 ```
 
-3. **Run backend locally**
 ```bash
 uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
-4. **Deploy to Render**
-   - Connect your GitHub repository
-   - Render will automatically detect `render.yaml`
-   - Set environment variables in Render dashboard
-   - Deploy!
+To deploy on Render, connect the repository — `render.yaml` handles the rest.
 
-See [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) for detailed deployment instructions.
+See [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) for detailed instructions.
 
-## Building APK for Distribution
+---
+
+## 📦 Build APK
 
 ```bash
-# Install EAS CLI
 npm install -g eas-cli
-
-# Login to Expo
 eas login
-
-# Build APK
 eas build --platform android --profile preview
-
-# Download and share the APK
 ```
 
-## Project Structure
+---
+
+## 📁 Project Structure
 
 ```
 BhashaBond/
-├── screens/          # React Native screens
-│   ├── TranslatorScreen.js
-│   ├── PhrasebookScreen.js
-│   └── ...
-├── services/         # Core services
-│   ├── translator.js    # Translation logic with offline support
-│   ├── cache.js         # Persistent caching
-│   └── romanizer.js     # Script romanization
-├── backend/          # FastAPI backend
-│   ├── main.py
+├── App.js                # Entry point — auth gate, navigation, tab bar
+├── screens/
+│   ├── HomeScreen.js          # Landing — language picker, mic button
+│   ├── TranslatorScreen.js    # Core translator with text/voice input
+│   ├── PhrasebookScreen.js    # Travel phrasebook & city guides
+│   ├── LanguagePickerScreen.js # State/region-based language selector
+│   ├── ProfileScreen.js       # Settings, saved phrases, sign out
+│   ├── SignInScreen.js        # Google OAuth sign-in
+│   ├── cityGuideData.js       # City food & tourist spot data
+│   ├── phrasebookGuideData.js # Emergency numbers, festival greetings
+│   └── shoppingData.js        # Shopping area data
+├── services/
+│   ├── translator.js      # Translation engine & API integration
+│   └── romanizer.js       # Indian script → Latin romanization
+├── context/
+│   └── ThemeContext.js    # Dark/Light mode provider
+├── theme/
+│   └── colors.js          # Design tokens
+├── backend/
+│   ├── main.py            # FastAPI app
 │   ├── routers/
-│   │   ├── translate.py  # Translation endpoint
-│   │   └── ...
+│   │   ├── translate.py   # Translation endpoint (Google/Gemini)
+│   │   ├── languages.py   # Language metadata
+│   │   ├── phrasebook.py  # Phrasebook API
+│   │   └── history.py     # Translation history
 │   └── requirements.txt
-├── assets/           # App assets
-└── ...
+└── assets/                # Icons, splash screen
 ```
 
-## How Translation Works
+---
 
-### 1. Offline Dictionary
-- 40+ common phrases stored locally
-- Instant translation without internet
-- Works for all supported languages
+## 💰 Cost Estimation
 
-### 2. Pivot Translation (NEW!)
-- Translates between Indian languages offline
-- Example: Gujarati → English → Bengali
-- Uses offline dictionary as intermediary
+| Tier | Render | Translation API | Total |
+|:---|:---|:---|:---|
+| **Free** | Free (cold starts) | Free endpoint | **$0/month** |
+| **Production** | $7/month (always-on) | ~$20/month | **~$27/month** |
 
-### 3. Dynamic Translation
-- For non-dictionary phrases
-- Routes through backend API to Google Translate
-- Automatically caches results for offline reuse
+---
 
-### 4. Smart Caching
-- Stores all translations locally
-- Reduces API calls and costs
-- Works offline after first translation
+## 🗺️ Roadmap
 
-## Configuration
+- [ ] IndicTrans2 on-device ML model integration
+- [ ] Downloadable language packs
+- [ ] Community-contributed phrases
+- [ ] Progressive Web App version
+- [ ] iOS optimization
 
-### App Configuration
+---
 
-**`.env`**
-```bash
-EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_key
-EXPO_PUBLIC_API_URL=https://your-backend-url.com
-```
-
-### Backend Configuration
-
-**`backend/.env`**
-```bash
-# Optional: For better reliability and higher quotas
-GOOGLE_TRANSLATE_API_KEY=your_google_api_key
-
-# For user data sync
-SUPABASE_URL=your_supabase_url
-SUPABASE_SERVICE_ROLE_KEY=your_supabase_key
-```
-
-## Performance
-
-- **Offline translations**: < 100ms
-- **Pivot translations**: < 200ms  
-- **Online translations**: 2-3 seconds (after backend warmup)
-- **Cold start** (Render free tier): 30-60 seconds (first request only)
-
-## Cost Estimation
-
-### Free Tier
-- Render: Free (with 15min cold start)
-- Google Translate: Free unofficial endpoint
-- **Total: $0/month**
-
-### Recommended for Production
-- Render: $7/month (always-on, no cold starts)
-- Google Translate API: ~$20/month for moderate use
-- **Total: ~$27/month for 100+ users**
-
-## Development
-
-### Running Tests
-```bash
-npm test
-```
-
-### Code Style
-```bash
-npm run lint
-```
-
-### Type Checking
-```bash
-npm run type-check
-```
-
-## Contributing
+## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## License
+## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+MIT License — see [LICENSE](LICENSE) for details.
 
-## Acknowledgments
+## 🙏 Acknowledgments
 
-- Google Translate API for translation services
-- Expo for the amazing React Native framework
-- Render for free backend hosting
-- Supabase for database services
-
-## Support
-
-For issues and questions:
-- Check [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) for setup help
-- Open an issue on GitHub
-- Check backend health: https://bhashabond-api.onrender.com/api/health
-
-## Roadmap
-
-- [ ] Add IndicTrans2 ML model for true offline translation
-- [ ] Implement offline language packs
-- [ ] Add community-contributed phrases
-- [ ] Support for more languages
-- [ ] Progressive Web App version
-- [ ] iOS version optimization
+- [Google Translate API](https://cloud.google.com/translate) & [Gemini API](https://aistudio.google.com/)
+- [Expo](https://expo.dev/) — React Native framework
+- [Clerk](https://clerk.com/) — Authentication
+- [Render](https://render.com/) — Backend hosting
+- [Supabase](https://supabase.com/) — Database
 
 ---
 
