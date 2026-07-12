@@ -5,23 +5,27 @@ node_modules/
 
 # Expo
 .expo/
+.expo-shared/
 dist/
 web-build/
 expo-env.d.ts
 
 # Native
 .kotlin/
+*.orig
 *.orig.*
 *.jks
 *.p8
 *.p12
 *.key
+*.keystore
 *.mobileprovision
 
 # Metro
 .metro-health-check*
 
-# debug
+# debug / logs
+*.log
 npm-debug.*
 yarn-debug.*
 yarn-error.*
@@ -34,6 +38,7 @@ expo-dev.log
 # local env files
 .env
 .env*.local
+.env.*
 backend/.env
 
 # typescript
@@ -43,10 +48,19 @@ backend/.env
 /ios
 /android
 
-# build export
-.bbexport/
+# build output
+dist/
+bbexport/
 
-# backups and temporary files
+# IDEs
+.idea/
+.vscode/
+
+# temporary files
+*.tmp
+*.swp
+
+# backups
 *.bak
 *.original
 

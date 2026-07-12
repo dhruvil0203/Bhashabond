@@ -42,18 +42,34 @@ async function getCachedTranslation(sourceText, sourceLangCode, targetLangCode) 
   return cache[key] || null;
 }
 
+let cacheWriteMutex = false;
+
 async function setCachedTranslation(sourceText, sourceLangCode, targetLangCode, result) {
-  const cache = await loadCache();
-  const key = `${sourceLangCode}_${targetLangCode}_${sourceText.trim().toLowerCase()}`;
-  cache[key] = result;
-
-  // Manage cache size: limit to CACHE_LIMIT entries (FIFO-like behavior)
-  const keys = Object.keys(cache);
-  if (keys.length > CACHE_LIMIT) {
-    delete cache[keys[0]];
+  // Simple mutex to prevent concurrent read-modify-write races
+  if (cacheWriteMutex) {
+    // If a write is in flight, skip caching (the translation result is still returned)
+    return;
   }
+  cacheWriteMutex = true;
 
-  await saveCache(cache);
+  try {
+    const cache = await loadCache();
+    const key = `${sourceLangCode}_${targetLangCode}_${sourceText.trim().toLowerCase()}`;
+    cache[key] = result;
+
+    // Manage cache size: limit to CACHE_LIMIT entries (FIFO-like behavior)
+    const keys = Object.keys(cache);
+    if (keys.length > CACHE_LIMIT) {
+      const toDelete = keys.slice(0, keys.length - CACHE_LIMIT);
+      for (const k of toDelete) {
+        delete cache[k];
+      }
+    }
+
+    await saveCache(cache);
+  } finally {
+    cacheWriteMutex = false;
+  }
 }
 
 // Candidates for backend URL (checked in order)
@@ -80,44 +96,50 @@ const CANDIDATE_URLS = (() => {
 })();
 
 let activeApiBase = RENDER_URL; // Default to production
-let isProbing = false;
+let probePromise = null;
 let hasProbed = false;
 let probeSucceeded = false;
 
 export async function probeBackend() {
-  // Skip if already probed successfully; allow re-probe if previous probe failed
+  // Return cached result if probing already succeeded
   if (hasProbed && probeSucceeded) return activeApiBase;
-  if (isProbing) return activeApiBase;
-  
-  isProbing = true;
-  console.log('[Translation Service] Probing backend URLs...');
-  
-  for (const url of CANDIDATE_URLS) {
-    try {
-      const controller = new AbortController();
-      // Use longer timeout for production URLs (Render free tier has 30-60s cold starts)
-      const timeout = url.includes('https://') ? 15000 : 600;
-      const id = setTimeout(() => controller.abort(), timeout);
-      const res = await fetch(`${url}/api/health`, { signal: controller.signal });
-      clearTimeout(id);
-      if (res.ok) {
-        activeApiBase = url;
-        console.log('[Translation Service] Found active backend at:', url);
-        isProbing = false;
-        hasProbed = true;
-        probeSucceeded = true;
-        return url;
+
+  // Return the in-flight promise if a probe is already running
+  // This prevents concurrent probes AND ensures callers wait for the real result
+  if (probePromise) return probePromise;
+
+  probePromise = (async () => {
+    console.log('[Translation Service] Probing backend URLs...');
+
+    for (const url of CANDIDATE_URLS) {
+      try {
+        const controller = new AbortController();
+        // Use longer timeout for production URLs (Render free tier has 30-60s cold starts)
+        const timeout = url.includes('https://') ? 15000 : 600;
+        const id = setTimeout(() => controller.abort(), timeout);
+        const res = await fetch(`${url}/api/health`, { signal: controller.signal });
+        clearTimeout(id);
+        if (res.ok) {
+          activeApiBase = url;
+          console.log('[Translation Service] Found active backend at:', url);
+          hasProbed = true;
+          probeSucceeded = true;
+          return url;
+        }
+      } catch (e) {
+        // Ignore and try next
       }
-    } catch (e) {
-      // Ignore and try next
     }
-  }
-  
-  isProbing = false;
-  hasProbed = true;
-  probeSucceeded = false;
-  console.warn('[Translation Service] No running backend found. Using fallback:', activeApiBase);
-  return activeApiBase;
+
+    hasProbed = true;
+    probeSucceeded = false;
+    console.warn('[Translation Service] No running backend found. Using fallback:', activeApiBase);
+    return activeApiBase;
+  })();
+
+  const result = await probePromise;
+  probePromise = null; // Allow re-probe if it failed
+  return result;
 }
 
 // Trigger background probe early

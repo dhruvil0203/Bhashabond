@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, ToastAndroid, Platform, Image, ActivityIndicator, Linking } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import * as Speech from 'expo-speech';
@@ -10,7 +10,6 @@ import {
   EMERGENCY_NUMBERS,
   WOMENS_HELPLINE,
   SAFETY_PHRASE,
-  FESTIVAL_GREETINGS,
   BARGAIN_TIPS,
   getPhraseGuide,
 } from './phrasebookGuideData';
@@ -159,6 +158,7 @@ export default function PhrasebookScreen({
   const [playingId, setPlayingId] = useState(null);
   const [imageErrors, setImageErrors] = useState({});
   const [loadingImages, setLoadingImages] = useState({});
+
   const { isDark } = useTheme();
   const c = getColors(isDark);
 
@@ -168,6 +168,13 @@ export default function PhrasebookScreen({
   // Defaults to 'Delhi' so the Food/Travel guides always have data; the
   // discovery cards below fall back independently via getPhraseGuide().
   const activeCityName = selectedCity ? (STATE_TO_CITY_MAP[selectedCity] || selectedCity) : 'Delhi';
+
+  // Reset image error/loading state when category or city changes
+  // to prevent unbounded memory growth from discarded images
+  useEffect(() => {
+    setImageErrors({});
+    setLoadingImages({});
+  }, [activeCategory, activeCityName]);
 
   const dialNumber = (tel) => {
     Linking.openURL(`tel:${tel}`).catch(() => {

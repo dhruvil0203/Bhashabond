@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import {
   View, Text, TouchableOpacity, TextInput, ScrollView,
   ToastAndroid, Platform, Alert, ActivityIndicator, Modal,
@@ -9,33 +9,8 @@ import { useTheme } from '../context/ThemeContext';
 import { getColors } from '../theme/colors';
 import { translate, getQuickPhrasesForLang } from '../services/translator';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { LANGUAGES } from '../shared/languages';
 
-// All 23 scheduled languages + English
-const LANGUAGES = [
-  { id: 'en',  name: 'English',   native: 'English',       icon: '🌐' },
-  { id: 'hi',  name: 'Hindi',     native: 'हिन्दी',          icon: '🪔' },
-  { id: 'bn',  name: 'Bengali',   native: 'বাংলা',          icon: '🌾' },
-  { id: 'te',  name: 'Telugu',    native: 'తెలుగు',          icon: '🏛️' },
-  { id: 'mr',  name: 'Marathi',   native: 'मराठी',           icon: '🏰' },
-  { id: 'ta',  name: 'Tamil',     native: 'தமிழ்',           icon: '🌴' },
-  { id: 'gu',  name: 'Gujarati',  native: 'ગુજરાતી',         icon: '🦁' },
-  { id: 'kn',  name: 'Kannada',   native: 'ಕನ್ನಡ',           icon: '🌺' },
-  { id: 'ml',  name: 'Malayalam', native: 'മലയാളം',          icon: '🥥' },
-  { id: 'pa',  name: 'Punjabi',   native: 'ਪੰਜਾਬੀ',          icon: '🌾' },
-  { id: 'or',  name: 'Odia',      native: 'ଓଡ଼ିଆ',           icon: '🛞' },
-  { id: 'as',  name: 'Assamese',  native: 'অসমীয়া',         icon: '🦏' },
-  { id: 'mai', name: 'Maithili',  native: 'মৈথিলী',          icon: '🪷' },
-  { id: 'ur',  name: 'Urdu',      native: 'اردو',            icon: '🕌' },
-  { id: 'ks',  name: 'Kashmiri',  native: 'كٲشُر',           icon: '⛵' },
-  { id: 'doi', name: 'Dogri',     native: 'डोगरी',           icon: '🏔️' },
-  { id: 'kok', name: 'Konkani',   native: 'कोंकणी',          icon: '🏖️' },
-  { id: 'mni', name: 'Manipuri',  native: 'মণিপুরী',         icon: '💃' },
-  { id: 'ne',  name: 'Nepali',    native: 'नेपाली',          icon: '🏔️' },
-  { id: 'brx', name: 'Bodo',      native: 'बड़ो',            icon: '🌳' },
-  { id: 'sa',  name: 'Sanskrit',  native: 'संस्कृतम्',        icon: '📜' },
-  { id: 'sat', name: 'Santali',   native: 'ᱥᱟᱱᱛᱟᱲᱤ',      icon: '🌿' },
-  { id: 'sd',  name: 'Sindhi',    native: 'سنڌي',            icon: '🏜️' },
-];
 
 export default function TranslatorScreen({
   onBack,
@@ -60,6 +35,15 @@ export default function TranslatorScreen({
   const [searchQuery, setSearchQuery] = useState('');
   const [localSourceLang, setLocalSourceLang] = useState(sourceLang);
   const [localTargetLang, setLocalTargetLang] = useState(targetLang);
+
+  // Sync local state when props change (e.g., language picked from HomeScreen)
+  useEffect(() => {
+    setLocalSourceLang(sourceLang);
+  }, [sourceLang]);
+
+  useEffect(() => {
+    setLocalTargetLang(targetLang);
+  }, [targetLang]);
 
   const { isDark } = useTheme();
   const c = getColors(isDark);
@@ -174,8 +158,13 @@ export default function TranslatorScreen({
     lang.native.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  // Guard against rapid concurrent saves (AsyncStorage read-modify-write race)
+  const saveMutex = React.useRef(false);
+
   const handleSave = async () => {
     if (!translatedText) return;
+    if (saveMutex.current) return; // Avoid concurrent save race
+    saveMutex.current = true;
     setIsSaved(true);
 
     // Save to local AsyncStorage phrasebook
@@ -198,6 +187,8 @@ export default function TranslatorScreen({
       }
     } catch (error) {
       console.warn('[Save]', error.message);
+    } finally {
+      saveMutex.current = false;
     }
   };
 

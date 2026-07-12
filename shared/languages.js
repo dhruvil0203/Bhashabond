@@ -1,0 +1,27 @@
+// All 23 scheduled languages + English
+// Names MUST match keys in translator.js LANG_CODES exactly
+export const LANGUAGES = [
+  { id: 'en',  name: 'English',   native: 'English',       icon: '🌐' },
+  { id: 'hi',  name: 'Hindi',     native: 'हिन्दी',          icon: '🪔' },
+  { id: 'bn',  name: 'Bengali',   native: 'বাংলা',          icon: '🌾' },
+  { id: 'te',  name: 'Telugu',    native: 'తెలుగు',          icon: '🏛️' },
+  { id: 'mr',  name: 'Marathi',   native: 'मराठी',           icon: '🏰' },
+  { id: 'ta',  name: 'Tamil',     native: 'தமிழ்',           icon: '🌴' },
+  { id: 'gu',  name: 'Gujarati',  native: 'ગુજરાતી',         icon: '🦁' },
+  { id: 'kn',  name: 'Kannada',   native: 'ಕನ್ನಡ',           icon: '🌺' },
+  { id: 'ml',  name: 'Malayalam', native: 'മലയാളം',          icon: '🥥' },
+  { id: 'pa',  name: 'Punjabi',   native: 'ਪੰਜਾਬੀ',          icon: '🌾' },
+  { id: 'or',  name: 'Odia',      native: 'ଓଡ଼ିଆ',           icon: '🛞' },
+  { id: 'as',  name: 'Assamese',  native: 'অসমীয়া',         icon: '🦏' },
+  { id: 'mai', name: 'Maithili',  native: 'মৈথিলী',          icon: '🪷' },
+  { id: 'ur',  name: 'Urdu',      native: 'اردو',            icon: '🕌' },
+  { id: 'ks',  name: 'Kashmiri',  native: 'كٲشُر',           icon: '⛵' },
+  { id: 'doi', name: 'Dogri',     native: 'डोगरी',           icon: '🏔️' },
+  { id: 'kok', name: 'Konkani',   native: 'कोंकणी',          icon: '🏖️' },
+  { id: 'mni', name: 'Manipuri',  native: 'মণিপুরী',         icon: '💃' },
+  { id: 'ne',  name: 'Nepali',    native: 'नेपाली',          icon: '🏔️' },
+  { id: 'brx', name: 'Bodo',      native: 'बड़ो',            icon: '🌳' },
+  { id: 'sa',  name: 'Sanskrit',  native: 'संस्कृतम्',        icon: '📜' },
+  { id: 'sat', name: 'Santali',   native: 'ᱥᱟᱱᱛᱟᱲᱤ',      icon: '🌿' },
+  { id: 'sd',  name: 'Sindhi',    native: 'سنڌي',            icon: '🏜️' },
+];

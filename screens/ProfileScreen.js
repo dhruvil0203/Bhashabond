@@ -99,18 +99,18 @@ export default function ProfileScreen() {
         )}
         <View style={{
           marginTop: 8, paddingHorizontal: 12, paddingVertical: 4,
-          backgroundColor: 'rgba(22,163,74,0.1)', borderRadius: 999,
-          borderWidth: 1, borderColor: 'rgba(22,163,74,0.3)',
+          backgroundColor: 'rgba(249,115,22,0.1)', borderRadius: 999,
+          borderWidth: 1, borderColor: 'rgba(249,115,22,0.3)',
         }}>
-          <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#16a34a' }}>📱 Works Offline</Text>
+          <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#F97316' }}>📱 40+ Phrases Offline</Text>
         </View>
       </View>
 
       {/* Stats */}
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 24, marginBottom: 24, gap: 8 }}>
         {[
-          { value: '21', label: 'Languages' },
-          { value: '35+', label: 'Phrases' },
+          { value: '23', label: 'Languages' },
+          { value: '40+', label: 'Phrases' },
           { value: String(savedCount), label: 'Saved' },
         ].map(({ value, label }) => (
           <View key={label} style={{ flex: 1, backgroundColor: c.card, padding: 16, borderRadius: 24, borderWidth: 1, borderColor: c.cardBorder, alignItems: 'center' }}>
@@ -144,7 +144,7 @@ export default function ProfileScreen() {
             />
           </View>
 
-          {/* Audio Speed */}
+          {/* Audio Speed — cosmetic toggle (controls individual playAudio calls) */}
           <TouchableOpacity
             activeOpacity={0.8}
             onPress={() => setAudioSpeed(audioSpeed === 'Normal' ? 'Slow' : 'Normal')}
@@ -188,10 +188,10 @@ export default function ProfileScreen() {
             🇮🇳 BhashaBond — Speak Local, Feel Local
           </Text>
           <Text style={{ fontSize: 13, color: c.textSecondary, lineHeight: 20 }}>
-            A 100% offline translation app for travelers in India. Translate between English and 20+ Indian languages without internet, API keys, or cloud services.
+            An offline-first translation app for travelers in India. Common phrases work offline; internet enables full 23-language translation.
           </Text>
           <Text style={{ fontSize: 13, color: c.textSecondary, lineHeight: 20, marginTop: 8 }}>
-            All translations run entirely on your device. Your data never leaves your phone.
+            Saved phrases stay on your device. Backend translations use Google Gemini API but are never stored permanently.
           </Text>
         </View>
 
